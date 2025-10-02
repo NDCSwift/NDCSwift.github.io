@@ -3,417 +3,434 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="WordSage: Your Daily Word Challenge. Learn new words and improve your vocabulary with fun daily challenges!">
-    <title>Noah Carpenter's iOS Apps</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="portfolio.css">
+    <title>Noah Carpenter | iOS Developer & Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <style>
-    :root {
-        --primary: #4f46e5;
-        --accent: #6366f1;
-        --bg-light: #f9fafb;
-        --bg-dark: #ffffff;
-        --text-main: #111827;
-        --text-secondary: #6b7280;
-        --radius: 16px;
-        --shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-        --transition: all 0.3s ease-in-out;
-    }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: var(--bg-light);
-        color: var(--text-main);
-        font-size: 16px;
-        line-height: 1.6;
-    }
-
-    header {
-        background: linear-gradient(to right, var(--primary), var(--accent));
-        color: white;
-        padding: 4rem 2rem;
-        text-align: center;
-        border-bottom-left-radius: var(--radius);
-        border-bottom-right-radius: var(--radius);
-    }
-
-    header h1 {
-        font-size: 3.25rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-    }
-
-    header p {
-        font-size: 1.25rem;
-        max-width: 700px;
-        margin: 0 auto;
-        color: #e5e7eb;
-    }
-
-    nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-top: 2rem;
-        flex-wrap: wrap;
-    }
-
-    nav a {
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 1rem;
-        transition: var(--transition);
-    }
-
-    nav a:hover {
-        opacity: 0.85;
-    }
-
-    section {
-        max-width: 1000px;
-        margin: 3rem auto;
-        padding: 2rem;
-        background-color: var(--bg-dark);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-    }
-
-    h2 {
-        font-size: 2.25rem;
-        font-weight: 600;
-        color: var(--primary);
-        margin-bottom: 1.5rem;
-        border-bottom: 2px solid var(--primary);
-        padding-bottom: 0.5rem;
-    }
-
-    h3 {
-        font-size: 1.5rem;
-        color: var(--accent);
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    .app-block {
-        margin-bottom: 3rem;
-    }
-
-    .app-block p {
-        color: var(--text-secondary);
-        margin-bottom: 1rem;
-    }
-
-    ul {
-        padding-left: 1rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    li {
-        margin-bottom: 0.5rem;
-        color: var(--text-secondary);
-    }
-
-    .feature-btn {
-        display: inline-block;
-        padding: 0.75rem 1.5rem;
-        background-color: var(--accent);
-        color: white;
-        border: none;
-        border-radius: var(--radius);
-        font-weight: 600;
-        text-decoration: none;
-        transition: var(--transition);
-        box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
-    }
-
-    .feature-btn:hover {
-        background-color: #4338ca;
-        transform: translateY(-2px);
-    }
-
-    footer {
-        text-align: center;
-        padding: 3rem 1rem;
-        background-color: #f3f4f6;
-        color: var(--text-secondary);
-        margin-top: 4rem;
-        border-top: 1px solid #e5e7eb;
-    }
-
-    footer a {
-        color: var(--primary);
-        text-decoration: none;
-        font-weight: 500;
-    }
-
-    footer a:hover {
-        text-decoration: underline;
-    }
-
-    .social-media {
-        margin-top: 1.5rem;
-    }
-
-    @media (max-width: 600px) {
-        header h1 {
-            font-size: 2.25rem;
-        }
-
-        nav ul {
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .feature-btn {
+        .vanta-container {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            text-align: center;
+            height: 100%;
+            z-index: -1;
         }
-    }
-
-    .carousel {
-        position: relative;
-        flex: 1 1 250px;
-        max-width: 300px;
-        margin-bottom: 1rem;
-        overflow: hidden;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-    }
-
-    .carousel img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    .app-layout {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        align-items: flex-start;
-    }
-
-    .app-text {
-        flex: 1 1 300px;
-    }
-
-    .carousel-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.4);
-        border: none;
-        color: white;
-        font-size: 2rem;
-        padding: 0.25rem 0.75rem;
-        cursor: pointer;
-        z-index: 1;
-        border-radius: 0.25rem;
-    }
-
-    .carousel-btn.left {
-        left: 0.5rem;
-    }
-
-    .carousel-btn.right {
-        right: 0.5rem;
-    }
-    .app-section {
-        max-width: 1000px;
-        margin: 3rem auto;
-        padding: 2rem;
-        background-color: var(--bg-dark);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-    }
-    .about-section {
-        max-width: 1000px;
-        margin: 3rem auto;
-        padding: 2rem;
-        background-color: var(--bg-dark);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        color: var(--text-secondary);
-    }
-    .skills-section {
-        max-width: 1000px;
-        margin: 3rem auto;
-        padding: 2rem;
-        background-color: var(--bg-dark);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        color: var(--text-secondary);
-    }
-    .quick-info {
-        background-color: #e0e7ff;
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
-        color: #3730a3;
-        display: flex;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-    }
+        .carousel-container {
+            perspective: 1000px;
+        }
+        .carousel-item {
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+        .skill-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .app-card {
+            transition: all 0.3s ease;
+        }
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
-<body class="landing-page">
-    <header>
-        <p>Noah Carpenter — iOS Developer & Designer</p>
-        <h1>Explore My iOS Apps</h1>
-        <nav>
-            <ul>
-                <li><a href="#wordsage">WordSage</a></li>
-                <li><a href="#dailydevotion">Daily Devotion</a></li>
-                <li><a href="#tapduel">Tap Duel</a></li>
-            </ul>
-        </nav>
-        <p>Discover my personal collection of iOS apps—designed to inspire, educate, and uplift.</p>
+<body class="bg-gray-50 font-sans antialiased">
+    <div class="vanta-container" id="vanta-bg"></div>
+
+    <!-- Header -->
+    <header class="relative overflow-hidden py-20 bg-indigo-900 bg-opacity-90">
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <p class="text-indigo-200 font-medium mb-2">Noah Carpenter — iOS Developer & Designer</p>
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">Crafting Digital Experiences</h1>
+            <p class="text-xl text-indigo-100 max-w-2xl mx-auto mb-8">Designing intuitive iOS apps that inspire, educate, and uplift</p>
+            
+            <nav class="flex justify-center space-x-6 flex-wrap">
+                <a href="#work" class="text-white hover:text-indigo-200 transition duration-300">
+                    <i data-feather="briefcase" class="inline mr-2"></i> My Work
+                </a>
+                <a href="#about" class="text-white hover:text-indigo-200 transition duration-300">
+                    <i data-feather="user" class="inline mr-2"></i> About Me
+                </a>
+                <a href="#skills" class="text-white hover:text-indigo-200 transition duration-300">
+                    <i data-feather="code" class="inline mr-2"></i> Skills
+                </a>
+                <a href="#contact" class="text-white hover:text-indigo-200 transition duration-300">
+                    <i data-feather="mail" class="inline mr-2"></i> Contact
+                </a>
+            </nav>
+        </div>
     </header>
 
-    <section class="about-section">
-        <h2>About Me</h2>
-        <p>Hello! I'm Noah Carpenter, a passionate iOS developer and designer dedicated to creating engaging and intuitive mobile experiences. With a focus on clean design and robust functionality, I strive to build apps that users love and find valuable.</p>
-    </section>
+    <!-- Main Content -->
+    <main class="relative z-10 container mx-auto px-4 py-12">
 
-    <h2>My Apps</h2>
-
-    <section id="wordsage" class="app-section">
-        <div class="app-block">
-            <h3>WordSage</h3>
-            <div class="app-layout">
-              <div class="app-text">
-                <p><strong>WordSage</strong> is your daily companion for growing your vocabulary through interactive challenges and smart game modes designed to sharpen your language skills.</p>
-                <div class="quick-info">
-                  <span>Role: Developer & Designer</span>
-                  <span>Tech: Swift, Xcode, UIKit/SwiftUI</span>
-                  <span>Year: 2024</span>
-                </div>
-                <ul>
-                  <li>Daily word challenges to test your skills</li>
-                  <li>Use new words in real sentences</li>
-                  <li>Multiple game modes: matching, anagrams, flashcards</li>
-                  <li>Motion-based controls for interactive gameplay</li>
-                  <li>Over 1000+ unique vocabulary entries</li>
-                </ul>
-              </div>
-              <div class="carousel" data-images='["screens/WordSage1.png", "screens/WordSage2.png", "screens/WordSage3.png", "screens/WordSage4.png", "screens/WordSage5.png"]'>
-                <img src="screens/WordSage1.png" alt="WordSage screenshot">
-              </div>
-            </div>
-            <p><a href="https://apps.apple.com/ca/app/wordsage/id6683296823" target="_blank" class="feature-btn">Download WordSage</a></p>
-        </div>
-    </section>
-
-    <section id="dailydevotion" class="app-section">
-        <div class="app-block">
-            <h3>Daily Devotion</h3>
-            <div class="app-layout">
-              <div class="app-text">
-                <p><strong>Daily Devotion</strong> brings spiritual insight to your fingertips, featuring beautifully curated scripture and thoughtful reflections to start each day with purpose.</p>
-                <div class="quick-info">
-                  <span>Role: Developer & Designer</span>
-                  <span>Tech: Swift, Xcode, SwiftUI</span>
-                  <span>Year: 2025</span>
-                </div>
-                <ul>
-                  <li>Handpicked verses + inspiring reflections</li>
-                  <li>Choose from KJV, ASV, WEB, or DRB</li>
-                  <li>Daily notifications to build habit</li>
-                  <li>Save favorites and search scripture easily</li>
-                  <li>Optional home widget and dark mode</li>
-                </ul>
-              </div>
-              <div class="carousel" data-images='["screens/DailyDevotions1.png", "screens/DailyDevotions2.png", "screens/DailyDevotions3.png"]'>
-                <img src="screens/DailyDevotions1.png" alt="Daily Devotion screenshot">
-              </div>
-            </div>
-            <p><a href="https://apps.apple.com/ca/app/daily-devotions/id6744182819" target="_blank" class="feature-btn">Download Daily Devotion</a></p>
-        </div>
-    </section>
-    <section id="tapduel" class="app-section">
-        <div class="app-block">
-            <h3>Tap Duel</h3>
-            <div class="app-layout">
-                <div class="app-text">
-                    <p><strong>Tap Duel</strong> is the ultimate test of reflexes. Play face-to-face on one device, online via Game Center, or solo to sharpen your reaction time. Perfect for quick bursts of competitive fun!</p>
-                    <div class="quick-info">
-                      <span>Role: Developer & Designer</span>
-                      <span>Tech: Swift, Xcode, SwiftUI, RevenueCat, GameKit</span>
-                      <span>Year: 2025</span>
+        <!-- About Section -->
+        <section id="about" class="bg-white rounded-2xl shadow-xl p-8 mb-12 backdrop-blur-sm bg-opacity-90">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-6 flex items-center">
+                <i data-feather="user" class="mr-3"></i> About Me
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-2">
+                    <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+                        Hello! I’m Noah Carpenter, an iOS developer and designer passionate about creating apps that are <strong>engaging, accessible, and meaningful</strong>.  
+                        I enjoy learning, experimenting, and sharing knowledge — whether that’s through building projects, teaching, or creating YouTube tutorials.  
+                        My focus is on <strong>clarity, accessibility, and helping others grow as developers</strong>, while crafting experiences that people enjoy using every day.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-indigo-50 rounded-lg p-4">
+                            <h3 class="font-semibold text-indigo-700 mb-2"><i data-feather="award" class="inline mr-2"></i> Philosophy</h3>
+                            <p class="text-gray-600">Clean design meets intuitive functionality</p>
+                        </div>
+                        <div class="bg-indigo-50 rounded-lg p-4">
+                            <h3 class="font-semibold text-indigo-700 mb-2"><i data-feather="star" class="inline mr-2"></i> Focus</h3>
+                            <p class="text-gray-600">iOS development with Swift & SwiftUI</p>
+                        </div>
                     </div>
-                    <ul>
-                        <li>Real-Time Online Multiplayer – Face off against friends or global opponents using Game Center.</li>
-                        <li>Local Two-Player Mode – Play head-to-head on the same device—perfect for quick showdowns.</li>
-                        <li>Solo Reflex Trainer – Sharpen your reaction time with a solo challenge mode.</li>
-                        <li>Quickfire Rounds – “First to 5” wins! Every tap counts in these short, high-stakes battles.</li>
-                        <li>Timing is Everything – Tap the icon the moment it appears… but tap too early and you lose the point!</li>
-                        <li>Customizable Visuals – Unlock and equip icons, and premium packs (cats, memes, holidays & more).</li>
-                        <li>Track Your Stats – Dive into detailed performance analytics including fastest taps, win streaks, and more.</li>
-                        <li>Fun for Everyone – Simple to learn, addictive to master. Great for all ages and skill levels.</li>
-                    </ul>
-                    <p><em>Ready to prove who’s the fastest tapper? Download Tap Duel and claim your bragging rights.</em></p>
-                    <p><a href="https://apps.apple.com/us/app/tap-duel/id6746076055" target="_blank" class="feature-btn">Download Tap Duel</a></p>
                 </div>
-                <div class="carousel" data-images='["screens/TapDuel1.png", "screens/TapDuel2.png", "screens/TapDuel3.png", "screens/TapDuel4.png", "screens/TapDuel5.png", "screens/TapDuel6.png"]'>
-                    <img src="screens/TapDuel1.png" alt="Tap Duel screenshot">
+                <div class="flex justify-center">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-indigo-200 shadow-lg">
+                        <img src="https://avatars.githubusercontent.com/u/152039306?v=4" alt="Noah Carpenter" class="w-full h-full object-cover">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="skills-section">
-        <h2>Skills &amp; Tools</h2>
-        <p>Proficient in Swift, Xcode, UIKit, SwiftUI, and Game Center integration. Experienced with designing intuitive user interfaces, motion-based controls, and implementing real-time multiplayer features. Passionate about clean code, user experience, and continuous learning.</p>
-    </section>
+        <!-- My Work Section -->
+        <section id="work" class="mb-12">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-8 flex items-center">
+                <i data-feather="briefcase" class="mr-3"></i> My Apps
+            </h2>
 
-    <footer>
-        <p>&copy; 2025 Noah Carpenter. All Rights Reserved.</p>
-        <a href="Privacy-policy.html">Privacy Policy</a>
-        <div class="social-media">
+            <!-- WordSage -->
+            <div id="wordsage" class="app-card bg-white rounded-2xl shadow-xl overflow-hidden mb-8 backdrop-blur-sm bg-opacity-90">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h3 class="text-2xl font-bold text-indigo-700 mb-2">WordSage</h3>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Swift</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Xcode</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">UIKit/SwiftUI</span>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg">
+                                2024
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-6">
+                            WordSage is your daily companion for growing your vocabulary through interactive challenges and smart game modes designed to sharpen your language skills.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                                <span>Daily word challenges to test your skills</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                                <span>Multiple game modes: matching, anagrams, flashcards</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                                <span>Motion-based controls for interactive gameplay</span>
+                            </li>
+                        </ul>
+                        <a href="https://apps.apple.com/ca/app/wordsage/id6683296823" target="_blank" class="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                            <i data-feather="download" class="mr-2"></i> Download on App Store
+                        </a>
+                    </div>
+                    <div class="carousel-container relative h-96 md:h-auto">
+                        <!-- Carousel Arrows -->
+                        <button class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left: 0.5rem;">
+                            <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <button class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right: 0.5rem;">
+                            <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <!-- Carousel Images -->
+                        <div class="flex space-x-4 overflow-x-auto h-full w-full px-12">
+                            <img src="screens/WordSage1.png" alt="WordSage screenshot 1" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/WordSage2.png" alt="WordSage screenshot 2" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/WordSage3.png" alt="WordSage screenshot 3" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/WordSage4.png" alt="WordSage screenshot 4" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/WordSage5.png" alt="WordSage screenshot 5" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/WordSage6.png" alt="WordSage screenshot 6" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/WordSage7.png" alt="WordSage screenshot 7" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Daily Devotion -->
+            <div id="dailydevotion" class="app-card bg-white rounded-2xl shadow-xl overflow-hidden mb-8 backdrop-blur-sm bg-opacity-90">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h3 class="text-2xl font-bold text-indigo-700 mb-2">Daily Devotion</h3>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Swift</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Xcode</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SwiftUI</span>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg">
+                                2025
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-6">
+                            Daily Devotion brings spiritual insight to your fingertips, featuring beautifully curated scripture and thoughtful reflections to start each day with purpose.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                                <span>Handpicked verses + inspiring reflections</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                                <span>Choose from multiple Bible translations</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                                <span>Daily notifications to build habit</span>
+                            </li>
+                        </ul>
+                        <a href="https://apps.apple.com/ca/app/daily-devotions/id6744182819" target="_blank" class="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                            <i data-feather="download" class="mr-2"></i> Download on App Store
+                        </a>
+                    </div>
+                    <div class="carousel-container relative h-96 md:h-auto">
+                        <!-- Carousel Arrows -->
+                        <button class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left: 0.5rem;">
+                            <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <button class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right: 0.5rem;">
+                            <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <!-- Carousel Images -->
+                        <div class="flex space-x-4 overflow-x-auto h-full w-full px-12">
+                            <img src="screens/DailyDevotions1.png" alt="Daily Devotion screenshot 1" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/DailyDevotions2.png" alt="Daily Devotion screenshot 2" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/DailyDevotions3.png" alt="Daily Devotion screenshot 3" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Tap Duel -->
+            <div id="tapduel" class="app-card bg-white rounded-2xl shadow-xl overflow-hidden backdrop-blur-sm bg-opacity-90">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h3 class="text-2xl font-bold text-indigo-700 mb-2">Tap Duel</h3>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Swift</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">GameKit</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">RevenueCat</span>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg">
+                                2025
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-6">
+                            Tap Duel is the ultimate test of reflexes. Play face-to-face on one device, online via Game Center, or solo to sharpen your reaction time.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                                <span>Real-Time Online Multiplayer</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                                <span>Local Two-Player Mode</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5"></i>
+                                <span>Solo Reflex Trainer</span>
+                            </li>
+                        </ul>
+                        <a href="https://apps.apple.com/us/app/tap-duel/id6746076055" target="_blank" class="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                            <i data-feather="download" class="mr-2"></i> Download on App Store
+                        </a>
+                    </div>
+                    <div class="carousel-container relative h-96 md:h-auto">
+                        <!-- Carousel Arrows -->
+                        <button class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left: 0.5rem;">
+                            <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <button class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right: 0.5rem;">
+                            <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <!-- Carousel Images -->
+                        <div class="flex space-x-4 overflow-x-auto h-full w-full px-12">
+                            <img src="screens/TapDuel1.png" alt="Tap Duel screenshot 1" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/TapDuel2.png" alt="Tap Duel screenshot 2" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/TapDuel3.png" alt="Tap Duel screenshot 3" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/TapDuel4.png" alt="Tap Duel screenshot 4" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/TapDuel5.png" alt="Tap Duel screenshot 5" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                            <img src="screens/TapDuel6.png" alt="Tap Duel screenshot 6" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="bg-white rounded-2xl shadow-xl p-8 mb-12 backdrop-blur-sm bg-opacity-90">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-8 flex items-center">
+                <i data-feather="code" class="mr-3"></i> Tech & Tools
+            </h2>
+
+            <!-- Frontend / UI -->
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">📱 Frontend / UI (iOS & App Dev)</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-orange-500 text-white px-4 py-2 rounded-full">SwiftUI</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">UIKit</span>
+                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">SwiftData</span>
+                <span class="skill-pill bg-pink-500 text-white px-4 py-2 rounded-full">SpriteKit</span>
+                <span class="skill-pill bg-purple-600 text-white px-4 py-2 rounded-full">GameKit</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">AVFoundation</span>
+                <span class="skill-pill bg-red-500 text-white px-4 py-2 rounded-full">HealthKit</span>
+                <span class="skill-pill bg-indigo-600 text-white px-4 py-2 rounded-full">StoreKit</span>
+            </div>
+
+            <!-- Backend & Databases -->
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">💾 Backend & Databases</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-yellow-400 text-black px-4 py-2 rounded-full">Firebase</span>
+                <span class="skill-pill bg-black text-white px-4 py-2 rounded-full">Flask</span>
+                <span class="skill-pill bg-blue-900 text-white px-4 py-2 rounded-full">SQLite</span>
+                <span class="skill-pill bg-indigo-900 text-white px-4 py-2 rounded-full">Realm</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">CloudKit</span>
+                <span class="skill-pill bg-yellow-500 text-black px-4 py-2 rounded-full">Core Data</span>
+            </div>
+
+            <!-- Tools & Workflow -->
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">⚙️ Tools & Workflow</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">Xcode</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">Xcode Cloud</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">TestFlight</span>
+                <span class="skill-pill bg-orange-600 text-white px-4 py-2 rounded-full">Git</span>
+                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">GitHub</span>
+                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">VS Code</span>
+                <span class="skill-pill bg-pink-600 text-white px-4 py-2 rounded-full">Figma</span>
+                <span class="skill-pill bg-blue-700 text-white px-4 py-2 rounded-full">Keynote</span>
+                <span class="skill-pill bg-black text-white px-4 py-2 rounded-full">Unity</span>
+            </div>
+
+            <!-- Languages -->
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">🖥️ Languages</h3>
+            <div class="flex flex-wrap gap-3">
+                <span class="skill-pill bg-orange-500 text-white px-4 py-2 rounded-full">Swift</span>
+                <span class="skill-pill bg-green-600 text-white px-4 py-2 rounded-full">C#</span>
+                <span class="skill-pill bg-blue-700 text-white px-4 py-2 rounded-full">Python</span>
+                <span class="skill-pill bg-yellow-400 text-black px-4 py-2 rounded-full">JavaScript</span>
+                <span class="skill-pill bg-red-600 text-white px-4 py-2 rounded-full">HTML5</span>
+                <span class="skill-pill bg-gray-800 text-white px-4 py-2 rounded-full">JSON</span>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white rounded-2xl shadow-xl p-8 backdrop-blur-sm bg-opacity-90">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-8 flex items-center">
+                <i data-feather="mail" class="mr-3"></i> Find Me Online
+            </h2>
+            <div class="flex flex-col items-start space-y-4">
+                <a href="https://github.com/NDCSwift" target="_blank" class="flex items-center text-indigo-600 hover:text-indigo-800">
+                    <i data-feather="github" class="mr-3"></i> github.com/NDCSwift
+                </a>
+                <a href="https://www.youtube.com/@NoahDoesCoding97" target="_blank" class="flex items-center text-indigo-600 hover:text-indigo-800">
+                    <i data-feather="youtube" class="mr-3"></i> YouTube: NoahDoesCoding97
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">Noah Carpenter</h3>
+                    <p class="text-gray-400">iOS Developer & Designer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i data-feather="github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i data-feather="twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Noah Carpenter. All rights reserved.</p>
+                <div class="mt-2">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">Privacy Policy</a>
+                    <span class="mx-2">•</span>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300 text-sm">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
-<script>
-document.querySelectorAll('.carousel').forEach(carousel => {
-  const images = JSON.parse(carousel.dataset.images);
-  let index = 0;
 
-  const imgElement = carousel.querySelector('img');
-  const updateImage = () => {
-    imgElement.src = images[index];
-  };
+    <script>
+        // Initialize Vanta.js background
+        VANTA.GLOBE({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x4f46e5,
+            backgroundColor: 0xf9fafb,
+            size: 1.00
+        });
 
-  const prevBtn = document.createElement('button');
-  prevBtn.innerText = '‹';
-  prevBtn.className = 'carousel-btn left';
-  prevBtn.onclick = () => {
-    index = (index - 1 + images.length) % images.length;
-    updateImage();
-  };
+        // Initialize Feather Icons
+        feather.replace();
 
-  const nextBtn = document.createElement('button');
-  nextBtn.innerText = '›';
-  nextBtn.className = 'carousel-btn right';
-  nextBtn.onclick = () => {
-    index = (index + 1) % images.length;
-    updateImage();
-  };
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-  carousel.appendChild(prevBtn);
-  carousel.appendChild(nextBtn);
-  updateImage();
-});
-</script>
+        // Carousel arrow functionality
+        document.querySelectorAll('.carousel-container').forEach(container => {
+            const track = container.querySelector('div.flex'); // the image track
+            const prevBtn = container.querySelector('button:first-of-type');
+            const nextBtn = container.querySelector('button:last-of-type');
+
+            const scrollAmount = 300; // pixels to scroll each click
+
+            prevBtn.addEventListener('click', () => {
+                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>
