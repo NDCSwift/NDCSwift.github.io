@@ -38,6 +38,10 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
+
+        /* Hide scrollbars for cleaner mobile carousels */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans antialiased">
@@ -147,21 +151,21 @@
                     </div>
                     <div class="carousel-container relative h-96 md:h-auto">
                         <!-- Carousel Arrows -->
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left: 0.5rem;">
+                        <button aria-label="Previous screenshot" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left: 0.5rem;">
                             <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
                         </button>
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right: 0.5rem;">
+                        <button aria-label="Next screenshot" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right: 0.5rem;">
                             <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
                         </button>
                         <!-- Carousel Images -->
-                        <div class="flex space-x-4 overflow-x-auto h-full w-full px-12">
-                            <img src="screens/WordSage1.png" alt="WordSage screenshot 1" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/WordSage2.png" alt="WordSage screenshot 2" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/WordSage3.png" alt="WordSage screenshot 3" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/WordSage4.png" alt="WordSage screenshot 4" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/WordSage5.png" alt="WordSage screenshot 5" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/WordSage6.png" alt="WordSage screenshot 6" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/WordSage7.png" alt="WordSage screenshot 7" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                        <div class="carousel-track flex gap-4 overflow-x-auto h-full w-full px-12 snap-x snap-mandatory hide-scrollbar items-center cursor-grab active:cursor-grabbing">
+                            <img src="screens/WordSage1.png" alt="WordSage screenshot 1" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage2.png" alt="WordSage screenshot 2" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage3.png" alt="WordSage screenshot 3" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage4.png" alt="WordSage screenshot 4" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage5.png" alt="WordSage screenshot 5" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage6.png" alt="WordSage screenshot 6" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage7.png" alt="WordSage screenshot 7" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
                         </div>
                     </div>
                 </div>
@@ -207,17 +211,17 @@
                     </div>
                     <div class="carousel-container relative h-96 md:h-auto">
                         <!-- Carousel Arrows -->
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left: 0.5rem;">
+                        <button aria-label="Previous screenshot" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left: 0.5rem;">
                             <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
                         </button>
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right: 0.5rem;">
+                        <button aria-label="Next screenshot" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right: 0.5rem;">
                             <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
                         </button>
                         <!-- Carousel Images -->
-                        <div class="flex space-x-4 overflow-x-auto h-full w-full px-12">
-                            <img src="screens/DailyDevotions1.png" alt="Daily Devotion screenshot 1" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/DailyDevotions2.png" alt="Daily Devotion screenshot 2" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/DailyDevotions3.png" alt="Daily Devotion screenshot 3" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                        <div class="carousel-track flex gap-4 overflow-x-auto h-full w-full px-12 snap-x snap-mandatory hide-scrollbar items-center cursor-grab active:cursor-grabbing">
+                            <img src="screens/DailyDevotions1.png" alt="Daily Devotion screenshot 1" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/DailyDevotions2.png" alt="Daily Devotion screenshot 2" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/DailyDevotions3.png" alt="Daily Devotion screenshot 3" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
                         </div>
                     </div>
                 </div>
@@ -263,20 +267,20 @@
                     </div>
                     <div class="carousel-container relative h-96 md:h-auto">
                         <!-- Carousel Arrows -->
-                        <button class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left: 0.5rem;">
+                        <button aria-label="Previous screenshot" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left: 0.5rem;">
                             <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
                         </button>
-                        <button class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right: 0.5rem;">
+                        <button aria-label="Next screenshot" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right: 0.5rem;">
                             <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
                         </button>
                         <!-- Carousel Images -->
-                        <div class="flex space-x-4 overflow-x-auto h-full w-full px-12">
-                            <img src="screens/TapDuel1.png" alt="Tap Duel screenshot 1" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/TapDuel2.png" alt="Tap Duel screenshot 2" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/TapDuel3.png" alt="Tap Duel screenshot 3" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/TapDuel4.png" alt="Tap Duel screenshot 4" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/TapDuel5.png" alt="Tap Duel screenshot 5" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
-                            <img src="screens/TapDuel6.png" alt="Tap Duel screenshot 6" class="rounded-lg shadow-lg w-1/4 object-contain flex-shrink-0" />
+                        <div class="carousel-track flex gap-4 overflow-x-auto h-full w-full px-12 snap-x snap-mandatory hide-scrollbar items-center cursor-grab active:cursor-grabbing">
+                            <img src="screens/TapDuel1.png" alt="Tap Duel screenshot 1" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/TapDuel2.png" alt="Tap Duel screenshot 2" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/TapDuel3.png" alt="Tap Duel screenshot 3" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/TapDuel4.png" alt="Tap Duel screenshot 4" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/TapDuel5.png" alt="Tap Duel screenshot 5" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/TapDuel6.png" alt="Tap Duel screenshot 6" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
                         </div>
                     </div>
                 </div>
@@ -345,6 +349,22 @@
                 <i data-feather="mail" class="mr-3"></i> Find Me Online
             </h2>
             <div class="flex flex-col items-start space-y-4">
+                <!-- Obfuscated email with subject picker -->
+                <div id="email-contact" class="flex items-center flex-wrap gap-3 group">
+                    <i data-feather="mail" class="w-5 h-5 mr-3 text-indigo-600 group-hover:text-indigo-800 transition-colors"></i>
+                    <button id="emailBtn" type="button" aria-label="Email me" class="text-indigo-600 hover:text-indigo-800 underline">Email me</button>
+                    <select id="emailSubject" class="border rounded px-2 py-1 text-sm" aria-label="Pick a subject (optional)">
+                        <option value="General%20Inquiry">General Inquiry</option>
+                        <option value="App%20collaboration">App collaboration</option>
+                        <option value="Freelance%20iOS%20project">Freelance iOS project</option>
+                        <option value="Speaking%20%2F%20Workshop%20Request">Speaking / Workshop Request</option>
+                        <option value="Bug%20report%20%2F%20App%20Support%20for%20apps">Bug report / App Support for apps</option>
+                    </select>
+                    <button id="copyEmailBtn" type="button" class="text-gray-600 hover:text-gray-900 text-sm underline">Copy email</button>
+                    <noscript>
+                        <span>ferggy1997 [at] gmail [dot] com</span>
+                    </noscript>
+                </div>
                 <a href="https://github.com/NDCSwift" target="_blank" class="flex items-center text-indigo-600 hover:text-indigo-800">
                     <i data-feather="github" class="mr-3"></i> github.com/NDCSwift
                 </a>
@@ -406,22 +426,98 @@
             });
         });
 
-        // Carousel arrow functionality
+        // Carousel functionality: arrows, snapping, drag/swipe, responsive step
         document.querySelectorAll('.carousel-container').forEach(container => {
-            const track = container.querySelector('div.flex'); // the image track
+            const track = container.querySelector('.carousel-track');
             const prevBtn = container.querySelector('button:first-of-type');
             const nextBtn = container.querySelector('button:last-of-type');
 
-            const scrollAmount = 300; // pixels to scroll each click
+            function getScrollAmount() {
+                return Math.round(container.clientWidth * 0.8);
+            }
 
+            function updateButtons() {
+                const max = track.scrollWidth - track.clientWidth - 1;
+                const atStart = track.scrollLeft <= 0;
+                const atEnd = track.scrollLeft >= max;
+                prevBtn.disabled = atStart;
+                nextBtn.disabled = atEnd;
+                prevBtn.classList.toggle('opacity-50', atStart);
+                prevBtn.classList.toggle('cursor-not-allowed', atStart);
+                nextBtn.classList.toggle('opacity-50', atEnd);
+                nextBtn.classList.toggle('cursor-not-allowed', atEnd);
+            }
+
+            // Button clicks
             prevBtn.addEventListener('click', () => {
-                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+            });
+            nextBtn.addEventListener('click', () => {
+                track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
             });
 
-            nextBtn.addEventListener('click', () => {
-                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            // Drag/swipe support via Pointer Events
+            let isDown = false;
+            let startX = 0;
+            let startScroll = 0;
+
+            track.addEventListener('pointerdown', e => {
+                isDown = true;
+                startX = e.clientX;
+                startScroll = track.scrollLeft;
+                track.classList.add('select-none');
+                try { track.setPointerCapture(e.pointerId); } catch {}
             });
+            track.addEventListener('pointermove', e => {
+                if (!isDown) return;
+                const dx = e.clientX - startX;
+                track.scrollLeft = startScroll - dx;
+            });
+            ['pointerup','pointercancel','pointerleave'].forEach(type => {
+                track.addEventListener(type, e => {
+                    isDown = false;
+                    try { track.releasePointerCapture(e.pointerId); } catch {}
+                    track.classList.remove('select-none');
+                });
+            });
+
+            // Keep buttons state in sync
+            track.addEventListener('scroll', updateButtons, { passive: true });
+            window.addEventListener('resize', updateButtons);
+            updateButtons();
         });
+        // Email obfuscation + subject picker (prevents plain-text email in markup)
+        (function () {
+            // Reverse-encoded to deter basic scrapers
+            const u = '7991yggref'.split('').reverse().join(''); // 'ferggy1997'
+            const d = 'moc.liamg'.split('').reverse().join('');  // 'gmail.com'
+            const email = `${u}@${d}`;
+
+            const subjectSelect = document.getElementById('emailSubject');
+            const emailBtn = document.getElementById('emailBtn');
+            const copyBtn = document.getElementById('copyEmailBtn');
+
+            if (emailBtn) {
+                emailBtn.addEventListener('click', () => {
+                    const subj = subjectSelect && subjectSelect.value ? `?subject=${subjectSelect.value}` : '';
+                    window.location.href = `mailto:${email}${subj}`;
+                });
+            }
+
+            if (copyBtn && navigator.clipboard) {
+                copyBtn.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(email);
+                        const orig = copyBtn.textContent;
+                        copyBtn.textContent = 'Copied!';
+                        setTimeout(() => (copyBtn.textContent = orig), 1500);
+                    } catch (e) {
+                        // Fallback: reveal email so it can be copied manually
+                        copyBtn.textContent = email;
+                    }
+                });
+            }
+        })();
     </script>
 </body>
 </html>
