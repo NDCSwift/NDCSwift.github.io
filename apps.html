@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps — Noah Carpenter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        .carousel-container { perspective: 1000px; }
+        .carousel-item { transform-style: preserve-3d; transition: transform 0.5s ease; }
+        .skill-pill { transition: all 0.3s ease; }
+        .skill-pill:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .app-card { transition: all 0.3s ease; }
+        .app-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+
+    <!-- Nav -->
+    <header class="bg-indigo-900 py-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <a href="index.html" class="text-white font-bold text-lg hover:text-indigo-200 transition">Noah Carpenter</a>
+            <nav class="flex space-x-4 md:space-x-6 text-sm md:text-base">
+                <a href="index.html" class="text-indigo-200 hover:text-white transition">Home</a>
+                <a href="apps.html" class="text-white font-semibold border-b-2 border-indigo-300 pb-0.5">Apps</a>
+                <a href="youtube.html" class="text-indigo-200 hover:text-white transition">YouTube</a>
+                <a href="index.html#contact" class="text-indigo-200 hover:text-white transition">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+
+        <!-- Page Header -->
+        <div class="mb-10">
+            <h1 class="text-4xl font-bold text-indigo-700 mb-2">My Apps</h1>
+            <p class="text-gray-600 text-lg">6 apps shipped on the App Store — iOS, and now Android.</p>
+        </div>
+
+        <!-- App Cards -->
+        <section class="mb-16">
+
+            <!-- Focura -->
+            <div id="focura" class="app-card bg-white rounded-2xl shadow-xl overflow-hidden mb-8 backdrop-blur-sm bg-opacity-90">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h2 class="text-2xl font-bold text-indigo-700 mb-2">Focura <span class="text-sm font-normal text-indigo-400">Coming Soon</span></h2>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">React Native</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Expo</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SQLite</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Zustand</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">RevenueCat</span>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg flex-shrink-0">2026</div>
+                        </div>
+                        <p class="text-gray-700 mb-6">
+                            Focura is an ADHD-focused time-blocking and focus timer — designed as an external executive function to replace the cognitive load of planning. Built with React Native and Expo, it's the first cross-platform app in the portfolio, targeting iOS and Android.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Visual time blocks and a Flow State that rewards hyperfocus</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Calendar and Reminders sync for zero-input scheduling</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Live Activities, lock screen widgets, body doubling mode, and brown noise soundscapes</span></li>
+                        </ul>
+                        <span class="inline-flex items-center bg-gray-200 text-gray-600 font-medium py-3 px-6 rounded-lg">
+                            <i data-feather="clock" class="mr-2"></i> App Store link coming soon
+                        </span>
+                    </div>
+                    <div class="carousel-container relative h-96 md:h-auto">
+                        <button aria-label="Previous screenshot" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left:0.5rem;">
+                            <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <button aria-label="Next screenshot" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right:0.5rem;">
+                            <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <div class="carousel-track flex gap-4 overflow-x-auto h-full w-full px-12 snap-x snap-mandatory hide-scrollbar items-center cursor-grab active:cursor-grabbing">
+                            <img src="screens/Focura1.png" alt="Focura screenshot 1" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/Focura2.png" alt="Focura screenshot 2" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/Focura3.png" alt="Focura screenshot 3" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/Focura4.png" alt="Focura screenshot 4" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/Focura5.png" alt="Focura screenshot 5" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/Focura6.png" alt="Focura screenshot 6" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gratitude Bestie -->
+            <div id="gratitudebestie" class="app-card bg-white rounded-2xl shadow-xl overflow-hidden mb-8 backdrop-blur-sm bg-opacity-90">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h2 class="text-2xl font-bold text-indigo-700 mb-2">Gratitude Bestie</h2>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SwiftUI</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SwiftData</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">CloudKit</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Core ML</span>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg flex-shrink-0">2025</div>
+                        </div>
+                        <p class="text-gray-700 mb-6">
+                            Gratitude Bestie helps you reflect on daily moments, tag your feelings, and grow a positive journaling habit. With iCloud sync, Core ML suggestions, and a gentle social layer, it's your mindful space — always in your pocket.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Daily gratitude journaling with photo &amp; emoji support</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>CloudKit-powered sync across devices</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Machine Learning to help tag emotions &amp; writing</span></li>
+                        </ul>
+                        <a href="https://apps.apple.com/us/app/gratitude-bestie/id6753034386" target="_blank" class="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                            <i data-feather="download" class="mr-2"></i> Download on App Store
+                        </a>
+                    </div>
+                    <div class="carousel-container relative h-96 md:h-auto">
+                        <button aria-label="Previous screenshot" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left:0.5rem;">
+                            <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <button aria-label="Next screenshot" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right:0.5rem;">
+                            <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <div class="carousel-track flex gap-4 overflow-x-auto h-full w-full px-12 snap-x snap-mandatory hide-scrollbar items-center cursor-grab active:cursor-grabbing">
+                            <img src="screens/GB1.png" alt="Gratitude Bestie screenshot 1" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/GB2.png" alt="Gratitude Bestie screenshot 2" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/GB3.png" alt="Gratitude Bestie screenshot 3" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/GB4.png" alt="Gratitude Bestie screenshot 4" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/GB5.png" alt="Gratitude Bestie screenshot 5" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/GB6.png" alt="Gratitude Bestie screenshot 6" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/GB7.png" alt="Gratitude Bestie screenshot 7" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/GB8.png" alt="Gratitude Bestie screenshot 8" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/GB9.png" alt="Gratitude Bestie screenshot 9" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/GB10.png" alt="Gratitude Bestie screenshot 10" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tap Duel -->
+            <div id="tapduel" class="app-card bg-white rounded-2xl shadow-xl overflow-hidden mb-8 backdrop-blur-sm bg-opacity-90">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h2 class="text-2xl font-bold text-indigo-700 mb-2">Tap Duel</h2>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SwiftUI</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">GameKit</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SwiftData</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">RevenueCat</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">CoreHaptics</span>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg flex-shrink-0">2025</div>
+                        </div>
+                        <p class="text-gray-700 mb-6">
+                            Tap Duel is the ultimate test of reflexes. Play face-to-face on one device, online via Game Center, or solo to sharpen your reaction time.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Real-time online multiplayer via Game Center</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Local two-player mode</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Solo reflex trainer with performance stats</span></li>
+                        </ul>
+                        <a href="https://apps.apple.com/us/app/tap-duel/id6746076055" target="_blank" class="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                            <i data-feather="download" class="mr-2"></i> Download on App Store
+                        </a>
+                    </div>
+                    <div class="carousel-container relative h-96 md:h-auto">
+                        <button aria-label="Previous screenshot" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left:0.5rem;">
+                            <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <button aria-label="Next screenshot" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right:0.5rem;">
+                            <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <div class="carousel-track flex gap-4 overflow-x-auto h-full w-full px-12 snap-x snap-mandatory hide-scrollbar items-center cursor-grab active:cursor-grabbing">
+                            <img src="screens/TapDuel1.png" alt="Tap Duel screenshot 1" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/TapDuel2.png" alt="Tap Duel screenshot 2" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/TapDuel3.png" alt="Tap Duel screenshot 3" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/TapDuel4.png" alt="Tap Duel screenshot 4" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/TapDuel5.png" alt="Tap Duel screenshot 5" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/TapDuel6.png" alt="Tap Duel screenshot 6" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sky Loops -->
+            <div id="skyloops" class="app-card bg-white rounded-2xl shadow-xl overflow-hidden mb-8 backdrop-blur-sm bg-opacity-90">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h2 class="text-2xl font-bold text-indigo-700 mb-2">Sky Loops</h2>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SpriteKit</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">GameKit</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">StoreKit</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">AdMob</span>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg flex-shrink-0">2025</div>
+                        </div>
+                        <p class="text-gray-700 mb-6">
+                            Sky Loops is a SpriteKit flying game where you pilot a customizable plane through sky rings to build combos. Choose your challenge — timed sprints or endless Zen flight — and climb the Game Center leaderboard.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Four modes: 60s, 120s, 180s challenges + Zen mode</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Unlockable planes and contrail trails with a coin economy</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Daily challenges, Game Center achievements and leaderboards</span></li>
+                        </ul>
+                        <a href="https://apps.apple.com/us/app/sky-loops/id6756944640" target="_blank" class="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                            <i data-feather="download" class="mr-2"></i> Download on App Store
+                        </a>
+                    </div>
+                    <div class="carousel-container relative h-96 md:h-auto">
+                        <button aria-label="Previous screenshot" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left:0.5rem;">
+                            <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <button aria-label="Next screenshot" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right:0.5rem;">
+                            <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <div class="carousel-track flex gap-4 overflow-x-auto h-full w-full px-12 snap-x snap-mandatory hide-scrollbar items-center cursor-grab active:cursor-grabbing">
+                            <img src="screens/SkyLoops1.png" alt="Sky Loops screenshot 1" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-full lg:w-2/3 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/SkyLoops2.png" alt="Sky Loops screenshot 2" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-full lg:w-2/3 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/SkyLoops3.png" alt="Sky Loops screenshot 3" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-full lg:w-2/3 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/SkyLoops4.png" alt="Sky Loops screenshot 4" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-full lg:w-2/3 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/SkyLoops5.png" alt="Sky Loops screenshot 5" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-full lg:w-2/3 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/SkyLoops6.png" alt="Sky Loops screenshot 6" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-full lg:w-2/3 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/SkyLoops7.png" alt="Sky Loops screenshot 7" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-full lg:w-2/3 object-contain flex-shrink-0 snap-center" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WordSage -->
+            <div id="wordsage" class="app-card bg-white rounded-2xl shadow-xl overflow-hidden mb-8 backdrop-blur-sm bg-opacity-90">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h2 class="text-2xl font-bold text-indigo-700 mb-2">WordSage</h2>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SwiftUI</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SwiftData</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">CloudKit</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">CoreHaptics</span>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg flex-shrink-0">2024</div>
+                        </div>
+                        <p class="text-gray-700 mb-6">
+                            WordSage is your daily companion for growing your vocabulary through interactive challenges and smart game modes designed to sharpen your language skills.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Daily word challenges to test your skills</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Multiple game modes: matching, anagrams, flashcards</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Motion-based controls for interactive gameplay</span></li>
+                        </ul>
+                        <a href="https://apps.apple.com/ca/app/wordsage/id6683296823" target="_blank" class="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                            <i data-feather="download" class="mr-2"></i> Download on App Store
+                        </a>
+                    </div>
+                    <div class="carousel-container relative h-96 md:h-auto">
+                        <button aria-label="Previous screenshot" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left:0.5rem;">
+                            <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <button aria-label="Next screenshot" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right:0.5rem;">
+                            <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <div class="carousel-track flex gap-4 overflow-x-auto h-full w-full px-12 snap-x snap-mandatory hide-scrollbar items-center cursor-grab active:cursor-grabbing">
+                            <img src="screens/WordSage1.png" alt="WordSage screenshot 1" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage2.png" alt="WordSage screenshot 2" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage3.png" alt="WordSage screenshot 3" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage4.png" alt="WordSage screenshot 4" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage5.png" alt="WordSage screenshot 5" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage6.png" alt="WordSage screenshot 6" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/WordSage7.png" alt="WordSage screenshot 7" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Devotion -->
+            <div id="dailydevotion" class="app-card bg-white rounded-2xl shadow-xl overflow-hidden mb-8 backdrop-blur-sm bg-opacity-90">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h2 class="text-2xl font-bold text-indigo-700 mb-2">Daily Devotion</h2>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SwiftUI</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">SwiftData</span>
+                                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">WidgetKit</span>
+                                </div>
+                            </div>
+                            <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg flex-shrink-0">2025</div>
+                        </div>
+                        <p class="text-gray-700 mb-6">
+                            Daily Devotion brings spiritual insight to your fingertips, featuring beautifully curated scripture and thoughtful reflections to start each day with purpose.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Handpicked verses + inspiring reflections</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Choose from 4 Bible translations</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0"></i><span>Daily notifications, home screen widget, dark mode</span></li>
+                        </ul>
+                        <a href="https://apps.apple.com/ca/app/daily-devotions/id6744182819" target="_blank" class="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition duration-300">
+                            <i data-feather="download" class="mr-2"></i> Download on App Store
+                        </a>
+                    </div>
+                    <div class="carousel-container relative h-96 md:h-auto">
+                        <button aria-label="Previous screenshot" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-left:0.5rem;">
+                            <i data-feather="chevron-left" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <button aria-label="Next screenshot" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-70 hover:bg-opacity-90 rounded-full p-2 shadow-md transition duration-200 focus:outline-none" style="margin-right:0.5rem;">
+                            <i data-feather="chevron-right" class="w-6 h-6 text-indigo-700"></i>
+                        </button>
+                        <div class="carousel-track flex gap-4 overflow-x-auto h-full w-full px-12 snap-x snap-mandatory hide-scrollbar items-center cursor-grab active:cursor-grabbing">
+                            <img src="screens/DailyDevotions1.png" alt="Daily Devotion screenshot 1" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/DailyDevotions2.png" alt="Daily Devotion screenshot 2" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/DailyDevotions3.png" alt="Daily Devotion screenshot 3" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/DailyDevotions4.png" alt="Daily Devotion screenshot 4" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                            <img src="screens/DailyDevotions5.png" alt="Daily Devotion screenshot 5" class="rounded-lg shadow-lg w-[85%] sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 object-contain flex-shrink-0 snap-center" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- In the Lab -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-indigo-600 mb-6 flex items-center">
+                <i data-feather="terminal" class="mr-3"></i> In the Lab
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl shadow p-6 border-l-4 border-indigo-300 backdrop-blur-sm bg-opacity-90">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-lg font-bold text-gray-800">Kitty Game</h3>
+                        <span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-2 py-1 rounded-full">In Development</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">SpriteKit survival game — guide a cat through falling raindrop bullet patterns. Endless mode with escalating difficulty, challenge levels, unlockable skins, and Game Center achievements.</p>
+                    <div class="flex gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full text-xs">SpriteKit</span>
+                        <span class="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full text-xs">GameKit</span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow p-6 border-l-4 border-indigo-300 backdrop-blur-sm bg-opacity-90">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-lg font-bold text-gray-800">MicroGoal</h3>
+                        <span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-2 py-1 rounded-full">In Development</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Focused goal-tracking app with daily and weekly progress visualization. Clean, distraction-free interface. Planned: streaks, reminders, and motivational widgets.</p>
+                    <div class="flex gap-2">
+                        <span class="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full text-xs">SwiftUI</span>
+                        <span class="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full text-xs">WidgetKit</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="bg-white rounded-2xl shadow-xl p-8 mb-12 backdrop-blur-sm bg-opacity-90">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-8 flex items-center">
+                <i data-feather="code" class="mr-3"></i> Tech & Tools
+            </h2>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">🖥️ Languages</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-orange-500 text-white px-4 py-2 rounded-full">Swift</span>
+                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">TypeScript</span>
+                <span class="skill-pill bg-blue-700 text-white px-4 py-2 rounded-full">Python</span>
+                <span class="skill-pill bg-green-600 text-white px-4 py-2 rounded-full">C#</span>
+                <span class="skill-pill bg-yellow-400 text-black px-4 py-2 rounded-full">JavaScript</span>
+                <span class="skill-pill bg-red-600 text-white px-4 py-2 rounded-full">HTML5</span>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">📱 iOS / Apple Frameworks</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-orange-500 text-white px-4 py-2 rounded-full">SwiftUI</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">UIKit</span>
+                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">SwiftData</span>
+                <span class="skill-pill bg-pink-500 text-white px-4 py-2 rounded-full">SpriteKit</span>
+                <span class="skill-pill bg-purple-600 text-white px-4 py-2 rounded-full">GameKit</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">AVFoundation</span>
+                <span class="skill-pill bg-red-500 text-white px-4 py-2 rounded-full">HealthKit</span>
+                <span class="skill-pill bg-indigo-600 text-white px-4 py-2 rounded-full">StoreKit</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">CloudKit</span>
+                <span class="skill-pill bg-gray-700 text-white px-4 py-2 rounded-full">Core ML</span>
+                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">CoreHaptics</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">WidgetKit</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">ActivityKit</span>
+                <span class="skill-pill bg-black text-white px-4 py-2 rounded-full">RealityKit</span>
+                <span class="skill-pill bg-gray-800 text-white px-4 py-2 rounded-full">visionOS</span>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">🌐 Cross-Platform</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-cyan-400 text-black px-4 py-2 rounded-full">React Native</span>
+                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">Expo</span>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">💾 Data & Backend</h3>
+            <div class="flex flex-wrap gap-3 mb-8">
+                <span class="skill-pill bg-blue-900 text-white px-4 py-2 rounded-full">SQLite</span>
+                <span class="skill-pill bg-yellow-400 text-black px-4 py-2 rounded-full">Firebase</span>
+                <span class="skill-pill bg-emerald-500 text-white px-4 py-2 rounded-full">Supabase</span>
+                <span class="skill-pill bg-indigo-900 text-white px-4 py-2 rounded-full">Realm</span>
+                <span class="skill-pill bg-gray-800 text-white px-4 py-2 rounded-full">Zustand</span>
+                <span class="skill-pill bg-lime-400 text-black px-4 py-2 rounded-full">Drizzle ORM</span>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">⚙️ Tools & Workflow</h3>
+            <div class="flex flex-wrap gap-3">
+                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">Xcode</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">Xcode Cloud</span>
+                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">TestFlight</span>
+                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">EAS Build</span>
+                <span class="skill-pill bg-orange-600 text-white px-4 py-2 rounded-full">Git</span>
+                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">GitHub</span>
+                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">VS Code</span>
+                <span class="skill-pill bg-pink-600 text-white px-4 py-2 rounded-full">Figma</span>
+                <span class="skill-pill bg-blue-700 text-white px-4 py-2 rounded-full">Keynote</span>
+                <span class="skill-pill bg-black text-white px-4 py-2 rounded-full">Unity</span>
+                <span class="skill-pill bg-red-600 text-white px-4 py-2 rounded-full">RevenueCat</span>
+                <span class="skill-pill bg-red-500 text-white px-4 py-2 rounded-full">AdMob</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10 mt-4">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+                <div>
+                    <h3 class="text-xl font-bold">Noah Carpenter</h3>
+                    <p class="text-gray-400 text-sm">iOS & Mobile Developer</p>
+                </div>
+                <nav class="flex gap-6 text-gray-400 text-sm flex-wrap justify-center">
+                    <a href="index.html" class="hover:text-white transition">Home</a>
+                    <a href="apps.html" class="hover:text-white transition">Apps</a>
+                    <a href="youtube.html" class="hover:text-white transition">YouTube</a>
+                    <a href="https://github.com/NDCSwift" target="_blank" class="hover:text-white transition">GitHub</a>
+                    <a href="https://toolbit.dev" target="_blank" class="hover:text-white transition">toolbit.dev</a>
+                    <a href="index.html#contact" class="hover:text-white transition">Contact</a>
+                </nav>
+            </div>
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2026 Noah Carpenter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+
+        document.querySelectorAll('.carousel-container').forEach(container => {
+            const track = container.querySelector('.carousel-track');
+            const prevBtn = container.querySelector('button:first-of-type');
+            const nextBtn = container.querySelector('button:last-of-type');
+
+            function getScrollAmount() { return Math.round(container.clientWidth * 0.8); }
+
+            function updateButtons() {
+                const max = track.scrollWidth - track.clientWidth - 1;
+                const atStart = track.scrollLeft <= 0;
+                const atEnd = track.scrollLeft >= max;
+                prevBtn.disabled = atStart;
+                nextBtn.disabled = atEnd;
+                prevBtn.classList.toggle('opacity-50', atStart);
+                prevBtn.classList.toggle('cursor-not-allowed', atStart);
+                nextBtn.classList.toggle('opacity-50', atEnd);
+                nextBtn.classList.toggle('cursor-not-allowed', atEnd);
+            }
+
+            prevBtn.addEventListener('click', () => track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' }));
+            nextBtn.addEventListener('click', () => track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' }));
+
+            let isDown = false, startX = 0, startScroll = 0;
+            track.addEventListener('pointerdown', e => {
+                isDown = true; startX = e.clientX; startScroll = track.scrollLeft;
+                track.classList.add('select-none');
+                try { track.setPointerCapture(e.pointerId); } catch {}
+            });
+            track.addEventListener('pointermove', e => {
+                if (!isDown) return;
+                track.scrollLeft = startScroll - (e.clientX - startX);
+            });
+            ['pointerup','pointercancel','pointerleave'].forEach(type => {
+                track.addEventListener(type, e => {
+                    isDown = false;
+                    try { track.releasePointerCapture(e.pointerId); } catch {}
+                    track.classList.remove('select-none');
+                });
+            });
+
+            track.addEventListener('scroll', updateButtons, { passive: true });
+            window.addEventListener('resize', updateButtons);
+            updateButtons();
+        });
+    </script>
+</body>
+</html>
