@@ -146,12 +146,13 @@
                 <i data-feather="play-circle" class="mr-3"></i> Recent Videos
             </h2>
 
+            <!-- Featured layout: first card 2/3 width, two stacked on right -->
             <div class="grid md:grid-cols-3 gap-6" id="video-grid">
 
                 <!-- Featured card -->
                 <a href="https://www.youtube.com/watch?v=0ZSmhUOXT7s" target="_blank" rel="noopener noreferrer"
                    class="video-card md:col-span-2 bg-white rounded-2xl shadow-xl overflow-hidden block"
-                   data-video-id="0ZSmhUOXT7s" data-repo="https://github.com/NDCSwift/DisclosureGroup_OutlineGroup_SwiftUI">
+                   data-video-id="0ZSmhUOXT7s" data-topic="SwiftUI" data-repo="https://github.com/NDCSwift/DisclosureGroup_OutlineGroup_SwiftUI">
                     <div class="relative">
                         <img src="https://img.youtube.com/vi/0ZSmhUOXT7s/hqdefault.jpg" alt="iOS Swift tutorial video" class="w-full object-cover aspect-video" />
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -318,6 +319,7 @@
 
     <script>feather.replace();</script>
     <script>
+        // Section entry animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {

@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-9275564079466116">
     <title>Noah Carpenter | iOS & Mobile Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <style>
+        body { font-family: 'DM Sans', sans-serif; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+
         .vanta-container {
             position: absolute;
             top: 0; left: 0;
@@ -20,37 +26,55 @@
         }
         .featured-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.15);
         }
+
+        /* App Store Badge */
+        .app-store-badge-img { height: 40px; display: block; transition: opacity 0.2s; }
+        .app-store-link:hover .app-store-badge-img { opacity: 0.8; }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0; transform: translateY(22px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="bg-gray-50 font-sans antialiased">
     <div class="vanta-container" id="vanta-bg"></div>
 
-    <!-- Hero -->
-    <header class="relative overflow-hidden py-24 bg-indigo-900 bg-opacity-90">
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <p class="text-indigo-200 font-medium mb-2">Noah Carpenter — iOS & Mobile Developer</p>
-            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">Dream Big, Code Bigger</h1>
-            <p class="text-xl text-indigo-100 max-w-2xl mx-auto mb-10">
-                Building clean, purposeful apps with Swift, SwiftUI, and React Native — and sharing the process along the way.
-            </p>
-            <nav class="flex justify-center space-x-6 flex-wrap gap-y-3">
-                <a href="apps.html" class="text-white hover:text-indigo-200 transition duration-300">
-                    <i data-feather="briefcase" class="inline mr-1"></i> My Apps
-                </a>
-                <a href="youtube.html" class="text-white hover:text-indigo-200 transition duration-300">
-                    <i data-feather="youtube" class="inline mr-1"></i> YouTube
-                </a>
-                <a href="#about" class="text-white hover:text-indigo-200 transition duration-300">
-                    <i data-feather="user" class="inline mr-1"></i> About
-                </a>
-                <a href="#contact" class="text-white hover:text-indigo-200 transition duration-300">
-                    <i data-feather="mail" class="inline mr-1"></i> Contact
-                </a>
+    <!-- Nav -->
+    <header class="bg-indigo-900 py-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <a href="index.html" class="text-white font-bold text-lg hover:text-indigo-200 transition" style="font-family:'Poppins',sans-serif;">Noah Carpenter</a>
+            <nav class="flex space-x-4 md:space-x-6 text-sm md:text-base">
+                <a href="index.html" class="text-white font-semibold border-b-2 border-indigo-300 pb-0.5">Home</a>
+                <a href="apps.html" class="text-indigo-200 hover:text-white transition">Apps</a>
+                <a href="youtube.html" class="text-indigo-200 hover:text-white transition">YouTube</a>
+                <a href="#contact" class="text-indigo-200 hover:text-white transition">Contact</a>
             </nav>
         </div>
     </header>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden py-24 bg-indigo-900 bg-opacity-90">
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <p class="text-indigo-200 font-medium mb-2" style="font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.08em;">iOS & MOBILE DEVELOPER</p>
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6" style="font-family:'Poppins',sans-serif;">Dream Big, Code Bigger</h1>
+            <p class="text-xl text-indigo-100 max-w-2xl mx-auto mb-10" style="font-family:'DM Sans',sans-serif;">
+                Building clean, purposeful apps with Swift, SwiftUI, and React Native — and sharing the process along the way.
+            </p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="apps.html" class="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-lg hover:bg-indigo-50 transition duration-300" style="font-family:'Poppins',sans-serif;">
+                    View My Apps
+                </a>
+                <a href="#about" class="border border-indigo-300 text-white font-semibold px-6 py-3 rounded-lg hover:bg-indigo-800 transition duration-300" style="font-family:'Poppins',sans-serif;">
+                    About Me
+                </a>
+            </div>
+        </div>
+    </section>
 
     <main class="relative z-10 container mx-auto px-4 py-12">
 
@@ -99,37 +123,37 @@
             <div class="grid md:grid-cols-3 gap-6">
 
                 <!-- Focura -->
-                <div class="featured-card bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col backdrop-blur-sm bg-opacity-90">
+                <div class="featured-card reveal bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col backdrop-blur-sm bg-opacity-90">
                     <div class="relative bg-gradient-to-b from-indigo-50 to-indigo-100 flex items-center justify-center p-6" style="height:280px;">
                         <img src="screens/Focura1.png" alt="Focura app screenshot" class="h-full max-w-full object-contain drop-shadow-xl rounded-lg" />
-                        <span class="absolute top-3 right-3 bg-indigo-600 text-white text-xs font-semibold px-2 py-1 rounded-full">Coming Soon</span>
+                        <span class="absolute top-3 right-3 bg-indigo-600 text-white text-xs font-semibold px-2 py-1 rounded-full" style="font-family:'Poppins',sans-serif;">Coming Soon</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="flex items-center justify-between mb-2">
                             <h3 class="text-xl font-bold text-indigo-700">Focura</h3>
-                            <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full">2026</span>
+                            <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full" style="font-family:'DM Mono',monospace;">2026</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4 flex-grow">ADHD-focused time-blocking and focus timer. Your external executive function — for iOS & Android.</p>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">ADHD-focused time-blocking and focus timer. Your external executive function — for iOS &amp; Android.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">React Native</span>
                             <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">Expo</span>
                             <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">SQLite</span>
                         </div>
-                        <span class="inline-flex items-center justify-center bg-gray-200 text-gray-500 font-medium py-2 px-4 rounded-lg text-sm cursor-default">
+                        <span class="inline-flex items-center justify-center bg-gray-100 text-gray-500 font-medium py-2 px-4 rounded-lg text-sm cursor-default">
                             <i data-feather="clock" class="w-4 h-4 mr-2"></i> App Store link coming soon
                         </span>
                     </div>
                 </div>
 
                 <!-- Gratitude Bestie -->
-                <div class="featured-card bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col backdrop-blur-sm bg-opacity-90">
+                <div class="featured-card reveal bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col backdrop-blur-sm bg-opacity-90">
                     <div class="bg-gradient-to-b from-indigo-50 to-indigo-100 flex items-center justify-center p-6" style="height:280px;">
                         <img src="screens/GB1.png" alt="Gratitude Bestie app screenshot" class="h-full max-w-full object-contain drop-shadow-xl rounded-lg" />
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="flex items-center justify-between mb-2">
                             <h3 class="text-xl font-bold text-indigo-700">Gratitude Bestie</h3>
-                            <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full">2025</span>
+                            <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full" style="font-family:'DM Mono',monospace;">2025</span>
                         </div>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Mindful journaling with photos, emoji, and Core ML smart prompts. Syncs across devices via iCloud.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
@@ -137,22 +161,21 @@
                             <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">CloudKit</span>
                             <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">Core ML</span>
                         </div>
-                        <a href="https://apps.apple.com/us/app/gratitude-bestie/id6753034386" target="_blank"
-                           class="inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition duration-300">
-                            <i data-feather="download" class="w-4 h-4 mr-2"></i> Download on App Store
+                        <a href="https://apps.apple.com/us/app/gratitude-bestie/id6753034386" target="_blank" class="app-store-link">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store" class="app-store-badge-img">
                         </a>
                     </div>
                 </div>
 
                 <!-- Tap Duel -->
-                <div class="featured-card bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col backdrop-blur-sm bg-opacity-90">
+                <div class="featured-card reveal bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col backdrop-blur-sm bg-opacity-90">
                     <div class="bg-gradient-to-b from-indigo-50 to-indigo-100 flex items-center justify-center p-6" style="height:280px;">
                         <img src="screens/TapDuel1.png" alt="Tap Duel app screenshot" class="h-full max-w-full object-contain drop-shadow-xl rounded-lg" />
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="flex items-center justify-between mb-2">
                             <h3 class="text-xl font-bold text-indigo-700">Tap Duel</h3>
-                            <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full">2025</span>
+                            <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full" style="font-family:'DM Mono',monospace;">2025</span>
                         </div>
                         <p class="text-gray-600 text-sm mb-4 flex-grow">Fast-paced reflex battle game. Local, Game Center multiplayer, or solo trainer — with unlockable skins.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
@@ -160,9 +183,8 @@
                             <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">GameKit</span>
                             <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">RevenueCat</span>
                         </div>
-                        <a href="https://apps.apple.com/us/app/tap-duel/id6746076055" target="_blank"
-                           class="inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition duration-300">
-                            <i data-feather="download" class="w-4 h-4 mr-2"></i> Download on App Store
+                        <a href="https://apps.apple.com/us/app/tap-duel/id6746076055" target="_blank" class="app-store-link">
+                            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store" class="app-store-badge-img">
                         </a>
                     </div>
                 </div>
@@ -317,6 +339,17 @@
                 });
             }
         })();
+
+        // Scroll reveal
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                    revealObs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
     </script>
 </body>
 </html>
