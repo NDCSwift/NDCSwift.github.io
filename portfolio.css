@@ -1,4 +1,9 @@
 /* ===========================
+   Base
+   =========================== */
+html, body { overflow-x: hidden; }
+
+/* ===========================
    Design Tokens
    =========================== */
 :root {
@@ -160,6 +165,11 @@
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+@media (prefers-reduced-motion: reduce) {
+  .float-anim { animation: none; }
+  .reveal { transition: none; }
+}
+
 /* ===========================
    Shared components
    =========================== */
@@ -226,4 +236,6 @@
   .sidebar-overlay.open { opacity: 1; pointer-events: auto; }
   .main-content { margin-left: 0; }
   .burger-btn { display: flex; align-items: center; justify-content: center; }
+  .sidebar-nav-link { padding: 0.7rem 0.75rem; font-size: 0.95rem; }
+  .btn-primary, .btn-secondary { min-height: 44px; justify-content: center; }
 }
