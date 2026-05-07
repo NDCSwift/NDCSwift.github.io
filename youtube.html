@@ -107,7 +107,7 @@
                 </div>
                 <div class="text-center md:text-left flex-grow">
                     <h1 class="text-4xl font-bold text-gray-800 mb-2">@NoahDoesCoding97</h1>
-                    <p class="text-gray-600 text-lg mb-4">iOS & Swift tutorials — from SwiftUI fundamentals to on-device AI.</p>
+                    <p class="text-gray-600 text-lg mb-4">Swift and iOS tutorials from a developer who ships real apps. I cover the concepts I've had to figure out myself — explained thoroughly, with a forkable repo every time.</p>
 
                     <!-- Why Subscribe -->
                     <ul class="text-sm text-gray-600 space-y-1 mb-6 text-left">
@@ -116,7 +116,7 @@
                         <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 text-green-500 flex-shrink-0"></i> Covers the frameworks Apple's docs skip — FoundationModels, StoreKit 2, visionOS</li>
                     </ul>
 
-                    <!-- Channel stats (YouTube-relevant) -->
+                    <!-- Channel stats -->
                     <div class="flex flex-wrap gap-6 justify-center md:justify-start text-gray-700 mb-6">
                         <div class="text-center">
                             <p class="text-2xl font-bold text-indigo-700">100+</p>
@@ -146,7 +146,6 @@
                 <i data-feather="play-circle" class="mr-3"></i> Recent Videos
             </h2>
 
-            <!-- Featured layout: first card 2/3 width, two stacked on right -->
             <div class="grid md:grid-cols-3 gap-6" id="video-grid">
 
                 <!-- Featured card -->
@@ -172,7 +171,7 @@
                     </div>
                 </a>
 
-                <!-- Right column: two stacked vertical cards -->
+                <!-- Right column -->
                 <div class="flex flex-col gap-6">
 
                     <a href="https://www.youtube.com/watch?v=7HaylMlkVFM" target="_blank" rel="noopener noreferrer"
@@ -228,12 +227,12 @@
             </div>
         </section>
 
-        <!-- What I Cover -->
+        <!-- What You'll Learn -->
         <section id="topics" class="bg-white rounded-2xl shadow-xl p-8 mb-12 animate-section" style="animation-delay:0.15s">
             <h2 class="text-3xl font-bold text-indigo-600 mb-2 flex items-center">
-                <i data-feather="book-open" class="mr-3"></i> What I Cover
+                <i data-feather="book-open" class="mr-3"></i> What You'll Learn
             </h2>
-            <p class="text-gray-600 mb-8">Every public GitHub repo is a tutorial companion — fork it, follow along, and build something real.</p>
+            <p class="text-gray-600 mb-8">Concepts I've actually had to work through — explained in enough depth that you leave understanding why, not just what to type.</p>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
@@ -282,10 +281,22 @@
             </div>
         </section>
 
+        <!-- Apps CTA -->
+        <section class="bg-white rounded-2xl shadow-xl p-8 mb-6 flex flex-col md:flex-row items-center justify-between gap-6 animate-section" style="animation-delay:0.18s">
+            <div>
+                <h2 class="text-xl font-bold text-gray-800 mb-1" style="font-family:'Inter',sans-serif;">Curious what I've actually shipped?</h2>
+                <p class="text-gray-500 text-sm">6 apps on the App Store — the same projects these tutorials are built around.</p>
+            </div>
+            <a href="apps.html"
+               class="flex-shrink-0 inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+                <i data-feather="grid" class="mr-2"></i> Browse My Apps
+            </a>
+        </section>
+
         <!-- GitHub CTA -->
         <section id="repos" class="bg-indigo-700 rounded-2xl p-8 text-white text-center animate-section" style="animation-delay:0.2s">
             <h2 class="text-2xl font-bold mb-3">100+ Companion Repos on GitHub</h2>
-            <p class="text-indigo-200 mb-6 max-w-xl mx-auto">Every tutorial comes with a working, minimal code example. Browse, fork, and learn directly from the source.</p>
+            <p class="text-indigo-200 mb-6 max-w-xl mx-auto">Every tutorial ships with a minimal, working code example — the real pattern, not a simplified demo. Browse, fork, and build.</p>
             <a href="https://github.com/NDCSwift" target="_blank" rel="noopener noreferrer"
                class="inline-flex items-center bg-white text-indigo-700 hover:bg-indigo-50 font-semibold py-3 px-6 rounded-lg transition duration-300">
                 <i data-feather="github" class="mr-2"></i> Browse Repos on GitHub
@@ -319,7 +330,6 @@
 
     <script>feather.replace();</script>
     <script>
-        // Section entry animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
