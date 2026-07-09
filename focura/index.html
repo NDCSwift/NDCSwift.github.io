@@ -3,28 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Focura – External Executive Function for ADHD</title>
+  <title>Focura — ADHD Time Blocking App for iOS</title>
+  <meta name="description" content="Focura is an iOS time-blocking app built for adults with ADHD. An adaptive focus timer, visual timeline, and forgiving streaks help you plan around time blindness. Free on the App Store." />
+  <link rel="canonical" href="https://ndcswift.github.io/focura/" />
+  <meta name="apple-itunes-app" content="app-id=6757893283" />
+  <meta property="og:title" content="Focura — ADHD Time Blocking App for iOS" />
+  <meta property="og:description" content="Time blocking that works with your brain, not against it. Adaptive focus timer, visual timeline, forgiving streaks. 100% on-device." />
+  <meta property="og:url" content="https://ndcswift.github.io/focura/" />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Focura: Timeblocking",
+    "operatingSystem": "iOS",
+    "applicationCategory": "ProductivityApplication",
+    "description": "Focura is an iOS time-blocking application that helps adults with ADHD plan their day using an adaptive focus timer, a visual timeline, read-only iOS Calendar and Reminders integration, Live Activities, and Home Screen widgets. All data is stored on-device and no account is required.",
+    "url": "https://ndcswift.github.io/focura/",
+    "installUrl": "https://apps.apple.com/us/app/focura-timeblocking/id6757893283",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Noah Carpenter" }
+  }
+  </script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0F172A; color: #F8FAFC; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
-    .badge { background: #6366F120; border: 1px solid #6366F140; color: #A5B4FC; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 24px; }
-    h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 800; text-align: center; line-height: 1.1; margin-bottom: 16px; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0F172A; color: #F8FAFC; line-height: 1.6; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 56px; font-size: 14px; }
+    nav a { color: #94A3B8; text-decoration: none; }
+    nav a:hover, nav a.active { color: #A5B4FC; }
+    .badge { display: inline-block; background: #6366F120; border: 1px solid #6366F140; color: #A5B4FC; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 24px; }
+    h1 { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
     h1 span { color: #6366F1; }
-    p { font-size: 18px; color: #94A3B8; text-align: center; max-width: 480px; line-height: 1.6; margin-bottom: 40px; }
-    .coming-soon { background: #6366F1; color: #fff; font-size: 16px; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none; display: inline-block; }
-    .links { margin-top: 48px; display: flex; gap: 24px; }
-    .links a { font-size: 13px; color: #475569; text-decoration: none; }
-    .links a:hover { color: #94A3B8; }
+    h2 { font-size: 22px; margin: 40px 0 12px; }
+    p { color: #94A3B8; margin-bottom: 16px; max-width: 640px; }
+    p.fact { color: #CBD5E1; }
+    .cta { background: #6366F1; color: #fff; font-size: 16px; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none; display: inline-block; margin: 8px 0 16px; }
+    .cta:hover { background: #4F46E5; }
+    .sub { font-size: 13px; color: #64748B; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+    .card { background: #1E293B; border-radius: 12px; padding: 18px; }
+    .card h3 { font-size: 15px; margin-bottom: 6px; }
+    .card p { font-size: 14px; margin: 0; }
+    footer { margin-top: 64px; font-size: 13px; color: #475569; display: flex; gap: 24px; flex-wrap: wrap; }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #94A3B8; }
+    ul { color: #94A3B8; padding-left: 20px; margin-bottom: 16px; }
   </style>
 </head>
 <body>
-  <div class="badge">Coming to the App Store</div>
-  <h1>Focus like your brain<br/><span>actually works.</span></h1>
-  <p>Focura is an external executive function for ADHD. It replaces the cognitive load of planning with automation, friction-free capture, and forgiving systems.</p>
-  <a class="coming-soon" href="#">Notify Me on Launch</a>
-  <div class="links">
-    <a href="/focura/privacy">Privacy Policy</a>
-    <a href="/focura/terms">Terms of Service</a>
+  <div class="wrap">
+    <nav>
+      <a href="/focura/" class="active">Overview</a>
+      <a href="/focura/features/">Features</a>
+      <a href="/focura/download/">Download</a>
+      <a href="/focura/support/">Support</a>
+      <a href="/focura/time-blindness/">Time Blindness</a>
+      <a href="/focura/adhd-time-blocking/">ADHD Time Blocking</a>
+    </nav>
+
+    <div class="badge">Now on the App Store</div>
+    <h1>Focus like your brain<br /><span>actually works.</span></h1>
+    <p class="fact">Focura is an iOS time-blocking application that helps adults with ADHD plan their day. It combines an adaptive focus timer, a visual timeline, read-only iOS Calendar and Reminders integration, Live Activities, and Home Screen widgets. All data is stored on-device, and the app requires no account.</p>
+
+    <a class="cta" href="https://apps.apple.com/us/app/focura-timeblocking/id6757893283">Download on the App Store</a>
+    <p class="sub">Free to use · iPhone (iPad compatible) · Premium optional</p>
+
+    <h2>Built around one question</h2>
+    <p>Most focus timers ship one rigid setup. Focura asks whether you struggle to <strong>start</strong>, <strong>stay</strong>, or <strong>stop</strong> — then tunes the timer length, transition buffers, and haptics to match. Built for ADHD brains; works for anyone fighting a 25-minute box.</p>
+
+    <div class="grid">
+      <div class="card"><h3>🌊 Flow State, not overtime</h3><p>Run past the timer and the screen turns green. Hyperfocus is celebrated, not punished with alarms.</p></div>
+      <div class="card"><h3>📅 Your calendar becomes the plan</h3><p>iOS Calendar events appear as locked time blocks. A meeting starting mid-session auto-pauses your timer.</p></div>
+      <div class="card"><h3>🔄 Aggressively forgiving</h3><p>Missed a block? Smart Reschedule finds it a new slot. Streaks include freeze days. Fresh Start resets the day without erasing it.</p></div>
+      <div class="card"><h3>🔒 100% on-device</h3><p>No account, no cloud, no tracking. Your blocks and sessions live in your iPhone's local database.</p></div>
+    </div>
+
+    <h2>Learn more</h2>
+    <ul>
+      <li><a href="/focura/time-blindness/" style="color:#A5B4FC">What is time blindness — and what actually helps?</a></li>
+      <li><a href="/focura/adhd-time-blocking/" style="color:#A5B4FC">Why time blocking fails for ADHD brains (and how to make it stick)</a></li>
+      <li><a href="/focura/features/" style="color:#A5B4FC">Every feature, explained factually</a></li>
+    </ul>
+
+    <footer>
+      <a href="/focura/privacy">Privacy Policy</a>
+      <a href="/focura/terms">Terms of Service</a>
+      <a href="/">More apps by NDC</a>
+      <span>Focura is a tool, not a treatment. It is not a medical device and is not a substitute for professional care.</span>
+    </footer>
   </div>
 </body>
 </html>

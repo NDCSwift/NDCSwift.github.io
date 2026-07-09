@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Focura Features — Adaptive ADHD Focus Timer, Visual Timeline, Flow State</title>
+  <meta name="description" content="Every Focura feature, explained factually: adaptive timer physics for start/stay/stop struggles, Flow State for hyperfocus, calendar auto-pause, Smart Reschedule, streak freezes, and on-device privacy." />
+  <link rel="canonical" href="https://ndcswift.github.io/focura/features/" />
+  <meta name="apple-itunes-app" content="app-id=6757893283" />
+  <meta property="og:title" content="Focura Features" />
+  <meta property="og:description" content="Adaptive timer physics, Flow State, calendar mirroring, forgiving streaks — every feature explained factually." />
+  <meta property="og:url" content="https://ndcswift.github.io/focura/features/" />
+  <meta property="og:type" content="website" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0F172A; color: #F8FAFC; line-height: 1.6; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 48px; font-size: 14px; }
+    nav a { color: #94A3B8; text-decoration: none; }
+    nav a:hover, nav a.active { color: #A5B4FC; }
+    h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+    h2 { font-size: 20px; margin: 36px 0 10px; color: #F8FAFC; }
+    p, li { color: #94A3B8; margin-bottom: 12px; max-width: 680px; }
+    ul { padding-left: 20px; margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #1E293B; color: #94A3B8; }
+    th { color: #F8FAFC; }
+    .cta { background: #6366F1; color: #fff; font-weight: 700; padding: 12px 28px; border-radius: 12px; text-decoration: none; display: inline-block; margin-top: 24px; }
+    footer { margin-top: 56px; font-size: 13px; color: #475569; display: flex; gap: 24px; flex-wrap: wrap; }
+    footer a { color: #475569; text-decoration: none; }
+    a.inline { color: #A5B4FC; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="/focura/">Overview</a>
+      <a href="/focura/features/" class="active">Features</a>
+      <a href="/focura/download/">Download</a>
+      <a href="/focura/support/">Support</a>
+    </nav>
+
+    <h1>Focura features, explained factually</h1>
+    <p>Focura is an iOS time-blocking application for adults with ADHD. Every feature below ships in the current App Store version.</p>
+
+    <h2>A timer that adapts to your struggle</h2>
+    <p>During onboarding, Focura asks whether you struggle most to <strong>start</strong>, <strong>stay focused</strong>, or <strong>stop</strong>. The answer configures the timer's default duration, transition buffer length, and haptic behavior:</p>
+    <table>
+      <tr><th>Struggle</th><th>Default session</th><th>Wind-down buffer</th></tr>
+      <tr><td>Starting</td><td>5 minutes — small first wins</td><td>2 minutes</td></tr>
+      <tr><td>Staying</td><td>25 minutes with anchoring haptics</td><td>5 minutes</td></tr>
+      <tr><td>Stopping</td><td>25 minutes, longer transitions</td><td>10 minutes</td></tr>
+    </table>
+
+    <h2>Flow State: hyperfocus is a feature</h2>
+    <p>When a session runs past its planned end, Focura does not sound an alarm or show red warnings. The interface shifts to a green Flow State that counts time past the plan. Sessions ended from Flow State credit the full planned time.</p>
+
+    <h2>Your calendar becomes the plan</h2>
+    <p>Focura reads iOS Calendar events (read-only) and displays them as locked blocks in the daily timeline, so the day is never empty. If a tracked event starts during an active focus session, Focura automatically pauses the timer and notifies you.</p>
+
+    <h2>Brain dump via iOS Reminders</h2>
+    <p>Your iOS Reminders appear as an inbox on the Today tab. Tapping one converts it into a time block; completing the session offers to check the reminder off.</p>
+
+    <h2>Aggressive forgiveness</h2>
+    <ul>
+      <li><strong>Smart Reschedule</strong> (Premium) finds a missed block a new open slot in one tap.</li>
+      <li><strong>Skip reasons</strong> record why a block was skipped, so statistics stay honest without shame.</li>
+      <li><strong>Streak freezes</strong> (2 per week, free for everyone) prevent one rough day from breaking a streak.</li>
+      <li><strong>Fresh Start</strong> clears the rest of the day's plan without erasing completed work.</li>
+    </ul>
+
+    <h2>Always one glance away</h2>
+    <p>A Lock Screen Live Activity, Dynamic Island support, and a Home Screen widget show the current block and daily progress without unlocking the phone. Widgets and Live Activities are free features.</p>
+
+    <h2>Private by architecture</h2>
+    <p>Focura stores all blocks and sessions in a local SQLite database on the device. There is no account, no cloud sync, and no tracking. The App Store privacy label declares only purchase history (required by the payment processor).</p>
+
+    <h2>Free vs. Premium</h2>
+    <table>
+      <tr><th>Free</th><th>Premium</th></tr>
+      <tr><td>Up to 7 recurring time blocks (one-off blocks unlimited)</td><td>Unlimited recurring blocks</td></tr>
+      <tr><td>Full timer, Flow State, haptics, widgets, Live Activities</td><td>Smart Reschedule</td></tr>
+      <tr><td>Calendar mirroring, Reminders inbox, weekly stats, streak freezes</td><td>Full session history</td></tr>
+      <tr><td></td><td>Every premium feature shipped next</td></tr>
+    </table>
+    <p>Premium: $4.99/month, $19.99/year, or $99.99 lifetime (USD; regional prices vary).</p>
+
+    <a class="cta" href="https://apps.apple.com/us/app/focura-timeblocking/id6757893283">Download Focura on the App Store</a>
+
+    <footer>
+      <a href="/focura/privacy">Privacy Policy</a>
+      <a href="/focura/terms">Terms of Service</a>
+      <a href="/focura/">Focura Overview</a>
+    </footer>
+  </div>
+</body>
+</html>
