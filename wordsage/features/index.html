@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WordSage Features — Four Modes, One Vocabulary</title>
+<meta name="description" content="Explore WordSage's four vocabulary modes — Daily Challenge, Word Scramble, Flashcards, and Memory Match — plus iCloud sync, streak protection, and haptic feedback." />
+<link rel="canonical" href="https://ndcswift.github.io/wordsage/features/" />
+<meta name="apple-itunes-app" content="app-id=6683296823" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="WordSage Features — Four Modes, One Vocabulary" />
+<meta property="og:description" content="Explore WordSage's four vocabulary modes — Daily Challenge, Word Scramble, Flashcards, and Memory Match — plus iCloud sync, streak protection, and haptic feedback." />
+<meta property="og:url" content="https://ndcswift.github.io/wordsage/features/" />
+<meta property="og:image" content="https://ndcswift.github.io/screens/WordSage2.png" />
+<meta property="og:site_name" content="WordSage" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="WordSage Features — Four Modes, One Vocabulary" />
+<meta name="twitter:description" content="Explore WordSage's four vocabulary modes, plus iCloud sync, streak protection, and haptic feedback." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #2B7A78; --accent-deep: #1F5B59; --peach-a: #FFCC99; --peach-b: #FF776B;
+    --purple: #947DDB; --teal: #63CCC9; --ink: #16211F; --ink-soft: #33413F;
+    --muted: #6E7876; --line: #E9E6E0; --bg: #FBFAF7; --card: #FFFFFF; --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.5; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  nav { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; letter-spacing: -0.01em; font-family: 'Pinyon Script', cursive; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  section { padding: 80px 0; }
+  .section-title { font-size: clamp(26px, 3.2vw, 38px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .section-sub { color: var(--muted); font-size: 16px; margin-bottom: 44px; max-width: 620px; }
+  .store-btn { display: inline-flex; align-items: center; gap: 12px; background: #16211F; color: #fff; border-radius: 14px; padding: 12px 22px; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .store-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(22, 33, 31, 0.3); }
+  .store-btn .small { display: block; font-size: 11px; opacity: 0.75; line-height: 1.2; }
+  .store-btn .big { display: block; font-size: 17px; font-weight: 600; line-height: 1.2; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0; margin-top: 40px; color: var(--muted); font-size: 13px; }
+  .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-row .footer-links { display: flex; gap: 20px; }
+  .footer-row a:hover { color: var(--ink); }
+  @media (max-width: 560px) { .nav-links { gap: 16px; font-size: 13px; } .footer-row { flex-direction: column; align-items: flex-start; } }
+
+  /* Page-specific: Features */
+  .page-header { padding: 56px 0 0; }
+  .page-header h1 { font-size: clamp(32px, 4.4vw, 46px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .page-header p { font-size: 17px; color: var(--ink-soft); max-width: 700px; line-height: 1.7; }
+  .modes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .mode-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 22px; }
+  .mode-card .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; padding: 4px 10px; border-radius: 6px; margin-bottom: 14px; }
+  .mode-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .mode-card p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .feature { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 10px; }
+  .feature .glyph { width: 40px; height: 40px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); display: grid; place-items: center; font-size: 18px; margin-bottom: 4px; }
+  .feature h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+  .feature p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+  .cta-band { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 34px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .cta-band h3 { font-size: 20px; font-weight: 700; }
+  @media (max-width: 860px) { .modes { grid-template-columns: 1fr 1fr; } .grid-2 { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .modes { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a class="logo" href="/wordsage/">WordSage</a>
+    <div class="nav-links">
+      <a href="/wordsage/features/" class="active">Features</a>
+      <a href="/wordsage/download/">Download</a>
+      <a href="/wordsage/support/">Support</a>
+    </div>
+  </nav>
+</div>
+
+<div class="wrap page-header">
+  <h1>Four modes. One vocabulary.</h1>
+  <p>WordSage combines four distinct practice modes, all drawing from the same hand-curated library of 1,000+ words, so review never feels repetitive. Every entry — definition, synonyms, hints, and example sentence — was written by hand, not generated.</p>
+</div>
+
+<section id="modes">
+  <div class="wrap">
+    <div class="modes">
+      <div class="mode-card">
+        <span class="tag" style="background:var(--accent);">Daily Challenge</span>
+        <h3>Guess of the day</h3>
+        <p>One word, progressively revealing hints. Guess it to keep your streak alive — miss it and spend a Literacy Lifeline to protect the streak instead.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:#3F7D3B;">Word Scramble</span>
+        <h3>Beat the anagram</h3>
+        <p>Unscramble letters against the clock. Chain correct guesses fast enough to trigger Fever mode and multiply your score up to 5x.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:var(--purple);">Flashcards</span>
+        <h3>Spaced repetition</h3>
+        <p>Swipe right when you know it, left to review again. A proper SM-2 scheduler decides when each word comes back.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:var(--teal);">Memory Match</span>
+        <h3>Flip and match</h3>
+        <p>Find every word pair before you run out of guesses. Clear the board to earn a Literacy Lifeline for your next session.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <h2 class="section-title">Everything else, built in</h2>
+    <p class="section-sub">Progress, purchases, and streaks all stay on your own devices — nothing is collected behind the scenes.</p>
+    <div class="grid-2">
+      <div class="feature">
+        <div class="glyph">📚</div>
+        <h3>1,000+ handpicked words</h3>
+        <p>Every entry — definition, synonyms, hints, example sentences — was chosen and written by hand, not generated.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🔥</div>
+        <h3>Streaks worth protecting</h3>
+        <p>Miss a day and you can spend a Literacy Lifeline to protect your streak instead of losing it outright.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">☁️</div>
+        <h3>iCloud sync</h3>
+        <p>Progress, stats, and known words sync across your iPhone and iPad via CloudKit — private to your own iCloud account.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">✨</div>
+        <h3>Haptics in every interaction</h3>
+        <p>Correct guesses, wrong guesses, purchases, and streak saves each have their own considered haptic feedback.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">💡</div>
+        <h3>Literacy Lifelines</h3>
+        <p>An optional in-app currency used to reveal hints or protect a streak — 10 for a one-time $0.99, never a subscription.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🔒</div>
+        <h3>No accounts, no tracking</h3>
+        <p>No sign-up, no third-party analytics or ad SDKs. What you play stays between you and your own device.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h3>Ready to try it?</h3>
+        <p style="color:var(--muted); font-size:14px;">Free to download, with one optional in-app purchase.</p>
+      </div>
+      <a class="store-btn" href="/wordsage/download/">
+        <span><span class="small">See</span><span class="big">Download details →</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>&copy; 2026 Noah Carpenter &middot; <a href="https://ndcswift.github.io">ndcswift.github.io</a></span>
+    <div class="footer-links">
+      <a href="/wordsage/privacy">Privacy Policy</a>
+      <a href="/wordsage/terms">Terms of Service</a>
+      <a href="/apps.html">More apps by NDC</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
