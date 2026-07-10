@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sky Loops Features — Tap. Loop. Chain the Sky.</title>
+<meta name="description" content="Explore every Sky Loops feature — Zen Mode, timed challenges, combo scoring, 11 planes and 8 trails across five rarity tiers, daily challenges, achievements, and Game Center." />
+<link rel="canonical" href="https://ndcswift.github.io/skyloops/features/" />
+<meta name="apple-itunes-app" content="app-id=6756944640" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Sky Loops Features — Tap. Loop. Chain the Sky." />
+<meta property="og:description" content="Explore every Sky Loops feature — game modes, combo scoring, cosmetics across five rarity tiers, daily challenges, and Game Center." />
+<meta property="og:url" content="https://ndcswift.github.io/skyloops/features/" />
+<meta property="og:image" content="https://ndcswift.github.io/screens/SkyLoops2.png" />
+<meta property="og:site_name" content="Sky Loops" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Sky Loops Features — Tap. Loop. Chain the Sky." />
+<meta name="twitter:description" content="Game modes, combo scoring, cosmetics across five rarity tiers, and Game Center." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EAF6FF; --cloud: #FFFFFF; --sky: #4FA8E8; --sky-deep: #2E7BC4;
+    --sun: #FFC93C; --ink: #1B3A57; --ink-soft: #3D5A75; --muted: #7C93A8;
+    --line: #D6EAF8; --card: #FFFFFF; --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3, .logo { font-family: 'Fredoka', -apple-system, sans-serif; font-weight: 600; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  nav { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 10px; font-size: 19px; letter-spacing: -0.01em; }
+  .logo-mark { width: 28px; height: 28px; border-radius: 9px; background: linear-gradient(160deg, var(--sky) 0%, var(--sun) 100%); color: #fff; display: grid; place-items: center; font-size: 15px; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  section { padding: 72px 0; }
+  .section-title { font-size: clamp(26px, 3.2vw, 36px); margin-bottom: 12px; }
+  .section-sub { color: var(--muted); font-size: 16px; margin-bottom: 44px; max-width: 580px; font-family: 'Inter', sans-serif; }
+  .store-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 22px; transition: transform 0.15s ease, box-shadow 0.15s ease; font-family: 'Inter', sans-serif; }
+  .store-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(27, 58, 87, 0.3); }
+  .store-btn .small { display: block; font-size: 11px; opacity: 0.75; line-height: 1.2; }
+  .store-btn .big { display: block; font-size: 17px; font-weight: 600; line-height: 1.2; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0; margin-top: 40px; color: var(--muted); font-size: 13px; }
+  .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-row .footer-links { display: flex; gap: 20px; }
+  .footer-row a:hover { color: var(--ink); }
+  @media (max-width: 560px) { .nav-links { gap: 16px; font-size: 13px; } .footer-row { flex-direction: column; align-items: flex-start; } }
+
+  /* Page-specific: Features */
+  .page-header { padding: 56px 0 0; }
+  .page-header h1 { font-size: clamp(30px, 4.2vw, 44px); margin-bottom: 16px; }
+  .page-header p { font-size: 17px; color: var(--ink-soft); max-width: 700px; line-height: 1.7; font-family: 'Inter', sans-serif; }
+  .modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .mode-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+  .mode-card .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; padding: 4px 10px; border-radius: 6px; margin-bottom: 14px; font-family: 'Inter', sans-serif; }
+  .mode-card h3 { font-size: 18px; margin-bottom: 8px; }
+  .mode-card p { font-size: 14px; color: var(--muted); line-height: 1.6; font-family: 'Inter', sans-serif; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .feature { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 10px; }
+  .feature .glyph { width: 40px; height: 40px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); display: grid; place-items: center; font-size: 18px; margin-bottom: 4px; }
+  .feature h3 { font-size: 18px; letter-spacing: -0.01em; }
+  .feature p { font-size: 14px; color: var(--muted); line-height: 1.55; font-family: 'Inter', sans-serif; }
+  .rarity-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .rarity-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 100px; color: #fff; font-family: 'Inter', sans-serif; }
+  .cta-band { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 34px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .cta-band h3 { font-size: 20px; }
+  @media (max-width: 860px) { .modes { grid-template-columns: 1fr 1fr; } .grid-2 { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .modes { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a class="logo" href="/skyloops/"><span class="logo-mark">✈️</span> Sky Loops</a>
+    <div class="nav-links">
+      <a href="/skyloops/">Overview</a>
+      <a href="/skyloops/features/" class="active">Features</a>
+      <a href="/skyloops/download/">Download</a>
+      <a href="/skyloops/support/">Support</a>
+    </div>
+  </nav>
+</div>
+
+<div class="wrap page-header">
+  <h1>Tap. Loop. Chain the sky.</h1>
+  <p>Every mode in Sky Loops runs on the same core loop — steer through a ring, land it clean, and watch your combo climb — but each one tests it a little differently.</p>
+</div>
+
+<section id="modes">
+  <div class="wrap">
+    <div class="modes">
+      <div class="mode-card">
+        <span class="tag" style="background:#3F7D3B;">Zen Mode</span>
+        <h3>Endless flight, zero pressure</h3>
+        <p>No timer, no death. Fly as long as you like — idle at the bottom of the screen for 5 seconds to end the run.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:var(--sky-deep);">60-Second Challenge</span>
+        <h3>Quick combo sprint</h3>
+        <p>Land the biggest combo you can in a single minute, then check the leaderboard.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:#8B6FBF;">120-Second Challenge</span>
+        <h3>Room to build a real streak</h3>
+        <p>Twice the time to find your rhythm and stack a serious combo multiplier.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:#B5473A;">180-Second Challenge</span>
+        <h3>The long run</h3>
+        <p>Three minutes to prove your combo game holds up under sustained pressure.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:var(--sun);">Combo Scoring</span>
+        <h3>Perfect rings pay more</h3>
+        <p>Every ring earns coins; a perfectly-timed pass earns a bonus, and your peak combo adds even more at the end of a run.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:#3373FA;">Tutorial</span>
+        <h3>Learn the timing safely</h3>
+        <p>A guided tutorial run with death disabled, so you can learn the ring timing before it counts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <h2 class="section-title">Cosmetics worth earning</h2>
+    <p class="section-sub">11 planes and 8 trails, unlocked with coins earned from actually playing — no pay-to-win.</p>
+    <div class="rarity-row">
+      <span class="rarity-pill" style="background:#8E8E93;">💨 Starter</span>
+      <span class="rarity-pill" style="background:#3F7D3B;">✨ Common</span>
+      <span class="rarity-pill" style="background:#2E7BC4;">🌟 Rare</span>
+      <span class="rarity-pill" style="background:#8B6FBF;">🔮 Epic</span>
+      <span class="rarity-pill" style="background:#E0932E;">👑 Legendary</span>
+    </div>
+    <div class="grid-2" style="margin-top:28px;">
+      <div class="feature">
+        <div class="glyph">🛩️</div>
+        <h3>11 unlockable planes</h3>
+        <p>From a free starter plane through legendary-tier designs, unlocked with coins earned in-game.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">💫</div>
+        <h3>8 particle trails</h3>
+        <p>Classic smoke, sparkle, electric, stardust, plasma, galaxy, and cosmic aurora effects follow your plane.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🎁</div>
+        <h3>Generous F2P economy</h3>
+        <p>Most players unlock several planes on day one and everything unlockable within about a month of regular play.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">📺</div>
+        <h3>Optional rewarded videos</h3>
+        <p>Watch up to 3 rewarded ads a day for a coin bonus — entirely optional, and still available even after removing ads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title">Progress that means something</h2>
+    <p class="section-sub">Daily goals, achievements, and leaderboards keep every run pointed somewhere.</p>
+    <div class="grid-2">
+      <div class="feature">
+        <div class="glyph">📅</div>
+        <h3>Daily challenges</h3>
+        <p>Fresh goals each day — perfect streaks, combo targets, ring counts, and more, each with a coin reward.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🏆</div>
+        <h3>20 achievements</h3>
+        <p>Milestones across scoring, combos, distance, and playtime, several of which sync to Game Center.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">📊</div>
+        <h3>Per-mode leaderboards</h3>
+        <p>Zen, 60s, 120s, and 180s each have their own Game Center leaderboard to climb.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">☁️</div>
+        <h3>iCloud sync</h3>
+        <p>Coins, unlocks, and progress sync across your devices through your own iCloud account.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h3>Ready to chain your first combo?</h3>
+        <p style="color:var(--muted); font-size:14px; font-family:'Inter',sans-serif;">Free to download, with optional coin packs.</p>
+      </div>
+      <a class="store-btn" href="/skyloops/download/">
+        <span><span class="small">See</span><span class="big">Download details →</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>&copy; 2026 Noah Carpenter &middot; <a href="https://ndcswift.github.io">ndcswift.github.io</a></span>
+    <div class="footer-links">
+      <a href="/skyloops/privacy">Privacy Policy</a>
+      <a href="/skyloops/terms">Terms of Service</a>
+      <a href="/apps.html">More apps by NDC</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
