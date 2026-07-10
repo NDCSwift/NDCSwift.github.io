@@ -4,18 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tap Duel – Privacy Policy</title>
+  <meta name="description" content="Tap Duel's privacy policy: no accounts, no servers, no third-party analytics. Stats stay on your device; Game Center is optional and governed by Apple's policy." />
+  <link rel="canonical" href="https://ndcswift.github.io/tapduel/privacy" />
+  <meta name="apple-itunes-app" content="app-id=6746076055" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tap Duel – Privacy Policy" />
+  <meta property="og:description" content="Tap Duel's privacy policy: no accounts, no servers, no third-party analytics." />
+  <meta property="og:url" content="https://ndcswift.github.io/tapduel/privacy" />
+  <meta property="og:site_name" content="Tap Duel" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Tap Duel – Privacy Policy" />
+  <meta name="twitter:description" content="No accounts, no servers, no third-party analytics." />
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 680px; margin: 40px auto; padding: 0 20px; color: #1a1a1a; line-height: 1.7; }
-    h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
-    h2 { font-size: 18px; font-weight: 600; margin-top: 32px; }
-    p, li { font-size: 15px; color: #333; }
-    a { color: #2AA84A; }
+    :root {
+      --accent: #34C759; --accent-deep: #2AA84A; --brand-a: #E5308C; --brand-b: #8C52F5;
+      --ink: #0E0B12; --ink-soft: #2E2A34; --muted: #6E6876; --line: #E9E6EE; --bg: #FBFAFD; --card: #FFFFFF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+    nav { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+    .logo-mark { width: 28px; height: 28px; border-radius: 7px; background: linear-gradient(135deg, var(--brand-a), var(--brand-b)); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 13px; letter-spacing: -0.04em; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
+    .nav-links a:hover { color: var(--ink); }
+    footer { border-top: 1px solid var(--line); padding: 28px 0; margin-top: 40px; color: var(--muted); font-size: 13px; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-row .footer-links { display: flex; gap: 20px; }
+    .footer-row a:hover { color: var(--ink); }
+    @media (max-width: 560px) { .nav-links { gap: 16px; font-size: 13px; } .footer-row { flex-direction: column; align-items: flex-start; } }
+
+    .legal { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 680px; margin: 0 auto; padding: 20px 20px 60px; color: #1a1a1a; line-height: 1.7; }
+    .legal h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+    .legal h2 { font-size: 18px; font-weight: 600; margin-top: 32px; }
+    .legal p, .legal li { font-size: 15px; color: #333; }
+    .legal a { color: #2AA84A; text-decoration: underline; }
     .updated { font-size: 13px; color: #888; margin-bottom: 32px; }
-    .back { font-size: 13px; color: #2AA84A; text-decoration: none; display: inline-block; margin-bottom: 24px; }
   </style>
 </head>
 <body>
-  <a class="back" href="/tapduel">← Tap Duel</a>
+
+<div class="wrap">
+  <nav>
+    <a class="logo" href="/tapduel/"><span class="logo-mark">TD</span> Tap Duel</a>
+    <div class="nav-links">
+      <a href="/tapduel/">Overview</a>
+      <a href="/tapduel/features/">Features</a>
+      <a href="/tapduel/download/">Download</a>
+      <a href="/tapduel/support/">Support</a>
+    </div>
+  </nav>
+</div>
+
+<div class="legal">
   <h1>Tap Duel Privacy Policy</h1>
   <p class="updated">Last updated: July 2026</p>
 
@@ -50,5 +92,18 @@
 
   <h2>Contact</h2>
   <p>Questions? Email <a href="mailto:Ferggy1997@gmail.com">Ferggy1997@gmail.com</a></p>
+</div>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>&copy; 2026 Noah Carpenter &middot; <a href="https://ndcswift.github.io">ndcswift.github.io</a></span>
+    <div class="footer-links">
+      <a href="/tapduel/">Tap Duel Overview</a>
+      <a href="/tapduel/terms">Terms of Service</a>
+      <a href="/apps.html">More apps by NDC</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
