@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tap Duel Features — Five Ways to Prove It</title>
+<meta name="description" content="Explore every Tap Duel mode — Reflex, Daily Challenge, Online 1v1, Local Duel, Frenzy and Challenge — plus global percentiles, streaks, and icon customization." />
+<link rel="canonical" href="https://ndcswift.github.io/tapduel/features/" />
+<meta name="apple-itunes-app" content="app-id=6746076055" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Tap Duel Features — Five Ways to Prove It" />
+<meta property="og:description" content="Explore every Tap Duel mode — Reflex, Daily Challenge, Online 1v1, Local Duel, Frenzy and Challenge — plus global percentiles, streaks, and icon customization." />
+<meta property="og:url" content="https://ndcswift.github.io/tapduel/features/" />
+<meta property="og:image" content="https://ndcswift.github.io/screens/TapDuel2.png" />
+<meta property="og:site_name" content="Tap Duel" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Tap Duel Features — Five Ways to Prove It" />
+<meta name="twitter:description" content="Every Tap Duel mode, plus global percentiles, streaks, and icon customization." />
+<style>
+  :root {
+    --accent: #34C759; --accent-deep: #2AA84A; --brand-a: #E5308C; --brand-b: #8C52F5; --brand-c: #3373FA;
+    --ink: #0E0B12; --ink-soft: #2E2A34; --muted: #6E6876; --line: #E9E6EE; --bg: #FBFAFD; --card: #FFFFFF; --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.5; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  nav { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+  .logo-mark { width: 28px; height: 28px; border-radius: 7px; background: linear-gradient(135deg, var(--brand-a), var(--brand-b)); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 13px; letter-spacing: -0.04em; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  section { padding: 72px 0; }
+  .section-title { font-size: clamp(28px, 3.4vw, 40px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 12px; }
+  .section-sub { color: var(--muted); font-size: 16px; margin-bottom: 44px; max-width: 560px; }
+  .store-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 22px; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .store-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(14, 11, 18, 0.25); }
+  .store-btn .small { display: block; font-size: 11px; opacity: 0.75; line-height: 1.2; }
+  .store-btn .big { display: block; font-size: 17px; font-weight: 600; line-height: 1.2; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0; margin-top: 40px; color: var(--muted); font-size: 13px; }
+  .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-row .footer-links { display: flex; gap: 20px; }
+  .footer-row a:hover { color: var(--ink); }
+  @media (max-width: 560px) { .nav-links { gap: 16px; font-size: 13px; } .footer-row { flex-direction: column; align-items: flex-start; } }
+
+  /* Page-specific: Features */
+  .page-header { padding: 56px 0 0; }
+  .page-header h1 { font-size: clamp(32px, 4.4vw, 46px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .page-header p { font-size: 17px; color: var(--ink-soft); max-width: 700px; line-height: 1.7; }
+  .modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .mode-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+  .mode-card .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; padding: 4px 10px; border-radius: 6px; margin-bottom: 14px; }
+  .mode-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .mode-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .feature { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 10px; }
+  .feature .glyph { width: 40px; height: 40px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); display: grid; place-items: center; font-size: 18px; margin-bottom: 4px; }
+  .feature h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+  .feature p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+  .cta-band { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 34px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .cta-band h3 { font-size: 20px; font-weight: 700; }
+  @media (max-width: 860px) { .modes { grid-template-columns: 1fr 1fr; } .grid-2 { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .modes { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <a class="logo" href="/tapduel/"><span class="logo-mark">TD</span> Tap Duel</a>
+    <div class="nav-links">
+      <a href="/tapduel/">Overview</a>
+      <a href="/tapduel/features/" class="active">Features</a>
+      <a href="/tapduel/download/">Download</a>
+      <a href="/tapduel/support/">Support</a>
+    </div>
+  </nav>
+</div>
+
+<div class="wrap page-header">
+  <h1>Five ways to prove it.</h1>
+  <p>Every Tap Duel mode measures the same thing — how fast you tap the instant the signal changes — but tests it a different way. Solo training, a daily goal, and head-to-head duels all feed the same stats and streak.</p>
+</div>
+
+<section id="modes">
+  <div class="wrap">
+    <div class="modes">
+      <div class="mode-card">
+        <span class="tag" style="background:var(--accent);">Reflex Mode</span>
+        <h3>The classic reaction test</h3>
+        <p>One tap, measured to the millisecond. Every round shows a live global percentile — "faster than X% of players" — and tracks your personal best to defend.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:#3373FA;">Daily Challenge</span>
+        <h3>One new goal, every day</h3>
+        <p>A date-seeded target refreshes at midnight. Beat it to keep your streak alive — miss a day and the streak resets.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:var(--brand-a);">Online 1v1</span>
+        <h3>Real-time duels via Game Center</h3>
+        <p>Matched against friends or the world through Apple's Game Center. Whoever taps first on green wins the round.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:var(--brand-b);">Local Duel</span>
+        <h3>Two players, one screen</h3>
+        <p>Press and hold your half of the screen. First to release after the signal turns green takes the round — a hold-and-release design that stops early-release cheating.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:#E5A013;">Frenzy Mode</span>
+        <h3>35 seconds, rapid-fire</h3>
+        <p>Tap as many targets as you can before the clock runs out. Pure speed and consistency, not just a single reaction.</p>
+      </div>
+      <div class="mode-card">
+        <span class="tag" style="background:#3F7D3B;">Challenge Mode</span>
+        <h3>10 taps, full precision</h3>
+        <p>A ten-target accuracy run against the clock — every miss costs you, so consistency matters as much as raw speed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <h2 class="section-title">Everything else, built in</h2>
+    <p class="section-sub">Stats and streaks stay on your device — online duels use Game Center only for matchmaking and leaderboards.</p>
+    <div class="grid-2">
+      <div class="feature">
+        <div class="glyph">🌍</div>
+        <h3>Global percentile ranking</h3>
+        <p>Every Reflex round is compared against a calibrated benchmark, so "0.319s" becomes something you can actually judge — like "faster than 67% of players."</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🔥</div>
+        <h3>Streaks worth protecting</h3>
+        <p>Play the Daily Challenge to build a streak, with a heads-up banner when it's at risk of breaking before you play again.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🏆</div>
+        <h3>Game Center leaderboards</h3>
+        <p>Reflex scores and duel records post to Apple's Game Center leaderboards, so you can see where you land against everyone else who plays.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🤝</div>
+        <h3>Fair-play duel engine</h3>
+        <p>Both online and local duels use a hold-and-release design that removes false-start advantage and prevents score corruption from disconnects.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🎨</div>
+        <h3>Icon packs &amp; colors</h3>
+        <p>Unlock app icon packs and circle colors individually, or grab Tap Duel Pro to unlock everything at once.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🔒</div>
+        <h3>No accounts, no tracking</h3>
+        <p>No sign-up is required for solo play or local duels. There's no third-party analytics or ad SDK reading your activity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h3>Ready to find out how fast you are?</h3>
+        <p style="color:var(--muted); font-size:14px;">Free to download, with one optional one-time unlock.</p>
+      </div>
+      <a class="store-btn" href="/tapduel/download/">
+        <span><span class="small">See</span><span class="big">Download details →</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>&copy; 2026 Noah Carpenter &middot; <a href="https://ndcswift.github.io">ndcswift.github.io</a></span>
+    <div class="footer-links">
+      <a href="/tapduel/privacy">Privacy Policy</a>
+      <a href="/tapduel/terms">Terms of Service</a>
+      <a href="/apps.html">More apps by NDC</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
