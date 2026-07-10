@@ -5,6 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tap Duel — How fast are you, really?</title>
 <meta name="description" content="Tap Duel is a reaction-time game for iPhone and iPad. Test your reflexes, see how you rank against players worldwide, and duel friends 1v1 — online or on one screen." />
+<link rel="canonical" href="https://ndcswift.github.io/tapduel/" />
+<meta name="apple-itunes-app" content="app-id=6746076055" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Tap Duel — How fast are you, really?" />
+<meta property="og:description" content="Tap Duel is a reaction-time game for iPhone and iPad. Test your reflexes, see how you rank against players worldwide, and duel friends 1v1 — online or on one screen." />
+<meta property="og:url" content="https://ndcswift.github.io/tapduel/" />
+<meta property="og:image" content="https://ndcswift.github.io/screens/TapDuel1.png" />
+<meta property="og:site_name" content="Tap Duel" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Tap Duel — How fast are you, really?" />
+<meta name="twitter:description" content="A reaction-time game for iPhone and iPad. Test your reflexes, rank against the world, and duel friends 1v1." />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Tap Duel",
+  "applicationCategory": "GameApplication",
+  "applicationSubCategory": "Reflex Game",
+  "operatingSystem": "iOS",
+  "description": "Tap Duel is a reaction-time game for iPhone and iPad with a solo Reflex Mode that ranks you against players worldwide, a daily seeded challenge, real-time online 1v1 duels via Game Center, local pass-and-play duels, and Frenzy and Challenge modes, plus unlockable icon customization.",
+  "url": "https://ndcswift.github.io/tapduel/",
+  "installUrl": "https://apps.apple.com/app/id6746076055",
+  "image": "https://ndcswift.github.io/screens/TapDuel1.png",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Noah Carpenter"
+  }
+}
+</script>
 <style>
   :root {
     --accent: #34C759;
@@ -45,7 +79,7 @@
     font-weight: 800; font-size: 13px; letter-spacing: -0.04em;
   }
   .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
-  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 
   /* Hero */
   .hero { padding: 64px 0 96px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; }
@@ -112,6 +146,7 @@
   .card .icon { font-size: 26px; margin-bottom: 14px; }
   .card h3 { font-size: 17px; font-weight: 650; margin-bottom: 8px; }
   .card p { font-size: 14px; color: var(--muted); }
+  .see-more { display: inline-block; margin-top: 8px; font-weight: 600; color: var(--accent-deep); }
 
   /* Steps */
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; }
@@ -124,6 +159,15 @@
   .step h3 { font-size: 16px; font-weight: 650; margin-bottom: 6px; }
   .step p { font-size: 14px; color: var(--muted); }
 
+  /* Guides */
+  .guides-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .guide-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 26px; display: block;
+  }
+  .guide-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .guide-card p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+
   /* Support */
   .support-card {
     background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
@@ -131,20 +175,29 @@
   }
   .support-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
   .support-card p { font-size: 14px; color: var(--muted); max-width: 520px; }
+  .support-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .support-actions a.secondary {
+    border: 1px solid var(--line); color: var(--ink); font-weight: 600; font-size: 15px;
+    padding: 12px 22px; border-radius: 12px; white-space: nowrap;
+  }
   .mail-btn {
     background: var(--accent); color: #fff; font-weight: 600; font-size: 15px;
     padding: 12px 22px; border-radius: 12px; white-space: nowrap;
   }
   .mail-btn:hover { background: var(--accent-deep); }
 
-  footer { border-top: 1px solid var(--line); padding: 32px 0; margin-top: 40px; color: var(--muted); font-size: 13px; }
-  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-  footer .links { display: flex; gap: 20px; }
-  footer a:hover { color: var(--ink); }
+  footer { border-top: 1px solid var(--line); padding: 28px 0; margin-top: 40px; color: var(--muted); font-size: 13px; }
+  .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-row .footer-links { display: flex; gap: 20px; }
+  .footer-row a:hover { color: var(--ink); }
 
   @media (max-width: 860px) {
     .hero { grid-template-columns: 1fr; gap: 44px; padding: 40px 0 64px; }
-    .grid, .steps { grid-template-columns: 1fr; }
+    .grid, .steps, .guides-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .nav-links { gap: 16px; font-size: 13px; }
+    .footer-row { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
@@ -152,11 +205,12 @@
 
 <div class="wrap">
   <nav>
-    <a class="logo" href="/tapduel"><span class="logo-mark">TD</span> Tap Duel</a>
+    <a class="logo" href="/tapduel/"><span class="logo-mark">TD</span> Tap Duel</a>
     <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#features">Features</a>
-      <a href="#support">Support</a>
+      <a href="/tapduel/" class="active">Overview</a>
+      <a href="/tapduel/features/">Features</a>
+      <a href="/tapduel/download/">Download</a>
+      <a href="/tapduel/support/">Support</a>
     </div>
   </nav>
 
@@ -167,7 +221,6 @@
       <p class="lede">Tap the instant it turns green. See your reaction time — and how you rank against players worldwide. Then settle it with friends in 1v1 duels, online or on one screen.</p>
       <div class="cta-row">
         <a class="store-btn" href="https://apps.apple.com/app/id6746076055" target="_blank" rel="noopener">
-          <span style="font-size:26px;"></span>
           <span><span class="small">Download on the</span><span class="big">App Store</span></span>
         </a>
       </div>
@@ -187,7 +240,14 @@
   </div>
 </div>
 
-<section id="how" style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+<section id="what-is" style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <h2 class="section-title">What Tap Duel is</h2>
+    <p style="font-size:17px; color:var(--ink-soft); max-width:760px; line-height:1.7;">Tap Duel is a reaction-time game for iPhone and iPad. A solo Reflex Mode measures your tap-to-signal time to the millisecond and shows how you rank against players worldwide, a date-seeded Daily Challenge gives you one new goal every day, and real-time 1v1 duels — online via Game Center or pass-and-play on one device — turn the same test into head-to-head competition. All game data lives on your device; online duels use Apple's Game Center for matchmaking and leaderboards.</p>
+  </div>
+</section>
+
+<section id="how">
   <div class="wrap">
     <h2 class="section-title">One rule. Zero mercy.</h2>
     <p class="section-sub">A round takes seconds. Beating your best takes all night.</p>
@@ -199,7 +259,7 @@
   </div>
 </section>
 
-<section id="features">
+<section id="features" style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="wrap">
     <h2 class="section-title">Five ways to prove it.</h2>
     <p class="section-sub">Solo training, daily goals, and head-to-head duels — every mode feeds your stats.</p>
@@ -211,6 +271,24 @@
       <div class="card"><div class="icon">🔥</div><h3>Frenzy &amp; Challenge</h3><p>35 seconds of rapid-fire targets, or 10 precision taps against the clock.</p></div>
       <div class="card"><div class="icon">🎨</div><h3>Make it yours</h3><p>Unlock icon packs and colors. Tap Duel Pro unlocks everything — one-time, no subscription.</p></div>
     </div>
+    <a class="see-more" href="/tapduel/features/">See the full feature breakdown →</a>
+  </div>
+</section>
+
+<section id="guides">
+  <div class="wrap">
+    <h2 class="section-title">Guides</h2>
+    <p class="section-sub">A few things worth knowing about reaction time in general — not just Tap Duel.</p>
+    <div class="guides-grid">
+      <a class="guide-card" href="/tapduel/what-is-a-good-reaction-time/">
+        <h3>What Is a Good Reaction Time?</h3>
+        <p>Real benchmarks — average, elite, and where mobile taps fit in — and what your Tap Duel score actually means.</p>
+      </a>
+      <a class="guide-card" href="/tapduel/how-to-improve-reaction-time-for-gaming/">
+        <h3>How to Improve Your Reaction Time for Gaming</h3>
+        <p>What actually moves the needle — sleep, practice, and deliberate training — versus what's a myth.</p>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -221,19 +299,23 @@
     <div class="support-card">
       <div>
         <h3>Get in touch</h3>
-        <p>Email me directly and I'll get back to you as soon as I can — usually within a couple of days. Purchases and refunds are handled by Apple, but I'm happy to point you the right way.</p>
+        <p>Full FAQ on Game Center, Pro, and refunds is on the Support page — or email me directly. I usually reply within a couple of days.</p>
       </div>
-      <a class="mail-btn" href="mailto:noahdoescoding@gmail.com?subject=Tap%20Duel%20Support">Email Support</a>
+      <div class="support-actions">
+        <a class="secondary" href="/tapduel/support/">Visit Support</a>
+        <a class="mail-btn" href="mailto:noahdoescoding@gmail.com?subject=Tap%20Duel%20Support">Email Support</a>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <span>© 2026 Noah Carpenter · <a href="https://ndcswift.github.io">ndcswift.github.io</a></span>
-    <div class="links">
+  <div class="wrap footer-row">
+    <span>&copy; 2026 Noah Carpenter &middot; <a href="https://ndcswift.github.io">ndcswift.github.io</a></span>
+    <div class="footer-links">
       <a href="/tapduel/privacy">Privacy Policy</a>
       <a href="/tapduel/terms">Terms of Service</a>
+      <a href="/apps.html">More apps by NDC</a>
     </div>
   </div>
 </footer>
