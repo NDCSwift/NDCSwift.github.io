@@ -5,9 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>WordSage — Words are your world. Explore them.</title>
 <meta name="description" content="WordSage is a daily vocabulary game for iPhone and iPad. Four modes, 1,000+ handpicked words, streaks, and iCloud sync — built to make practice feel like play." />
+<link rel="canonical" href="https://ndcswift.github.io/wordsage/" />
+<meta name="apple-itunes-app" content="app-id=6683296823" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="WordSage — Words are your world. Explore them." />
+<meta property="og:description" content="WordSage is a daily vocabulary game for iPhone and iPad. Four modes, 1,000+ handpicked words, streaks, and iCloud sync — built to make practice feel like play." />
+<meta property="og:url" content="https://ndcswift.github.io/wordsage/" />
+<meta property="og:image" content="https://ndcswift.github.io/screens/WordSage1.png" />
+<meta property="og:site_name" content="WordSage" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="WordSage — Words are your world. Explore them." />
+<meta name="twitter:description" content="WordSage is a daily vocabulary game for iPhone and iPad. Four modes, 1,000+ handpicked words, streaks, and iCloud sync." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "WordSage",
+  "applicationCategory": "GameApplication",
+  "applicationSubCategory": "Word Game",
+  "operatingSystem": "iOS",
+  "description": "WordSage is a daily vocabulary game for iPhone and iPad with four practice modes — Daily Challenge, Word Scramble, Flashcards, and Memory Match — built around a hand-curated library of over 1,000 words, with iCloud sync and no account required.",
+  "url": "https://ndcswift.github.io/wordsage/",
+  "installUrl": "https://apps.apple.com/ca/app/wordsage/id6683296823",
+  "image": "https://ndcswift.github.io/screens/WordSage1.png",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Noah Carpenter"
+  }
+}
+</script>
 <style>
   :root {
     --accent: #2B7A78;
@@ -39,19 +73,40 @@
 
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
 
-  /* Nav */
   nav { padding: 24px 0; display: flex; align-items: center; justify-content: space-between; }
   .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; letter-spacing: -0.01em; font-family: 'Pinyon Script', cursive; }
-  .logo-mark {
-    width: 28px; height: 28px; border-radius: 7px;
-    background: linear-gradient(160deg, var(--peach-a), var(--peach-b));
-    color: var(--ink); display: grid; place-items: center;
-    font-weight: 800; font-size: 13px; letter-spacing: -0.04em; font-family: 'DM Sans', sans-serif;
-  }
   .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
-  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 
-  /* Hero */
+  section { padding: 80px 0; }
+  .section-title { font-size: clamp(26px, 3.2vw, 38px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .section-sub { color: var(--muted); font-size: 16px; margin-bottom: 44px; max-width: 620px; }
+
+  .store-btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: #16211F; color: #fff; border-radius: 14px; padding: 12px 22px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .store-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(22, 33, 31, 0.3); }
+  .store-btn .small { display: block; font-size: 11px; opacity: 0.75; line-height: 1.2; }
+  .store-btn .big { display: block; font-size: 17px; font-weight: 600; line-height: 1.2; }
+  .mail-btn {
+    background: var(--accent); color: #fff; font-weight: 600; font-size: 15px;
+    padding: 12px 22px; border-radius: 12px; white-space: nowrap; display: inline-block;
+  }
+  .mail-btn:hover { background: var(--accent-deep); }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0; margin-top: 40px; color: var(--muted); font-size: 13px; }
+  .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-row .footer-links { display: flex; gap: 20px; }
+  .footer-row a:hover { color: var(--ink); }
+
+  @media (max-width: 560px) {
+    .nav-links { gap: 16px; font-size: 13px; }
+    .footer-row { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* Page-specific: Overview */
   .hero {
     background: linear-gradient(165deg, var(--peach-a) 0%, var(--peach-b) 100%);
     border-radius: 28px;
@@ -73,19 +128,8 @@
   }
   h1 .script { font-family: 'Pinyon Script', cursive; font-weight: 400; font-size: 1.25em; display: block; }
   .lede { font-size: 17px; color: #402A1A; margin-bottom: 32px; max-width: 460px; text-wrap: pretty; }
-
   .cta-row { display: flex; align-items: center; gap: 18px; margin-bottom: 12px; flex-wrap: wrap; }
-  .store-btn {
-    display: inline-flex; align-items: center; gap: 12px;
-    background: #16211F; color: #fff; border-radius: 14px; padding: 12px 22px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .store-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(22, 33, 31, 0.3); }
-  .store-btn .small { display: block; font-size: 11px; opacity: 0.75; line-height: 1.2; }
-  .store-btn .big { display: block; font-size: 17px; font-weight: 600; line-height: 1.2; }
   .price-note { font-size: 13px; color: #402A1A; opacity: 0.85; }
-
-  /* Phone mock */
   .phone-wrap { display: flex; justify-content: center; }
   .phone {
     width: 240px; border-radius: 36px; overflow: hidden;
@@ -94,10 +138,7 @@
   }
   .phone img { width: 100%; display: block; }
 
-  /* Sections */
-  section { padding: 80px 0; }
-  .section-title { font-size: clamp(26px, 3.2vw, 38px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
-  .section-sub { color: var(--muted); font-size: 16px; margin-bottom: 44px; max-width: 560px; }
+  .what-is p { font-size: 17px; color: var(--ink-soft); max-width: 760px; line-height: 1.7; }
 
   .modes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
   .mode-card {
@@ -110,41 +151,32 @@
   }
   .mode-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
   .mode-card p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+  .see-more { display: inline-block; margin-top: 28px; font-weight: 600; color: var(--accent); }
 
-  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .feature {
+  .guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .guide-card {
     background: var(--card); border: 1px solid var(--line); border-radius: 20px;
-    padding: 28px; display: flex; flex-direction: column; gap: 10px;
+    padding: 26px; display: block;
   }
-  .feature .glyph {
-    width: 40px; height: 40px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line);
-    display: grid; place-items: center; font-size: 18px; margin-bottom: 4px;
-  }
-  .feature h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
-  .feature p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+  .guide-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .guide-card p { font-size: 14px; color: var(--muted); line-height: 1.55; }
 
-  /* Support */
   .support-card {
     background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
     padding: 34px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
   }
   .support-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
   .support-card p { font-size: 14px; color: var(--muted); max-width: 520px; }
-  .mail-btn {
-    background: var(--accent); color: #fff; font-weight: 600; font-size: 15px;
+  .support-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .support-actions a.secondary {
+    border: 1px solid var(--line); color: var(--ink); font-weight: 600; font-size: 15px;
     padding: 12px 22px; border-radius: 12px; white-space: nowrap;
   }
-  .mail-btn:hover { background: var(--accent-deep); }
-
-  footer { border-top: 1px solid var(--line); padding: 32px 0; margin-top: 40px; color: var(--muted); font-size: 13px; }
-  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-  footer .links { display: flex; gap: 20px; }
-  footer a:hover { color: var(--ink); }
 
   @media (max-width: 860px) {
     .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 28px; margin: 0 16px; }
     .modes { grid-template-columns: 1fr 1fr; }
-    .grid-2 { grid-template-columns: 1fr; }
+    .guides-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 560px) {
     .modes { grid-template-columns: 1fr; }
@@ -155,11 +187,11 @@
 
 <div class="wrap">
   <nav>
-    <a class="logo" href="/wordsage">WordSage</a>
+    <a class="logo" href="/wordsage/">WordSage</a>
     <div class="nav-links">
-      <a href="#modes">Modes</a>
-      <a href="#features">Features</a>
-      <a href="#support">Support</a>
+      <a href="/wordsage/features/">Features</a>
+      <a href="/wordsage/download/">Download</a>
+      <a href="/wordsage/support/">Support</a>
     </div>
   </nav>
 </div>
@@ -171,7 +203,6 @@
     <p class="lede">A daily vocabulary game built around challenge and motion — not passive flashcard swiping. Four modes, 1,000+ handpicked words, and a streak worth protecting.</p>
     <div class="cta-row">
       <a class="store-btn" href="https://apps.apple.com/ca/app/wordsage/id6683296823" target="_blank" rel="noopener">
-        <span style="font-size:26px;"></span>
         <span><span class="small">Download on the</span><span class="big">App Store</span></span>
       </a>
     </div>
@@ -185,7 +216,14 @@
   </div>
 </div>
 
-<section id="modes">
+<section class="what-is">
+  <div class="wrap">
+    <h2 class="section-title">What WordSage is</h2>
+    <p>WordSage is a vocabulary game for iPhone and iPad built around active recall instead of passive flashcard swiping. It combines four practice modes — a daily hint-based challenge, a timed anagram scramble, spaced-repetition flashcards, and a memory-matching game — pulling from a hand-curated library of over 1,000 words. Progress and streaks sync privately across devices through iCloud, and the app requires no account and collects no personal data.</p>
+  </div>
+</section>
+
+<section id="modes" style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="wrap">
     <h2 class="section-title">Four modes. One vocabulary.</h2>
     <p class="section-sub">Every mode pulls from the same 1,000+ curated word list — practice never feels the same way twice.</p>
@@ -193,12 +231,12 @@
       <div class="mode-card">
         <span class="tag" style="background:var(--accent);">Daily Challenge</span>
         <h3>Guess of the day</h3>
-        <p>One word, progressively revealing hints. Guess it to keep your streak alive — miss it and spend a Lifeline to protect the streak instead.</p>
+        <p>One word, progressively revealing hints. Guess it to keep your streak alive.</p>
       </div>
       <div class="mode-card">
         <span class="tag" style="background:#3F7D3B;">Word Scramble</span>
         <h3>Beat the anagram</h3>
-        <p>Unscramble letters against the clock. Chain correct guesses fast enough to trigger Fever mode and multiply your score up to 5x.</p>
+        <p>Unscramble letters against the clock. Chain guesses fast enough to trigger Fever mode.</p>
       </div>
       <div class="mode-card">
         <span class="tag" style="background:var(--purple);">Flashcards</span>
@@ -208,61 +246,58 @@
       <div class="mode-card">
         <span class="tag" style="background:var(--teal);">Memory Match</span>
         <h3>Flip and match</h3>
-        <p>Find every word pair before you run out of guesses. Clear the board to earn a Lifeline for your next session.</p>
+        <p>Find every word pair before you run out of guesses.</p>
       </div>
+    </div>
+    <a class="see-more" href="/wordsage/features/">See the full feature breakdown →</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="section-title">Guides</h2>
+    <p class="section-sub">A few things worth knowing about vocabulary apps in general — not just WordSage.</p>
+    <div class="guides-grid">
+      <a class="guide-card" href="/wordsage/best-vocabulary-apps-for-iphone-and-ipad/">
+        <h3>Best Vocabulary Apps for iPhone &amp; iPad (2026)</h3>
+        <p>A practical comparison of the apps worth trying, and what each one is actually good for.</p>
+      </a>
+      <a class="guide-card" href="/wordsage/how-to-actually-build-a-daily-vocabulary-habit/">
+        <h3>How to Actually Build a Daily Vocabulary Habit</h3>
+        <p>Why most streaks fail after a week, and the habit mechanics that actually stick.</p>
+      </a>
+      <a class="guide-card" href="/wordsage/anagram-games-vs-flashcards-which-builds-vocabulary-faster/">
+        <h3>Anagram Games vs. Flashcards</h3>
+        <p>Two different memory pathways — here's how they compare, and when to use both.</p>
+      </a>
     </div>
   </div>
 </section>
 
-<section id="features" style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+<section id="support" style="background:#fff; border-top:1px solid var(--line);">
   <div class="wrap">
-    <h2 class="section-title">Built to be replayed, not just finished.</h2>
-    <p class="section-sub">Progress, purchases, and streaks all stay on your own devices — nothing is collected behind the scenes.</p>
-    <div class="grid-2">
-      <div class="feature">
-        <div class="glyph">📚</div>
-        <h3>1,000+ handpicked words</h3>
-        <p>Every entry — definition, synonyms, hints, example sentences — was chosen and written by hand, not generated.</p>
-      </div>
-      <div class="feature">
-        <div class="glyph">🔥</div>
-        <h3>Streaks worth protecting</h3>
-        <p>Miss a day and you can spend a Literacy Lifeline to protect your streak instead of losing it outright.</p>
-      </div>
-      <div class="feature">
-        <div class="glyph">☁️</div>
-        <h3>iCloud sync</h3>
-        <p>Progress, stats, and known words sync across your iPhone and iPad via CloudKit — private to your own iCloud account.</p>
-      </div>
-      <div class="feature">
-        <div class="glyph">✨</div>
-        <h3>Haptics in every interaction</h3>
-        <p>Correct guesses, wrong guesses, purchases, and streak saves each have their own considered haptic feedback.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="support">
-  <div class="wrap">
-    <h2 class="section-title">Support</h2>
+    <h2 class="section-title">Need help?</h2>
     <p class="section-sub">Found a bug, have a feature idea, or need help with a purchase?</p>
     <div class="support-card">
       <div>
         <h3>Get in touch</h3>
-        <p>Email me directly and I'll get back to you as soon as I can — usually within a couple of days. Purchases and refunds are handled by Apple, but I'm happy to point you the right way.</p>
+        <p>Full FAQ on syncing, Literacy Lifelines, and refunds is on the Support page — or email me directly.</p>
       </div>
-      <a class="mail-btn" href="mailto:noahdoescoding@gmail.com?subject=WordSage%20Support">Email Support</a>
+      <div class="support-actions">
+        <a class="secondary" href="/wordsage/support/">Visit Support</a>
+        <a class="mail-btn" href="mailto:noahdoescoding@gmail.com?subject=WordSage%20Support">Email Support</a>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <span>© 2026 Noah Carpenter · <a href="https://ndcswift.github.io">ndcswift.github.io</a></span>
-    <div class="links">
+  <div class="wrap footer-row">
+    <span>&copy; 2026 Noah Carpenter &middot; <a href="https://ndcswift.github.io">ndcswift.github.io</a></span>
+    <div class="footer-links">
       <a href="/wordsage/privacy">Privacy Policy</a>
       <a href="/wordsage/terms">Terms of Service</a>
+      <a href="/apps.html">More apps by NDC</a>
     </div>
   </div>
 </footer>
