@@ -6,7 +6,7 @@
 <title>RealRate: Side Hustle Tracker — Your True Hourly Rate</title>
 <meta name="description" content="RealRate is a side hustle tracker for iPhone. It nets every expense against the hours you actually worked and ranks your gigs by true hourly rate, so you know which hustle to scale and which to drop." />
 <link rel="canonical" href="https://ndcswift.github.io/realrate/" />
-<link rel="icon" type="image/svg+xml" href="/realrate/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/realrate/favicon-32.png" />
 <link rel="apple-touch-icon" href="/realrate/apple-touch-icon.png" />
 <meta name="theme-color" content="#FAFAF7" />
 <meta property="og:type" content="website" />
@@ -14,7 +14,12 @@
 <meta property="og:title" content="RealRate: Side Hustle Tracker — Your True Hourly Rate" />
 <meta property="og:description" content="Income minus every expense, divided by the hours you actually worked. RealRate ranks your gigs by true hourly rate." />
 <meta property="og:url" content="https://ndcswift.github.io/realrate/" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="https://ndcswift.github.io/realrate/img/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="RealRate ranking three gigs by true hourly rate: Craft shop $34.52, Dog walking $26.67, Food delivery $5.27." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ndcswift.github.io/realrate/img/og-image.png" />
 <meta name="twitter:title" content="RealRate: Side Hustle Tracker — Your True Hourly Rate" />
 <meta name="twitter:description" content="Income minus every expense, divided by the hours you actually worked. RealRate ranks your gigs by true hourly rate." />
 <script type="application/ld+json">
@@ -26,6 +31,8 @@
   "operatingSystem": "iOS",
   "applicationCategory": "FinanceApplication",
   "url": "https://ndcswift.github.io/realrate/",
+  "image": "https://ndcswift.github.io/realrate/img/app-icon-512.png",
+  "screenshot": "https://ndcswift.github.io/realrate/img/dashboard.png",
   "author": { "@type": "Person", "name": "Noah Carpenter" }
 }
 </script>
@@ -82,13 +89,7 @@
     width: 28px;
     height: 28px;
     border-radius: 7px;
-    background: var(--ink);
-    color: var(--accent);
-    display: grid;
-    place-items: center;
-    font-weight: 800;
-    font-size: 14px;
-    letter-spacing: -0.04em;
+    display: block;
   }
   .nav-links {
     display: flex;
@@ -184,122 +185,18 @@
     color: var(--muted);
   }
 
-  /* Phone mockup */
+  /* Hero screenshot */
   .phone-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .phone {
-    width: 280px;
-    height: 568px;
-    background: var(--ink);
-    border-radius: 44px;
-    padding: 14px;
-    box-shadow:
-      0 1px 0 rgba(255,255,255,0.08) inset,
-      0 30px 60px -20px rgba(11,15,13,0.35),
-      0 12px 24px -12px rgba(11,15,13,0.2);
-    position: relative;
-  }
-  .phone::before {
-    content: "";
-    position: absolute;
-    top: 22px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 28px;
-    background: #000;
-    border-radius: 100px;
-    z-index: 2;
-  }
-  .screen {
+  .phone-shot {
     width: 100%;
-    height: 100%;
-    background: #FAFAF7;
-    border-radius: 32px;
-    overflow: hidden;
-    padding: 56px 18px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+    max-width: 320px;
+    height: auto;
+    filter: drop-shadow(0 30px 40px rgba(11,15,13,0.22));
   }
-  .screen-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-  .screen-head .label {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
-  }
-  .screen-head .date {
-    font-size: 11px;
-    color: var(--muted);
-    font-weight: 500;
-  }
-  .rate-card {
-    background: var(--ink);
-    color: #fff;
-    border-radius: 18px;
-    padding: 18px;
-  }
-  .rate-card .tiny {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.55);
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-  .rate-card .big {
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: var(--accent);
-    line-height: 1;
-  }
-  .rate-card .sub {
-    font-size: 11px;
-    color: rgba(255,255,255,0.7);
-    margin-top: 6px;
-  }
-  .gig-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .gig-row {
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 12px 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .gig-row .name {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .gig-row .hours {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-  .gig-row .rate {
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-  .rate-pos { color: var(--accent-deep); }
-  .rate-neg { color: #C2452D; }
-  .rate-mid { color: var(--ink-soft); }
 
   /* Sections */
   section { padding: 96px 0; }
@@ -603,7 +500,7 @@
 <div class="wrap">
   <nav>
     <a class="logo" href="/realrate/">
-      <div class="logo-mark" aria-hidden="true">R</div>
+      <img class="logo-mark" src="/realrate/img/app-icon-128.png" alt="" width="28" height="28" />
       <span>RealRate</span>
     </a>
     <div class="nav-links">
@@ -632,42 +529,11 @@
     </div>
 
     <div class="phone-wrap">
-      <div class="phone" aria-hidden="true">
-        <div class="screen">
-          <div class="screen-head">
-            <span class="label">All gigs</span>
-            <span class="date">Example</span>
-          </div>
-          <div class="rate-card">
-            <div class="tiny">True hourly rate</div>
-            <div class="big">$20.71<span style="font-size:18px;color:rgba(255,255,255,0.5);font-weight:500;letter-spacing:0;">/hr</span></div>
-            <div class="sub">$381 net · 18.4 hrs logged</div>
-          </div>
-          <div class="gig-list">
-            <div class="gig-row">
-              <div>
-                <div class="name">Etsy shop</div>
-                <div class="hours">6.2 hrs · $214 net</div>
-              </div>
-              <div class="rate rate-pos">$34.52</div>
-            </div>
-            <div class="gig-row">
-              <div>
-                <div class="name">Dog walking</div>
-                <div class="hours">4.8 hrs · $128 net</div>
-              </div>
-              <div class="rate rate-mid">$26.67</div>
-            </div>
-            <div class="gig-row">
-              <div>
-                <div class="name">DoorDash</div>
-                <div class="hours">7.4 hrs · $39 net</div>
-              </div>
-              <div class="rate rate-neg">$5.27</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <picture>
+        <source srcset="/realrate/img/dashboard.webp" type="image/webp" />
+        <img class="phone-shot" src="/realrate/img/dashboard.png" width="675" height="1380"
+             alt="RealRate's My Gigs screen. Craft shop earns $34.52 an hour, Dog walking $26.67, and Food delivery $5.27 after expenses. An insight card says Craft shop pays 6.5 times more than Food delivery." />
+      </picture>
     </div>
   </header>
 </div>
@@ -687,7 +553,7 @@
       </div>
       <div class="stat-card">
         <div class="stat-num">$5.27<small>/hr</small></div>
-        <div class="stat-caption">An illustration, not an average: the delivery gig in the example above nets $39 for 7.4 hours once gas comes out.</div>
+        <div class="stat-caption">An illustration, not an average: the food delivery gig on the screen above takes in $124 over 7.4 hours, then $85 of gas comes out.</div>
       </div>
     </div>
   </div>
