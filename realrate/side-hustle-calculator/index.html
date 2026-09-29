@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Is My Side Hustle Worth It? True Hourly Rate Calculator · RealRate</title>
+<meta name="description" content="Free side hustle calculator: enter one month's income, hours and costs to see what each hustle really pays per hour, before and after expenses. Compare up to three. Nothing you type leaves the page." />
+<link rel="canonical" href="https://ndcswift.github.io/realrate/side-hustle-calculator/" />
+<link rel="icon" type="image/png" sizes="32x32" href="/realrate/favicon-32.png" />
+<link rel="apple-touch-icon" href="/realrate/apple-touch-icon.png" />
+<meta name="theme-color" content="#FAFAF7" />
+<!-- Launch day (NDCSwift/RealRate#216): add the apple-itunes-app Smart App Banner here, with the landing page's. -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RealRate" />
+<meta property="og:title" content="Is Your Side Hustle Worth It? True Hourly Rate Calculator" />
+<meta property="og:description" content="Enter one month's income, hours and costs. See what each side hustle really pays per hour, after every expense." />
+<meta property="og:url" content="https://ndcswift.github.io/realrate/side-hustle-calculator/" />
+<meta property="og:image" content="https://ndcswift.github.io/realrate/img/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="&quot;Which side hustle actually pays?&quot; beside RealRate ranking four side hustles by true hourly rate: Logo design $50.97, Math tutoring $42.99, Candle shop $18.55, Food delivery $10.14." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ndcswift.github.io/realrate/img/og-image.png" />
+<meta name="twitter:title" content="Is Your Side Hustle Worth It? True Hourly Rate Calculator" />
+<meta name="twitter:description" content="Enter one month's income, hours and costs. See what each side hustle really pays per hour, after every expense." />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Side Hustle True Hourly Rate Calculator",
+  "description": "Enter one month's income, hours and costs for up to three side hustles to see each one's hourly rate before and after expenses.",
+  "url": "https://ndcswift.github.io/realrate/side-hustle-calculator/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "isAccessibleForFree": true,
+  "isPartOf": { "@type": "WebPage", "@id": "https://ndcswift.github.io/realrate/", "name": "RealRate: Side Hustle Tracker" },
+  "author": { "@type": "Person", "name": "Noah Carpenter" }
+}
+</script>
+<style>
+  /* Tokens are the RealRate subsite's (realrate/index.html), with one change: surfaces use the
+     app's card-light #F9FCFA (DESIGN.md) rather than #FFFFFF, so this page adds no pure-white
+     surface under the NDC Product Standard. Measured with NDC Brand/tools/contrast.mjs:
+       ink #0B0F0D on #FAFAF7 18.45:1 · ink-soft #2A2F2C 13.03:1 · muted #6B7370 4.66:1 (4.72 on card)
+       accent-deep #00784E 5.29:1 — text, focus ring and field borders (non-text floor 3:1)
+       loss #B3261E on #FAFAF7 6.25:1 · #F9FCFA on accent-deep (insight) 5.36:1 · on ink (CTA) 18.68:1
+       ink-soft on the #FFF4DD notice 12.48:1 (#FFF4DD is ΔE 9.91 from white, not a pure endpoint) */
+  :root {
+    --accent: #00C27D;
+    --accent-deep: #00784E;
+    --accent-wash: rgba(0, 194, 125, 0.1);
+    --ink: #0B0F0D;
+    --ink-soft: #2A2F2C;
+    --muted: #6B7370;
+    --line: #E6E8E7;
+    --field-border: #6B7370;
+    --bg: #FAFAF7;
+    --card: #F9FCFA;
+    --loss: #B3261E;
+    --on-ink: #F9FCFA;
+    --radius: 16px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent-deep); outline-offset: 2px; border-radius: 6px; }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  .narrow { max-width: 760px; }
+
+  /* Nav — same as the landing page */
+  nav { padding: 24px 0; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; min-height: 44px; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; text-decoration: none; }
+  .logo-mark { width: 28px; height: 28px; border-radius: 7px; display: block; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 14px; color: var(--ink-soft); }
+  .nav-links a { text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--ink); }
+  .nav-links a[aria-current="page"] { font-weight: 600; }
+
+  /* Header */
+  header.intro { padding: 40px 0 32px; }
+  h1 {
+    font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+    line-height: 1.05; letter-spacing: -0.035em; font-weight: 700;
+    margin-bottom: 16px; text-wrap: balance;
+  }
+  h1 .accent { color: var(--accent-deep); }
+  .lede { font-size: 1.125rem; color: var(--ink-soft); max-width: 600px; text-wrap: pretty; }
+
+  /* Tool */
+  .tool { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 32px; align-items: start; padding-bottom: 72px; }
+  .tool > * { min-width: 0; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
+  .section-label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--accent-deep); font-weight: 700; margin-bottom: 8px;
+  }
+
+  label, .field-label { display: block; font-weight: 600; font-size: 0.9375rem; margin-bottom: 6px; }
+  .hint { display: block; font-size: 0.8125rem; color: var(--muted); margin-top: 6px; }
+  input, select {
+    font: inherit; font-size: 1rem; color: var(--ink);
+    width: 100%; min-height: 44px;
+    background: var(--bg); border: 1px solid var(--field-border); border-radius: 10px;
+    padding: 10px 12px;
+  }
+  input:focus-visible, select:focus-visible { outline-offset: 1px; }
+  .field { margin-bottom: 16px; }
+  .field:last-child { margin-bottom: 0; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .currency-row { display: flex; align-items: end; gap: 12px; margin-bottom: 20px; }
+  .currency-row .field { flex: 1; margin: 0; }
+
+  fieldset.hustle { border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; background: var(--card); }
+  fieldset.hustle { position: relative; }
+  fieldset.hustle legend { font-weight: 700; font-size: 1rem; padding: 0 6px; margin-left: -6px; }
+  .hustle-head { display: flex; justify-content: flex-end; margin: -8px 0 4px; }
+  .hustle-head:has(.remove[hidden]) { display: none; }
+  .soft-confirm { font-size: 0.875rem; color: var(--ink-soft); background: #FFF4DD; border: 1px solid #C9A04A; border-radius: 10px; padding: 10px 12px; margin-top: 8px; }
+
+  details.costs { margin-top: 4px; }
+  details.costs summary {
+    cursor: pointer; font-weight: 600; font-size: 0.9375rem; color: var(--accent-deep);
+    min-height: 44px; display: flex; align-items: center; gap: 8px; list-style: none;
+  }
+  details.costs summary::-webkit-details-marker { display: none; }
+  details.costs summary::before { content: "+"; font-weight: 700; width: 1ch; }
+  details.costs[open] summary::before { content: "−"; }
+  details.costs .costs-body { padding-top: 8px; }
+  .costs-total { font-size: 0.875rem; color: var(--ink-soft); margin-top: 4px; }
+
+  button {
+    font: inherit; font-size: 0.9375rem; font-weight: 600; cursor: pointer;
+    min-height: 44px; border-radius: 100px; padding: 10px 18px;
+  }
+  .btn-secondary { background: transparent; color: var(--accent-deep); border: 1px solid var(--accent-deep); }
+  .btn-secondary:hover { background: var(--accent-wash); }
+  .btn-quiet { background: transparent; color: var(--ink-soft); border: 1px solid var(--field-border); padding: 8px 14px; font-size: 0.875rem; }
+  .btn-quiet:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* Results */
+  .results { position: sticky; top: 16px; }
+  .results h2 { font-size: 1.375rem; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .empty-result { color: var(--muted); font-size: 0.9375rem; }
+  .insight {
+    background: var(--accent-deep); color: var(--on-ink); border-radius: 14px;
+    padding: 16px 18px; margin-bottom: 16px;
+  }
+  .insight strong { display: block; font-size: 1rem; }
+  .insight span { font-size: 0.875rem; }
+  ol.ranked { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .result {
+    border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: var(--bg);
+  }
+  .result-name { font-weight: 700; font-size: 1rem; overflow-wrap: anywhere; display: flex; gap: 8px; align-items: baseline; }
+  .result-rank { color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .reveal { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 8px; }
+  .reveal .before { color: var(--muted); font-size: 0.9375rem; }
+  .reveal .before s { text-decoration-thickness: 1px; }
+  .reveal .arrow { color: var(--muted); }
+  .reveal .after { font-size: 1.625rem; font-weight: 700; letter-spacing: -0.02em; color: var(--accent-deep); font-variant-numeric: tabular-nums; }
+  .reveal .after.loss { color: var(--loss); }
+  .reveal .after.zero { color: var(--ink); }
+  .reveal .caption { flex-basis: 100%; font-size: 0.8125rem; color: var(--muted); }
+  .num { font-variant-numeric: tabular-nums; }
+  .pending { margin-top: 6px; font-size: 0.9375rem; color: var(--ink-soft); }
+  .verdict { margin-top: 8px; font-size: 0.875rem; font-weight: 600; display: flex; gap: 6px; align-items: baseline; }
+  .verdict.meets { color: var(--accent-deep); }
+  .verdict.misses { color: var(--loss); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .result.is-new .after { animation: reveal 350ms var(--ease); }
+    @keyframes reveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .result.is-new .after { animation: fade 250ms linear; }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  }
+
+  .target { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+
+  .cta { margin-top: 20px; padding: 20px; border-radius: 14px; background: var(--ink); color: var(--on-ink); }
+  .cta p { font-size: 1rem; margin-bottom: 14px; text-wrap: pretty; }
+  .app-store-btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--bg); color: var(--ink);
+    padding: 10px 20px 10px 18px; border-radius: 100px; font-weight: 600; font-size: 0.9375rem; min-height: 44px;
+  }
+  .app-store-btn .glyph { font-size: 1.25rem; line-height: 1; margin-top: -2px; }
+  .app-store-btn .label { display: flex; flex-direction: column; line-height: 1.1; }
+  .app-store-btn .label small { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-soft); }
+
+  /* Explainer */
+  article.explainer { padding: 24px 0 88px; }
+  article.explainer h2 { font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.03em; line-height: 1.15; margin: 40px 0 12px; text-wrap: balance; }
+  article.explainer h2:first-child { margin-top: 0; }
+  article.explainer p { font-size: 1.0625rem; color: var(--ink-soft); margin-bottom: 14px; text-wrap: pretty; }
+  article.explainer .example {
+    border-left: 3px solid var(--accent-deep); padding: 4px 0 4px 16px; margin: 16px 0;
+    font-size: 1.0625rem; color: var(--ink);
+  }
+  article.explainer ul { margin: 0 0 14px 20px; color: var(--ink-soft); font-size: 1.0625rem; }
+  article.explainer li { margin-bottom: 6px; }
+  article.explainer a { color: var(--accent-deep); font-weight: 600; }
+
+  footer { border-top: 1px solid var(--line); padding: 36px 0; font-size: 13px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+  footer a { text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  footer a:hover { color: var(--ink); }
+
+  noscript p { background: #FFF4DD; border: 1px solid #C9A04A; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; }
+
+  @media (max-width: 900px) {
+    .tool { grid-template-columns: minmax(0, 1fr); }
+    .results { position: static; }
+    .wrap { padding: 0 16px; }
+  }
+  @media (max-width: 420px) {
+    .row-2 { grid-template-columns: 1fr; }
+    .panel, fieldset.hustle { padding: 16px; }
+    .currency-row { flex-direction: column; align-items: stretch; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav aria-label="RealRate">
+    <a class="logo" href="/realrate/">
+      <img class="logo-mark" src="/realrate/img/app-icon-128.png" alt="" width="28" height="28" />
+      <span>RealRate</span>
+    </a>
+    <div class="nav-links">
+      <a href="/realrate/#how">How it works</a>
+      <a href="/realrate/side-hustle-calculator/" aria-current="page">Calculator</a>
+      <a href="/realrate/support/">Support</a>
+    </div>
+  </nav>
+
+  <header class="intro">
+    <h1>Is your side hustle <span class="accent">worth&nbsp;it?</span></h1>
+    <p class="lede">Enter one typical month: what a hustle brought in, the hours it took, and what it cost. You'll see what it pays per hour before and after costs. Add up to three hustles to compare them. Nothing you type leaves this page.</p>
+  </header>
+
+  <main class="tool" id="calculator">
+    <form class="panel" id="calc-form" novalidate aria-label="Your hustles">
+      <noscript><p>The calculator needs JavaScript to work out the numbers. The explanation below works without it.</p></noscript>
+      <div class="currency-row">
+        <div class="field">
+          <label for="currency">Currency</label>
+          <select id="currency" name="currency"></select>
+        </div>
+      </div>
+
+      <div id="hustles"></div>
+
+      <button type="button" class="btn-secondary" id="add-hustle">Add another hustle</button>
+    </form>
+
+    <section class="panel results" aria-labelledby="results-title">
+      <h2 id="results-title">Your true hourly rate</h2>
+      <div id="results">
+        <p class="empty-result">Your rate appears here once you've entered what a hustle brought in and the hours it took.</p>
+      </div>
+      <p class="visually-hidden" aria-live="polite" id="announcer"></p>
+
+      <div class="target">
+        <label for="target">What's an hour of your time worth?</label>
+        <input id="target" name="target" type="text" inputmode="decimal" autocomplete="off" aria-describedby="target-hint" />
+        <span class="hint" id="target-hint">Optional. Each hustle gets a ✓ or ✗ against your own number.</span>
+      </div>
+
+      <div class="cta" id="cta" hidden>
+        <p>That's one month, one guess. RealRate keeps this number live for every hustle, after every shift.</p>
+        <span class="app-store-btn" aria-label="Coming soon to the App Store">
+          <span class="glyph" aria-hidden="true"></span>
+          <span class="label" aria-hidden="true">
+            <small>Coming soon to the</small>
+            <span>App Store</span>
+          </span>
+        </span>
+      </div>
+    </section>
+  </main>
+</div>
+
+<article class="explainer wrap narrow" aria-labelledby="how-title">
+  <h2 id="how-title">How the true hourly rate is worked out</h2>
+  <p>Take everything a hustle brought in, subtract everything it cost you, and divide by every hour it took. The costs are the ones that come out quietly: platform fees, supplies and gear, gas, the subscriptions it needs. The hours include the unpaid ones too: driving to the job, prep, messages, invoicing. If you only count the hours someone paid for, every hustle looks better than it is.</p>
+  <p>The calculator uses one month because that's the shortest stretch where costs even out. A tank of gas or a box of supplies bought on Tuesday would make Tuesday look like a loss and the rest of the week look like a windfall. Over a month, recurring costs land once and one-off costs spread across the work they paid for.</p>
+
+  <h2>An example</h2>
+  <p class="example">A food delivery hustle takes in $124 over 7.4 hours. That's <span class="num">$16.76</span> an hour before costs. Then $85 of gas comes out, and it's <strong class="num">$5.27</strong> an hour.</p>
+  <p>That's an illustration, not an average. But it's the shape of the problem: the hustle that feels busiest can be the one paying least per hour, and you can't tell which one it is until you do the math.</p>
+
+  <h2>What this calculator can't do</h2>
+  <p>It works on one month you type in from memory. Real hustles are messier:</p>
+  <ul>
+    <li>Invoices and royalties that pay out weeks after the work.</li>
+    <li>Costs that recur every month, and one-off costs that shouldn't sink a single week.</li>
+    <li>Hustles in different currencies, which shouldn't be added together.</li>
+    <li>A rate that moves every time you log another shift.</li>
+  </ul>
+  <p>That's what <a href="/realrate/">RealRate</a> is for. It's a side hustle tracker for iPhone that keeps this number live for every hustle, from what you actually log.</p>
+</article>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Noah Carpenter</span>
+    <div class="links">
+      <a href="/realrate/support/">Support</a>
+      <a href="/realrate/privacy">Privacy Policy</a>
+      <a href="/realrate/terms">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<template id="hustle-template">
+  <fieldset class="hustle">
+    <legend></legend>
+    <div class="hustle-head">
+      <span></span>
+      <button type="button" class="btn-quiet remove">Remove</button>
+    </div>
+    <div class="field">
+      <label data-for="name">Name <span class="hint" style="display:inline;margin:0">(optional)</span></label>
+      <input data-field="name" type="text" autocomplete="off" maxlength="40" />
+    </div>
+    <div class="row-2">
+      <div class="field">
+        <label data-for="income">Money in this month</label>
+        <input data-field="income" type="text" inputmode="decimal" autocomplete="off" />
+      </div>
+      <div class="field">
+        <label data-for="hours">Hours this month</label>
+        <input data-field="hours" type="text" inputmode="decimal" autocomplete="off" />
+      </div>
+    </div>
+    <span class="hint hours-hint">Count every hour it took, including travel, prep and admin.</span>
+    <p class="soft-confirm" hidden></p>
+    <details class="costs">
+      <summary>Costs this month (optional)</summary>
+      <div class="costs-body">
+        <div class="row-2">
+          <div class="field"><label data-for="fees">Fees</label><input data-field="fees" data-cost type="text" inputmode="decimal" autocomplete="off" /></div>
+          <div class="field"><label data-for="supplies">Supplies &amp; gear</label><input data-field="supplies" data-cost type="text" inputmode="decimal" autocomplete="off" /></div>
+          <div class="field"><label data-for="gas">Gas</label><input data-field="gas" data-cost type="text" inputmode="decimal" autocomplete="off" /></div>
+          <div class="field"><label data-for="subscriptions">Subscriptions</label><input data-field="subscriptions" data-cost type="text" inputmode="decimal" autocomplete="off" /></div>
+        </div>
+        <p class="costs-total" aria-live="off"></p>
+      </div>
+    </details>
+  </fieldset>
+</template>
+
+<script type="module" src="/realrate/side-hustle-calculator/app.js"></script>
+</body>
+</html>
