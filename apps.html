@@ -15,19 +15,40 @@
     <meta name="twitter:title" content="Apps — Noah Carpenter | iOS Developer">
     <meta name="twitter:description" content="6 apps on the App Store. Productivity, wellness, and games — built with Swift, SwiftUI, and React Native.">
     <link rel="canonical" href="https://ndcswift.github.io/apps.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#F5F5F7">
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="portfolio.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.2/dist/feather.min.js" integrity="sha384-qEqAs1VsN9WH2myXDbiP2wGGIttL9bMRZBKCl54ZnzpDlVqbYANP9vMaoT/wvQcf" crossorigin="anonymous"></script>
     <style>
         body { font-family: 'DM Sans', sans-serif; }
         h1, h2, h3 { font-family: 'Poppins', sans-serif; }
 
         /* ── Skill pills ── */
-        .skill-pill { transition: all 0.3s ease; cursor: default; }
-        .skill-pill:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .skill-pill {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            color: #374151;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            cursor: default;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .skill-pill:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-color: #cbd5e1; }
+        .skill-pill-core {
+            background: #F05138;
+            border-color: #F05138;
+            color: #fff;
+            font-weight: 600;
+        }
+        .skill-pill-core:hover { box-shadow: 0 10px 18px -4px rgba(240,81,56,0.35); border-color: #F05138; }
 
         /* ── Slide Carousel ── */
         .screens-viewport {
@@ -82,7 +103,7 @@
         }
         .carousel-counter-text {
             font-family: 'DM Mono', monospace;
-            font-size: 11px; color: #94a3b8;
+            font-size: 11px; color: #4b5563;
             min-width: 38px; text-align: right;
         }
 
@@ -94,33 +115,20 @@
             font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
             color: #64748b; cursor: pointer; transition: all 0.2s;
         }
-        .filter-btn.active, .filter-btn:hover {
+        .filter-btn:hover {
+            border-color: #F05138; color: #D93F25; background: #fff5f2;
+        }
+        .filter-btn.active {
             border-color: #F05138; background: #F05138; color: white;
         }
         .filtered-out { display: none !important; }
 
-        /* ── Scroll Reveal ── */
-        .reveal-card {
+        /* ── Scroll Reveal (hidden state only when JS is running) ── */
+        .js .reveal-card {
             opacity: 0; transform: translateY(28px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
+            transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .reveal-card.visible { opacity: 1; transform: translateY(0); }
-
-        /* ── Live Status Dot ── */
-        .status-dot {
-            display: inline-block; width: 8px; height: 8px;
-            border-radius: 50%; background: #22c55e;
-            margin-right: 5px; vertical-align: middle;
-            animation: pulse-g 2s infinite;
-        }
-        @keyframes pulse-g {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
-            50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
-        }
-
-        /* ── App Store Badge ── */
-        .app-store-badge-img { height: 44px; display: block; transition: opacity 0.2s; }
-        .app-store-link:hover .app-store-badge-img { opacity: 0.8; }
+        .js .reveal-card.visible { opacity: 1; transform: translateY(0); }
 
         /* ── Category Tag ── */
         .app-category-tag {
@@ -140,9 +148,20 @@
             .screens-track-slide img { max-height: 260px; }
             .app-card .grid { grid-template-columns: 1fr !important; }
         }
+
+        /* ── Reduced motion ── */
+        @media (prefers-reduced-motion: reduce) {
+            .js .reveal-card { opacity: 1; transform: none; transition: none; }
+            .screens-track-slide,
+            .carousel-progress-fill,
+            .skill-pill,
+            .carousel-btn-new { transition: none; }
+        }
     </style>
 </head>
 <body class="bg-[#F5F5F7] antialiased">
+
+    <a href="#main" class="skip-link">Skip to content</a>
 
     <!-- Mobile burger -->
     <button id="burger-btn" class="burger-btn" aria-label="Open menu">
@@ -182,7 +201,7 @@
 
     <!-- Main content -->
     <div class="main-content">
-    <main class="container mx-auto px-4 py-12">
+    <main id="main" class="container mx-auto px-4 py-12">
 
         <!-- Page Header -->
         <div class="mb-10">
@@ -208,9 +227,9 @@
                         <span class="app-category-tag">Productivity</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">Focura</h2>
-                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2026</div>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2026</span>
                         </div>
-                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Live on App Store</div>
+                        <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">React Native</span>
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Expo</span>
@@ -235,7 +254,7 @@
                     </div>
                     <div class="p-6 flex flex-col justify-center bg-gray-50">
                         <div class="screens-carousel">
-                            <div class="screens-viewport" tabindex="0">
+                            <div class="screens-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Focura screenshots — use arrow keys to browse">
                                 <div class="screens-track-slide">
                                     <img src="screens/Focura1.png" alt="Focura screenshot 1">
                                     <img src="screens/Focura2.png" alt="Focura screenshot 2">
@@ -263,9 +282,9 @@
                         <span class="app-category-tag">Wellness</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">Gratitude Bestie</h2>
-                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2025</div>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2025</span>
                         </div>
-                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Live on App Store</div>
+                        <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftUI</span>
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftData</span>
@@ -289,7 +308,7 @@
                     </div>
                     <div class="p-6 flex flex-col justify-center bg-gray-50">
                         <div class="screens-carousel">
-                            <div class="screens-viewport" tabindex="0">
+                            <div class="screens-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Gratitude Bestie screenshots — use arrow keys to browse">
                                 <div class="screens-track-slide">
                                     <img src="screens/GB1.png" alt="Gratitude Bestie screenshot 1">
                                     <img src="screens/GB2.png" alt="Gratitude Bestie screenshot 2">
@@ -321,9 +340,9 @@
                         <span class="app-category-tag">Game</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">Tap Duel</h2>
-                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2025</div>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2025</span>
                         </div>
-                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Live on App Store</div>
+                        <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftUI</span>
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">GameKit</span>
@@ -348,7 +367,7 @@
                     </div>
                     <div class="p-6 flex flex-col justify-center bg-gray-50">
                         <div class="screens-carousel">
-                            <div class="screens-viewport" tabindex="0">
+                            <div class="screens-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Tap Duel screenshots — use arrow keys to browse">
                                 <div class="screens-track-slide">
                                     <img src="screens/TapDuel1.png" alt="Tap Duel screenshot 1">
                                     <img src="screens/TapDuel2.png" alt="Tap Duel screenshot 2">
@@ -376,9 +395,9 @@
                         <span class="app-category-tag">Game</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">Sky Loops</h2>
-                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2026</div>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2026</span>
                         </div>
-                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Live on App Store</div>
+                        <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SpriteKit</span>
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">GameKit</span>
@@ -402,7 +421,7 @@
                     </div>
                     <div class="p-6 flex flex-col justify-center bg-gray-50">
                         <div class="screens-carousel">
-                            <div class="screens-viewport" tabindex="0">
+                            <div class="screens-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Sky Loops screenshots — use arrow keys to browse">
                                 <div class="screens-track-slide">
                                     <img src="screens/SkyLoops1.png" alt="Sky Loops screenshot 1">
                                     <img src="screens/SkyLoops2.png" alt="Sky Loops screenshot 2">
@@ -431,9 +450,9 @@
                         <span class="app-category-tag">Productivity</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">WordSage</h2>
-                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2024</div>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2024</span>
                         </div>
-                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Live on App Store</div>
+                        <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftUI</span>
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftData</span>
@@ -457,7 +476,7 @@
                     </div>
                     <div class="p-6 flex flex-col justify-center bg-gray-50">
                         <div class="screens-carousel">
-                            <div class="screens-viewport" tabindex="0">
+                            <div class="screens-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="WordSage screenshots — use arrow keys to browse">
                                 <div class="screens-track-slide">
                                     <img src="screens/WordSage1.png" alt="WordSage screenshot 1">
                                     <img src="screens/WordSage2.png" alt="WordSage screenshot 2">
@@ -486,9 +505,9 @@
                         <span class="app-category-tag">Wellness</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">Daily Devotion</h2>
-                            <div class="bg-gray-800 text-white px-3 py-1 rounded-lg flex-shrink-0 text-sm font-semibold ml-3">2025</div>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2025</span>
                         </div>
-                        <div class="text-sm mb-4" style="color:#16a34a;"><span class="status-dot"></span>Live on App Store</div>
+                        <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftUI</span>
                             <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftData</span>
@@ -511,7 +530,7 @@
                     </div>
                     <div class="p-6 flex flex-col justify-center bg-gray-50">
                         <div class="screens-carousel">
-                            <div class="screens-viewport" tabindex="0">
+                            <div class="screens-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Daily Devotion screenshots — use arrow keys to browse">
                                 <div class="screens-track-slide">
                                     <img src="screens/DailyDevotions1.png" alt="Daily Devotion screenshot 1">
                                     <img src="screens/DailyDevotions2.png" alt="Daily Devotion screenshot 2">
@@ -539,7 +558,7 @@
                 <i data-feather="terminal" class="mr-3" style="color:#F05138;"></i> In the Lab
             </h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-white rounded-2xl shadow-sm p-6 border-l-4" style="border-color:#F0513860;">
+                <div class="bg-white rounded-2xl shadow-sm p-6" style="border:1.5px dashed #F0513880;">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="text-lg font-bold text-gray-800">Kitty Game</h3>
                         <span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-2 py-1 rounded-full">In Development</span>
@@ -562,63 +581,63 @@
 
             <h3 class="text-xl font-semibold text-gray-800 mb-4">Languages</h3>
             <div class="flex flex-wrap gap-3 mb-8">
-                <span class="skill-pill bg-orange-500 text-white px-4 py-2 rounded-full">Swift</span>
-                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">TypeScript</span>
-                <span class="skill-pill bg-blue-700 text-white px-4 py-2 rounded-full">Python</span>
-                <span class="skill-pill bg-green-600 text-white px-4 py-2 rounded-full">C#</span>
-                <span class="skill-pill bg-yellow-400 text-black px-4 py-2 rounded-full">JavaScript</span>
-                <span class="skill-pill bg-red-600 text-white px-4 py-2 rounded-full">HTML5</span>
+                <span class="skill-pill skill-pill-core">Swift</span>
+                <span class="skill-pill">TypeScript</span>
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">C#</span>
+                <span class="skill-pill">JavaScript</span>
+                <span class="skill-pill">HTML5</span>
             </div>
 
             <h3 class="text-xl font-semibold text-gray-800 mb-4">iOS / Apple Frameworks</h3>
             <div class="flex flex-wrap gap-3 mb-8">
-                <span class="skill-pill bg-orange-500 text-white px-4 py-2 rounded-full">SwiftUI</span>
-                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">UIKit</span>
-                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">SwiftData</span>
-                <span class="skill-pill bg-pink-500 text-white px-4 py-2 rounded-full">SpriteKit</span>
-                <span class="skill-pill bg-purple-600 text-white px-4 py-2 rounded-full">GameKit</span>
-                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">AVFoundation</span>
-                <span class="skill-pill bg-red-500 text-white px-4 py-2 rounded-full">HealthKit</span>
-                <span class="skill-pill bg-gray-700 text-white px-4 py-2 rounded-full">StoreKit</span>
-                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">CloudKit</span>
-                <span class="skill-pill bg-gray-700 text-white px-4 py-2 rounded-full">Core ML</span>
-                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">CoreHaptics</span>
-                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">WidgetKit</span>
-                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">ActivityKit</span>
-                <span class="skill-pill bg-black text-white px-4 py-2 rounded-full">RealityKit</span>
-                <span class="skill-pill bg-gray-800 text-white px-4 py-2 rounded-full">visionOS</span>
+                <span class="skill-pill skill-pill-core">SwiftUI</span>
+                <span class="skill-pill">UIKit</span>
+                <span class="skill-pill">SwiftData</span>
+                <span class="skill-pill">SpriteKit</span>
+                <span class="skill-pill">GameKit</span>
+                <span class="skill-pill">AVFoundation</span>
+                <span class="skill-pill">HealthKit</span>
+                <span class="skill-pill">StoreKit</span>
+                <span class="skill-pill">CloudKit</span>
+                <span class="skill-pill">Core ML</span>
+                <span class="skill-pill">CoreHaptics</span>
+                <span class="skill-pill">WidgetKit</span>
+                <span class="skill-pill">ActivityKit</span>
+                <span class="skill-pill">RealityKit</span>
+                <span class="skill-pill">visionOS</span>
             </div>
 
             <h3 class="text-xl font-semibold text-gray-800 mb-4">Cross-Platform</h3>
             <div class="flex flex-wrap gap-3 mb-8">
-                <span class="skill-pill bg-cyan-400 text-black px-4 py-2 rounded-full">React Native</span>
-                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">Expo</span>
+                <span class="skill-pill skill-pill-core">React Native</span>
+                <span class="skill-pill">Expo</span>
             </div>
 
             <h3 class="text-xl font-semibold text-gray-800 mb-4">Data &amp; Backend</h3>
             <div class="flex flex-wrap gap-3 mb-8">
-                <span class="skill-pill bg-blue-900 text-white px-4 py-2 rounded-full">SQLite</span>
-                <span class="skill-pill bg-yellow-400 text-black px-4 py-2 rounded-full">Firebase</span>
-                <span class="skill-pill bg-emerald-500 text-white px-4 py-2 rounded-full">Supabase</span>
-                <span class="skill-pill bg-indigo-900 text-white px-4 py-2 rounded-full">Realm</span>
-                <span class="skill-pill bg-gray-800 text-white px-4 py-2 rounded-full">Zustand</span>
-                <span class="skill-pill bg-lime-400 text-black px-4 py-2 rounded-full">Drizzle ORM</span>
+                <span class="skill-pill">SQLite</span>
+                <span class="skill-pill">Firebase</span>
+                <span class="skill-pill">Supabase</span>
+                <span class="skill-pill">Realm</span>
+                <span class="skill-pill">Zustand</span>
+                <span class="skill-pill">Drizzle ORM</span>
             </div>
 
             <h3 class="text-xl font-semibold text-gray-800 mb-4">Tools &amp; Workflow</h3>
             <div class="flex flex-wrap gap-3">
-                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">Xcode</span>
-                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">Xcode Cloud</span>
-                <span class="skill-pill bg-blue-500 text-white px-4 py-2 rounded-full">TestFlight</span>
-                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">EAS Build</span>
-                <span class="skill-pill bg-orange-600 text-white px-4 py-2 rounded-full">Git</span>
-                <span class="skill-pill bg-gray-900 text-white px-4 py-2 rounded-full">GitHub</span>
-                <span class="skill-pill bg-blue-600 text-white px-4 py-2 rounded-full">VS Code</span>
-                <span class="skill-pill bg-pink-600 text-white px-4 py-2 rounded-full">Figma</span>
-                <span class="skill-pill bg-blue-700 text-white px-4 py-2 rounded-full">Keynote</span>
-                <span class="skill-pill bg-black text-white px-4 py-2 rounded-full">Unity</span>
-                <span class="skill-pill bg-red-600 text-white px-4 py-2 rounded-full">RevenueCat</span>
-                <span class="skill-pill bg-red-500 text-white px-4 py-2 rounded-full">AdMob</span>
+                <span class="skill-pill skill-pill-core">Xcode</span>
+                <span class="skill-pill">Xcode Cloud</span>
+                <span class="skill-pill">TestFlight</span>
+                <span class="skill-pill">EAS Build</span>
+                <span class="skill-pill">Git</span>
+                <span class="skill-pill">GitHub</span>
+                <span class="skill-pill">VS Code</span>
+                <span class="skill-pill">Figma</span>
+                <span class="skill-pill">Keynote</span>
+                <span class="skill-pill">Unity</span>
+                <span class="skill-pill">RevenueCat</span>
+                <span class="skill-pill">AdMob</span>
             </div>
         </section>
 
@@ -637,7 +656,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-gray-200 py-6 px-4 mt-4">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-gray-400">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-gray-500">
             <p>&copy; 2026 Noah Carpenter. All rights reserved.</p>
             <nav class="flex gap-4">
                 <a href="index.html" class="hover:text-gray-600 transition">Home</a>
@@ -715,26 +734,30 @@
             });
         });
 
-        // ── Card Tilt ──
-        document.querySelectorAll('.app-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transition = 'transform 0.12s ease, box-shadow 0.3s ease';
+        // ── Card Tilt (pointer devices only, respects reduced motion) ──
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('.app-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = 'transform 0.12s ease, box-shadow 0.3s ease';
+                });
+                card.addEventListener('mousemove', e => {
+                    const r = card.getBoundingClientRect();
+                    const x = (e.clientX - r.left) / r.width  - 0.5;
+                    const y = (e.clientY - r.top)  / r.height - 0.5;
+                    card.style.transform  = `perspective(1200px) rotateY(${x * 2}deg) rotateX(${-y * 1.5}deg) translateY(-3px)`;
+                    card.style.boxShadow  = '0 24px 48px -12px rgba(240,81,56,0.15)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transition = 'transform 0.6s ease, box-shadow 0.4s ease';
+                    card.style.transform  = '';
+                    card.style.boxShadow  = '';
+                });
             });
-            card.addEventListener('mousemove', e => {
-                const r = card.getBoundingClientRect();
-                const x = (e.clientX - r.left) / r.width  - 0.5;
-                const y = (e.clientY - r.top)  / r.height - 0.5;
-                card.style.transform  = `perspective(1200px) rotateY(${x * 2}deg) rotateX(${-y * 1.5}deg) translateY(-3px)`;
-                card.style.boxShadow  = '0 24px 48px -12px rgba(240,81,56,0.15)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transition = 'transform 0.6s ease, box-shadow 0.4s ease';
-                card.style.transform  = '';
-                card.style.boxShadow  = '';
-            });
-        });
+        }
 
         // ── Scroll Reveal ──
+        const revealEls = Array.from(document.querySelectorAll('.reveal-card'));
         const revealObs = new IntersectionObserver((entries) => {
             entries.forEach((entry, i) => {
                 if (entry.isIntersecting) {
@@ -743,7 +766,24 @@
                 }
             });
         }, { threshold: 0.06 });
-        document.querySelectorAll('.reveal-card').forEach(el => revealObs.observe(el));
+        revealEls.forEach(el => revealObs.observe(el));
+        // Fallback sweep: fast scrolling can jump an element through the viewport
+        // between observer ticks, so it never reports — catch anything missed.
+        let revealTick = false;
+        let maxSeen = window.scrollY + window.innerHeight;
+        function revealSweep() {
+            revealTick = false;
+            revealEls.forEach(el => {
+                if (!el.classList.contains('visible') && el.getBoundingClientRect().top + window.scrollY < maxSeen) {
+                    el.classList.add('visible');
+                    revealObs.unobserve(el);
+                }
+            });
+        }
+        window.addEventListener('scroll', () => {
+            maxSeen = Math.max(maxSeen, window.scrollY + window.innerHeight);
+            if (!revealTick) { revealTick = true; setTimeout(revealSweep, 150); }
+        }, { passive: true });
     </script>
 </body>
 </html>

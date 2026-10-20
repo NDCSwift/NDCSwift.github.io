@@ -34,23 +34,31 @@
     }
     </script>
 
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#F5F5F7">
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="portfolio.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.2/dist/feather.min.js" integrity="sha384-qEqAs1VsN9WH2myXDbiP2wGGIttL9bMRZBKCl54ZnzpDlVqbYANP9vMaoT/wvQcf" crossorigin="anonymous"></script>
     <style>
         body { font-family: 'DM Sans', sans-serif; }
         h1, h2, h3 { font-family: 'Poppins', sans-serif; }
 
-        /* ── Section animations ── */
+        /* ── Section animations (hidden state only when JS is running) ── */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(22px); }
             to   { opacity: 1; transform: translateY(0); }
         }
-        .animate-section { opacity: 0; }
-        .animate-section.visible { animation: fadeInUp 0.45s ease-out forwards; }
+        .js .animate-section { opacity: 0; }
+        .js .animate-section.visible { animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @media (prefers-reduced-motion: reduce) {
+            .js .animate-section { opacity: 1; }
+            .js .animate-section.visible { animation: none; }
+            .video-card, .topic-tile { transition: none; }
+        }
 
         /* ── Video card ── */
         .video-card { transition: all 0.25s ease; }
@@ -81,6 +89,8 @@
     </style>
 </head>
 <body class="bg-[#F5F5F7] antialiased">
+
+    <a href="#main" class="skip-link">Skip to content</a>
 
     <!-- Mobile burger -->
     <button id="burger-btn" class="burger-btn" aria-label="Open menu">
@@ -120,7 +130,7 @@
 
     <!-- Main content -->
     <div class="main-content">
-    <main class="container mx-auto px-4 py-12">
+    <main id="main" class="container mx-auto px-4 py-12">
 
         <!-- Channel Hero -->
         <section class="bg-white rounded-2xl shadow-sm p-8 mb-10 animate-section">
@@ -172,72 +182,72 @@
             <div class="grid md:grid-cols-3 gap-6" id="video-grid">
 
                 <!-- Featured card -->
-                <a href="https://www.youtube.com/watch?v=0ZSmhUOXT7s" target="_blank" rel="noopener noreferrer"
-                   class="video-card md:col-span-2 bg-white rounded-2xl shadow-sm overflow-hidden block"
-                   data-video-id="0ZSmhUOXT7s" data-topic="SwiftUI" data-repo="https://github.com/NDCSwift/DisclosureGroup_OutlineGroup_SwiftUI">
-                    <div class="relative">
-                        <img src="https://img.youtube.com/vi/0ZSmhUOXT7s/hqdefault.jpg" alt="iOS Swift tutorial video" class="w-full object-cover aspect-video" />
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-16 h-16 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
-                                <i data-feather="play" class="text-white w-7 h-7 ml-1"></i>
+                <article class="video-card md:col-span-2 bg-white rounded-2xl shadow-sm overflow-hidden"
+                   data-video-id="0ZSmhUOXT7s" data-topic="SwiftUI">
+                    <a href="https://www.youtube.com/watch?v=0ZSmhUOXT7s" target="_blank" rel="noopener noreferrer" class="block">
+                        <div class="relative">
+                            <img src="https://img.youtube.com/vi/0ZSmhUOXT7s/hqdefault.jpg" alt="iOS Swift tutorial video" class="w-full object-cover aspect-video" />
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-16 h-16 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                                    <i data-feather="play" class="text-white w-7 h-7 ml-1"></i>
+                                </div>
                             </div>
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full">Latest</span>
                         </div>
-                        <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full">Latest</span>
-                    </div>
-                    <div class="p-6">
-                        <p class="video-title text-gray-800 font-semibold text-base leading-snug mb-3 animate-pulse bg-gray-100 rounded h-5 w-3/4"></p>
+                        <p class="video-title text-gray-800 font-semibold text-base leading-snug animate-pulse bg-gray-100 rounded h-5 w-3/4 mx-6 mt-6"></p>
+                    </a>
+                    <div class="px-6 pb-6 pt-3">
                         <a href="https://github.com/NDCSwift/DisclosureGroup_OutlineGroup_SwiftUI" target="_blank" rel="noopener noreferrer"
-                           class="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-gray-400 rounded-lg px-3 py-1.5 transition"
-                           onclick="event.stopPropagation()">
+                           class="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-gray-400 rounded-lg px-3 py-1.5 transition">
                             <i data-feather="github" class="w-3.5 h-3.5"></i> View companion repo
                         </a>
                     </div>
-                </a>
+                </article>
 
                 <!-- Right column -->
                 <div class="flex flex-col gap-6">
 
-                    <a href="https://www.youtube.com/watch?v=7HaylMlkVFM" target="_blank" rel="noopener noreferrer"
-                       class="video-card bg-white rounded-2xl shadow-sm overflow-hidden block flex-1"
-                       data-video-id="7HaylMlkVFM" data-repo="https://github.com/NDCSwift/ControlGroup_SwiftUI">
-                        <div class="relative">
-                            <img src="https://img.youtube.com/vi/7HaylMlkVFM/hqdefault.jpg" alt="iOS Swift tutorial video" class="w-full object-cover aspect-video" />
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-10 h-10 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center shadow">
-                                    <i data-feather="play" class="text-white w-4 h-4 ml-0.5"></i>
+                    <article class="video-card bg-white rounded-2xl shadow-sm overflow-hidden flex-1"
+                       data-video-id="7HaylMlkVFM">
+                        <a href="https://www.youtube.com/watch?v=7HaylMlkVFM" target="_blank" rel="noopener noreferrer" class="block">
+                            <div class="relative">
+                                <img src="https://img.youtube.com/vi/7HaylMlkVFM/hqdefault.jpg" alt="iOS Swift tutorial video" class="w-full object-cover aspect-video" />
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-10 h-10 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center shadow">
+                                        <i data-feather="play" class="text-white w-4 h-4 ml-0.5"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="p-4">
-                            <p class="video-title text-gray-800 font-semibold text-sm leading-snug mb-2 animate-pulse bg-gray-100 rounded h-4 w-3/4"></p>
+                            <p class="video-title text-gray-800 font-semibold text-sm leading-snug animate-pulse bg-gray-100 rounded h-4 w-3/4 mx-4 mt-4"></p>
+                        </a>
+                        <div class="px-4 pb-4 pt-2">
                             <a href="https://github.com/NDCSwift/ControlGroup_SwiftUI" target="_blank" rel="noopener noreferrer"
-                               class="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-800 transition"
-                               onclick="event.stopPropagation()">
+                               class="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-800 transition">
                                 <i data-feather="github" class="w-3.5 h-3.5"></i> View companion repo
                             </a>
                         </div>
-                    </a>
+                    </article>
 
-                    <a href="https://www.youtube.com/watch?v=q6AyeXtG134" target="_blank" rel="noopener noreferrer"
-                       class="video-card bg-white rounded-2xl shadow-sm overflow-hidden block flex-1"
-                       data-video-id="q6AyeXtG134" data-repo="https://github.com/NDCSwift/LabeledContent_SwiftUI">
-                        <div class="relative">
-                            <img src="https://img.youtube.com/vi/q6AyeXtG134/hqdefault.jpg" alt="iOS Swift tutorial video" class="w-full object-cover aspect-video" />
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-10 h-10 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center shadow">
-                                    <i data-feather="play" class="text-white w-4 h-4 ml-0.5"></i>
+                    <article class="video-card bg-white rounded-2xl shadow-sm overflow-hidden flex-1"
+                       data-video-id="q6AyeXtG134">
+                        <a href="https://www.youtube.com/watch?v=q6AyeXtG134" target="_blank" rel="noopener noreferrer" class="block">
+                            <div class="relative">
+                                <img src="https://img.youtube.com/vi/q6AyeXtG134/hqdefault.jpg" alt="iOS Swift tutorial video" class="w-full object-cover aspect-video" />
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-10 h-10 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center shadow">
+                                        <i data-feather="play" class="text-white w-4 h-4 ml-0.5"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="p-4">
-                            <p class="video-title text-gray-800 font-semibold text-sm leading-snug mb-2 animate-pulse bg-gray-100 rounded h-4 w-3/4"></p>
+                            <p class="video-title text-gray-800 font-semibold text-sm leading-snug animate-pulse bg-gray-100 rounded h-4 w-3/4 mx-4 mt-4"></p>
+                        </a>
+                        <div class="px-4 pb-4 pt-2">
                             <a href="https://github.com/NDCSwift/LabeledContent_SwiftUI" target="_blank" rel="noopener noreferrer"
-                               class="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-800 transition"
-                               onclick="event.stopPropagation()">
+                               class="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-800 transition">
                                 <i data-feather="github" class="w-3.5 h-3.5"></i> View companion repo
                             </a>
                         </div>
-                    </a>
+                    </article>
 
                 </div>
             </div>
@@ -329,7 +339,7 @@
 
     <!-- Footer -->
     <footer class="border-t border-gray-200 py-6 px-4 mt-4">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-gray-400">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-3 text-sm text-gray-500">
             <p>&copy; 2026 Noah Carpenter. All rights reserved.</p>
             <nav class="flex gap-4">
                 <a href="index.html" class="hover:text-gray-600 transition">Home</a>
@@ -355,6 +365,7 @@
         })();
 
         // ── Section entry animations ──
+        const animEls = Array.from(document.querySelectorAll('.animate-section'));
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -363,7 +374,24 @@
                 }
             });
         }, { threshold: 0.08 });
-        document.querySelectorAll('.animate-section').forEach(el => observer.observe(el));
+        animEls.forEach(el => observer.observe(el));
+        // Fallback sweep: fast scrolling can jump an element through the viewport
+        // between observer ticks, so it never reports — catch anything missed.
+        let animTick = false;
+        let maxSeen = window.scrollY + window.innerHeight;
+        function animSweep() {
+            animTick = false;
+            animEls.forEach(el => {
+                if (!el.classList.contains('visible') && el.getBoundingClientRect().top + window.scrollY < maxSeen) {
+                    el.classList.add('visible');
+                    observer.unobserve(el);
+                }
+            });
+        }
+        window.addEventListener('scroll', () => {
+            maxSeen = Math.max(maxSeen, window.scrollY + window.innerHeight);
+            if (!animTick) { animTick = true; setTimeout(animSweep, 150); }
+        }, { passive: true });
 
         // ── Fetch video titles via oEmbed ──
         document.querySelectorAll('#video-grid [data-video-id]').forEach(card => {

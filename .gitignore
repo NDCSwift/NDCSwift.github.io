@@ -1,2 +1,10 @@
 docs/superpowers/
 .superpowers/
+
+# Local design context (impeccable) — not published
+PRODUCT.md
+DESIGN.md
+.impeccable/
+
+# Local planning map (wayfinder) — not published
+wayfinder/
