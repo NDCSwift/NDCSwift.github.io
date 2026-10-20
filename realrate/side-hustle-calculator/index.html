@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/realrate/favicon-32.png" />
 <link rel="apple-touch-icon" href="/realrate/apple-touch-icon.png" />
 <meta name="theme-color" content="#FAFAF7" />
-<!-- Launch day (NDCSwift/RealRate#216): add the apple-itunes-app Smart App Banner here, with the landing page's. -->
+<meta name="apple-itunes-app" content="app-id=6771057419" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="RealRate" />
 <meta property="og:title" content="Is Your Side Hustle Worth It? True Hourly Rate Calculator" />
@@ -198,14 +198,9 @@
 
   .cta { margin-top: 20px; padding: 20px; border-radius: 14px; background: var(--ink); color: var(--on-ink); }
   .cta p { font-size: 1rem; margin-bottom: 14px; text-wrap: pretty; }
-  .app-store-btn {
-    display: inline-flex; align-items: center; gap: 12px;
-    background: var(--bg); color: var(--ink);
-    padding: 10px 20px 10px 18px; border-radius: 100px; font-weight: 600; font-size: 0.9375rem; min-height: 44px;
-  }
-  .app-store-btn .glyph { font-size: 1.25rem; line-height: 1; margin-top: -2px; }
-  .app-store-btn .label { display: flex; flex-direction: column; line-height: 1.1; }
-  .app-store-btn .label small { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-soft); }
+  .store-badge { display: inline-flex; border-radius: 10px; }
+  .store-badge img { height: 50px; width: auto; display: block; }
+  .store-badge:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
   /* Explainer */
   article.explainer { padding: 24px 0 88px; }
@@ -290,13 +285,9 @@
 
       <div class="cta" id="cta" hidden>
         <p>That's one month, one guess. RealRate keeps this number live for every hustle, after every shift.</p>
-        <span class="app-store-btn" aria-label="Coming soon to the App Store">
-          <span class="glyph" aria-hidden="true"></span>
-          <span class="label" aria-hidden="true">
-            <small>Coming soon to the</small>
-            <span>App Store</span>
-          </span>
-        </span>
+        <a class="store-badge" href="https://apps.apple.com/us/app/realrate-side-hustle-tracker/id6771057419?itscg=30200&amp;itsct=apps_box_badge&amp;mttnsubad=6771057419">
+          <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/white/en-us" alt="Download RealRate on the App Store" width="150" height="50" />
+        </a>
       </div>
     </section>
   </main>
