@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apps — Noah Carpenter | iOS Developer</title>
-    <meta name="description" content="6 apps on the App Store by Noah Carpenter — iOS developer building with Swift, SwiftUI, and React Native. Productivity, wellness, and games.">
+    <meta name="description" content="7 apps on the App Store by Noah Carpenter — iOS developer building with Swift, SwiftUI, and React Native. Productivity, finance, wellness, and games.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Apps — Noah Carpenter | iOS Developer">
-    <meta property="og:description" content="6 apps on the App Store. Each one started as a problem I wanted to solve. Built with Swift, SwiftUI, and React Native.">
+    <meta property="og:description" content="7 apps on the App Store. Each one started as a problem I wanted to solve. Built with Swift, SwiftUI, and React Native.">
     <meta property="og:url" content="https://ndcswift.github.io/apps.html">
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/152039306?v=4">
     <meta property="og:site_name" content="Noah Carpenter">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Apps — Noah Carpenter | iOS Developer">
-    <meta name="twitter:description" content="6 apps on the App Store. Productivity, wellness, and games — built with Swift, SwiftUI, and React Native.">
+    <meta name="twitter:description" content="7 apps on the App Store. Productivity, finance, wellness, and games — built with Swift, SwiftUI, and React Native.">
     <link rel="canonical" href="https://ndcswift.github.io/apps.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta name="theme-color" content="#F5F5F7">
@@ -206,19 +206,74 @@
         <!-- Page Header -->
         <div class="mb-10">
             <h1 class="text-4xl font-bold text-gray-900 mb-2">My Apps</h1>
-            <p class="text-gray-500 text-lg">6 apps on the App Store. Each one started as a problem I wanted to solve.</p>
+            <p class="text-gray-500 text-lg">7 apps on the App Store. Each one started as a problem I wanted to solve.</p>
         </div>
 
         <!-- Filter Bar -->
         <div class="filter-bar">
             <button class="filter-btn active" data-filter="all">All Apps</button>
             <button class="filter-btn" data-filter="productivity">Productivity</button>
+            <button class="filter-btn" data-filter="finance">Finance</button>
             <button class="filter-btn" data-filter="games">Games</button>
             <button class="filter-btn" data-filter="wellness">Wellness</button>
         </div>
 
         <!-- App Cards -->
         <section class="mb-16">
+
+            <!-- RealRate -->
+            <div id="realrate" class="app-card reveal-card bg-white rounded-2xl shadow-sm overflow-hidden mb-8" data-category="finance">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="p-8">
+                        <span class="app-category-tag">Finance</span>
+                        <div class="flex items-start justify-between mb-1">
+                            <h2 class="text-2xl font-bold text-gray-900">RealRate</h2>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2026</span>
+                        </div>
+                        <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftUI</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftData + CloudKit</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Swift Charts</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">WidgetKit</span>
+                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">RevenueCat</span>
+                        </div>
+                        <p class="text-gray-600 mb-5 leading-relaxed text-sm">
+                            A side hustle tracker built around one question: which hustle actually pays? RealRate takes every expense out of what each hustle earns, divides by the hours you actually worked, and ranks your hustles side by side. Native SwiftUI, written in Swift 6 language mode throughout.
+                        </p>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>True hourly rate per hustle after gas, supplies and fees, ranked side by side</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Live shift timer with a Lock Screen and Dynamic Island Live Activity, plus home screen widgets</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Per-client rates, iCloud sync via CloudKit, and a yearly Hustle Health Report PDF</span></li>
+                        </ul>
+                        <div class="flex items-center gap-4 flex-wrap">
+                            <a href="https://apps.apple.com/us/app/realrate-side-hustle-tracker/id6771057419?itscg=30200&itsct=apps_box_badge&mttnsubad=6771057419" target="_blank" class="app-store-link">
+                                <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store" class="app-store-badge-img">
+                            </a>
+                            <a href="/realrate/" class="text-sm font-semibold text-gray-700 hover:text-gray-900 inline-flex items-center gap-1">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col justify-center bg-gray-50">
+                        <div class="screens-carousel">
+                            <div class="screens-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="RealRate screenshots — use arrow keys to browse">
+                                <div class="screens-track-slide">
+                                    <img src="screens/RealRate1.png" alt="RealRate dashboard ranking four side hustles by true hourly rate">
+                                    <img src="screens/RealRate2.png" alt="A food delivery hustle's detail screen showing $10.14 an hour after expenses">
+                                    <img src="screens/RealRate3.png" alt="Per-client hourly rates for a logo design hustle">
+                                    <img src="screens/RealRate4.png" alt="A running shift timer with the estimated earnings at the current rate">
+                                    <img src="screens/RealRate5.png" alt="The annual Hustle Health Report">
+                                </div>
+                            </div>
+                            <div class="screens-bottom">
+                                <button class="carousel-btn-new carousel-prev-new" aria-label="Previous">&#8249;</button>
+                                <div class="carousel-progress-bar"><div class="carousel-progress-fill"></div></div>
+                                <button class="carousel-btn-new carousel-next-new" aria-label="Next">&#8250;</button>
+                                <span class="carousel-counter-text">1 / 5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Focura -->
             <div id="focura" class="app-card reveal-card bg-white rounded-2xl shadow-sm overflow-hidden mb-8" data-category="productivity">
