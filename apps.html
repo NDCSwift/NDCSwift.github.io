@@ -123,11 +123,11 @@
         .filtered-out { display: none !important; }
 
         /* ── Scroll Reveal (hidden state only when JS is running) ── */
-        .js .reveal-card {
+        .reveal-armed .reveal-card {
             opacity: 0; transform: translateY(16px);
             transition: opacity var(--t-large) var(--ease), transform var(--t-large) var(--ease);
         }
-        .js .reveal-card.visible { opacity: 1; transform: translateY(0); }
+        .reveal-armed .reveal-card.visible { opacity: 1; transform: translateY(0); }
 
         /* ── Category Tag ── */
         .app-category-tag {
@@ -160,7 +160,7 @@
 
         /* ── Reduced motion: opacity only ── */
         @media (prefers-reduced-motion: reduce) {
-            .js .reveal-card { transform: none; transition: opacity var(--t-std) linear; }
+            .reveal-armed .reveal-card { transform: none; transition: opacity var(--t-std) linear; }
             .screens-track-slide,
             .carousel-progress-fill { transition: none; }
         }
@@ -730,7 +730,7 @@
     </div><!-- /.main-content -->
 
     <script>
-        feather.replace();
+        window.feather?.replace();
 
         // ── Mobile sidebar ──
         (function () {
@@ -829,6 +829,8 @@
             });
         }, { threshold: 0.06 });
         revealEls.forEach(el => revealObs.observe(el));
+        // Hide-until-revealed only once the observer is live, so a failed script never blanks the page.
+        document.documentElement.classList.add('reveal-armed');
         // Fallback sweep: fast scrolling can jump an element through the viewport
         // between observer ticks, so it never reports — catch anything missed.
         let revealTick = false;

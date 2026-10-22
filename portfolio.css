@@ -261,18 +261,18 @@ footer a { display: inline-flex; align-items: center; justify-content: center; m
 /* ===========================
    Motion
    =========================== */
-/* Reveal-on-scroll: hidden state only when JS is running (html.js),
-   so content stays visible if scripts fail to load. */
-.js .reveal {
+/* Reveal-on-scroll: hidden state only once the page script has armed the
+   observer (html.reveal-armed), so content stays visible if any script fails. */
+.reveal-armed .reveal {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity var(--t-large) var(--ease), transform var(--t-large) var(--ease);
 }
-.js .reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-armed .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) {
   /* Opacity only — no travel, no loops. */
-  .js .reveal { transform: none; transition: opacity var(--t-std) linear; }
+  .reveal-armed .reveal { transform: none; transition: opacity var(--t-std) linear; }
   .sidebar { transition: none; }
 }
 

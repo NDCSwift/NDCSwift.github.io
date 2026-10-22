@@ -3,7 +3,7 @@
 // Load immediately after cdn.tailwindcss.com. Every gray/white utility in the
 // pages resolves to the shared ink ramp and the Orange-derived surfaces, so no
 // utility class can reach a pure #FFFFFF or #000000.
-tailwind.config = {
+if (window.tailwind) tailwind.config = {
   theme: {
     extend: {
       colors: {

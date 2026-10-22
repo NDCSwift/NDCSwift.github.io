@@ -500,6 +500,8 @@
             });
         }, { threshold: 0.08 });
         revealEls.forEach(el => revealObs.observe(el));
+        // Hide-until-revealed only once the observer is live, so a failed script never blanks the page.
+        document.documentElement.classList.add('reveal-armed');
         // Fallback sweep: fast scrolling can jump an element through the viewport
         // between observer ticks, so it never reports — catch anything missed.
         let revealTick = false;

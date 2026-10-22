@@ -52,8 +52,8 @@
             to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .js .animate-section { opacity: 0; }
-        .js .animate-section.visible { animation: fadeInUp var(--t-large) var(--ease) forwards; }
+        .reveal-armed .animate-section { opacity: 0; }
+        .reveal-armed .animate-section.visible { animation: fadeInUp var(--t-large) var(--ease) forwards; }
 
         /* ── Video card ── */
         .video-card { transition: transform var(--t-std) var(--ease), box-shadow var(--t-std) var(--ease); }
@@ -64,7 +64,7 @@
         .topic-tile:hover { background-color: var(--wash); }
 
         @media (prefers-reduced-motion: reduce) {
-            .js .animate-section.visible { animation-name: fadeIn; }
+            .reveal-armed .animate-section.visible { animation-name: fadeIn; }
             .video-card { transition: none; }
             .video-card:hover { transform: none; }
         }
@@ -338,7 +338,7 @@
     </div><!-- /.main-content -->
 
     <script>
-        feather.replace();
+        window.feather?.replace();
 
         // ── Mobile sidebar ──
         (function () {
@@ -362,6 +362,8 @@
             });
         }, { threshold: 0.08 });
         animEls.forEach(el => observer.observe(el));
+        // Hide-until-revealed only once the observer is live, so a failed script never blanks the page.
+        document.documentElement.classList.add('reveal-armed');
         // Fallback sweep: fast scrolling can jump an element through the viewport
         // between observer ticks, so it never reports — catch anything missed.
         let animTick = false;
