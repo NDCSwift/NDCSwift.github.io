@@ -18,16 +18,15 @@
     <meta name="twitter:description" content="7 apps on the App Store. Swift, SwiftUI, React Native. Tutorials from a developer who actually ships.">
     <link rel="canonical" href="https://ndcswift.github.io">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <meta name="theme-color" content="#F5F5F7">
+    <meta name="theme-color" content="#FDF7F4">
     <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800&family=Red+Hat+Mono:wght@400;500&family=Red+Hat+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="portfolio.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="ndc-tailwind.js"></script>
     <style>
-        body { font-family: 'DM Sans', sans-serif; }
-        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
 
         /* ── Hero ── */
         .hero-section {
@@ -44,32 +43,34 @@
             width: 100%;
         }
         .hero-eyebrow {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.12em;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: #F05138;
+            color: var(--action);
             margin-bottom: 0.75rem;
         }
         .hero-heading {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+            font-family: var(--font-display);
+            font-size: clamp(2.75rem, 5vw, 4.75rem);
             font-weight: 800;
-            line-height: 1.05;
-            color: #1D1D1F;
+            line-height: 1;
+            letter-spacing: -0.025em;
+            color: var(--ink-1);
             margin-bottom: 0.5rem;
         }
         .hero-sub {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #6E6E73;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--action);
             margin-bottom: 1.25rem;
         }
         .hero-desc {
-            font-size: 1.05rem;
-            color: #6E6E73;
-            line-height: 1.7;
+            font-size: 1.0625rem;
+            color: var(--ink-2);
+            line-height: 1.65;
             max-width: 460px;
             margin-bottom: 2rem;
         }
@@ -78,62 +79,65 @@
 
         /* ── Hero entrance (CSS-only, runs without JS) ── */
         @keyframes hero-rise {
-            from { opacity: 0; transform: translateY(18px); }
+            from { opacity: 0; transform: translateY(12px); }
             to   { opacity: 1; transform: none; }
         }
-        .hero-copy > * { animation: hero-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+        .hero-copy > * { animation: hero-rise 0.35s var(--ease) backwards; }
         .hero-copy > *:nth-child(1) { animation-delay: 0.05s; }
         .hero-copy > *:nth-child(2) { animation-delay: 0.12s; }
         .hero-copy > *:nth-child(3) { animation-delay: 0.19s; }
         .hero-copy > *:nth-child(4) { animation-delay: 0.26s; }
         .hero-copy > *:nth-child(5) { animation-delay: 0.33s; }
-        .hero-visual { animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards; }
+        .hero-visual { animation: hero-rise 0.35s var(--ease) 0.2s backwards; }
+        @keyframes hero-fade { from { opacity: 0; } to { opacity: 1; } }
         @media (prefers-reduced-motion: reduce) {
-            .hero-copy > *, .hero-visual { animation: none; }
+            .hero-copy > *, .hero-visual { animation-name: hero-fade; }
+            .featured-card, .explore-card { transition: none; }
+            .featured-card:hover, .explore-card:hover { transform: none; }
         }
         .hero-mockup {
             max-height: 500px;
             max-width: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 28px 55px rgba(0,0,0,0.13));
+            filter: drop-shadow(0 28px 55px rgb(74 38 18 / 0.13));
         }
 
         /* ── Section heading ── */
         .section-heading {
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-display);
             font-size: 1.6rem;
             font-weight: 700;
-            color: #1D1D1F;
+            color: #07212F;
             display: flex;
             align-items: center;
             gap: 0.625rem;
         }
 
         /* ── Featured app cards ── */
-        .featured-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .featured-card { transition: transform var(--t-std) var(--ease), box-shadow var(--t-std) var(--ease); }
         .featured-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -8px rgba(240,81,56,0.13);
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px -12px rgb(184 67 7 / 0.18);
         }
 
         /* ── Explore cards ── */
-        .explore-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+        .explore-card { transition: transform var(--t-std) var(--ease), box-shadow var(--t-std) var(--ease); }
         .explore-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px -6px rgba(0,0,0,0.09);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -6px rgb(74 38 18 / 0.09);
         }
 
         /* ── About accent boxes ── */
         .about-box {
-            background: #fff0ed;
+            background: #FCE9E0;
             border-radius: 12px;
             padding: 1rem;
         }
         .about-box-label {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #D93F25;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--action-pressed);
             display: flex;
             align-items: center;
             gap: 0.4rem;
@@ -153,7 +157,7 @@
         }
     </style>
 </head>
-<body class="bg-[#F5F5F7] antialiased">
+<body class="antialiased">
 
     <a href="#main" class="skip-link">Skip to content</a>
 
@@ -210,7 +214,7 @@
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <img src="screens/Focura1.png" alt="Focura — ADHD focus and time-blocking app" class="hero-mockup float-anim">
+                    <img src="screens/Focura1.png" alt="Focura — ADHD focus and time-blocking app" class="hero-mockup">
                 </div>
             </div>
         </section>
@@ -218,7 +222,7 @@
         <!-- About -->
         <section id="about" class="bg-white rounded-2xl shadow-sm mx-6 mb-6 p-8 reveal">
             <h2 class="section-heading mb-6">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F05138" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B84307" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 About Me
             </h2>
             <div class="grid md:grid-cols-3 gap-8">
@@ -227,7 +231,7 @@
                         I started in web design — HTML, CSS, JavaScript — then taught myself Swift because I wanted to build something that lived in someone's pocket. That was five years ago. Since then I've shipped 7 apps across games, productivity, wellness, and finance — including my first cross-platform app, built with React Native.
                     </p>
                     <p class="text-gray-700 mb-6 text-lg leading-relaxed">
-                        App development is genuinely hard — especially when you're learning on your own. That's the reason I make tutorials. My <a href="https://www.youtube.com/@noahdoescoding" target="_blank" class="text-[#F05138] hover:underline">YouTube channel</a> covers concepts I've had to work through myself, explained thoroughly enough that you actually understand what's happening — not just what to type. Every video comes with a forkable GitHub repo. I'd rather over-explain than leave someone stuck where I once was.
+                        App development is genuinely hard — especially when you're learning on your own. That's the reason I make tutorials. My <a href="https://www.youtube.com/@noahdoescoding" target="_blank" class="text-[#B84307] underline underline-offset-2 hover:text-[#9E3906]">YouTube channel</a> covers concepts I've had to work through myself, explained thoroughly enough that you actually understand what's happening — not just what to type. Every video comes with a forkable GitHub repo. I'd rather over-explain than leave someone stuck where I once was.
                     </p>
                     <div class="grid grid-cols-2 gap-3">
                         <div class="about-box">
@@ -247,7 +251,7 @@
                     </div>
                 </div>
                 <div class="flex justify-center md:justify-end items-start">
-                    <div class="w-40 h-40 rounded-full overflow-hidden border-4 shadow-lg flex-shrink-0" style="border-color:#F0513830;">
+                    <div class="w-40 h-40 rounded-full overflow-hidden border-4 shadow-lg flex-shrink-0" style="border-color:#B8430730;">
                         <img src="https://avatars.githubusercontent.com/u/152039306?v=4" alt="Noah Carpenter" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -258,10 +262,10 @@
         <section id="featured" class="mx-6 mb-6">
             <div class="flex items-center justify-between mb-5">
                 <h2 class="section-heading">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F05138" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B84307" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                     What I've Shipped
                 </h2>
-                <a href="apps.html" class="text-[#F05138] hover:text-[#D93F25] font-medium flex items-center gap-1 transition text-sm">
+                <a href="apps.html" class="text-[#B84307] hover:text-[#9E3906] font-medium flex items-center gap-1 transition text-sm">
                     See all 7 apps
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </a>
@@ -275,14 +279,14 @@
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-gray-900 text-lg" style="font-family:'Poppins',sans-serif;">RealRate</h3>
-                            <span class="text-xs text-gray-500" style="font-family:'DM Mono',monospace;">2026</span>
+                            <h3 class="font-bold text-gray-900 text-lg" style="font-family:var(--font-display);">RealRate</h3>
+                            <span class="text-xs text-gray-500" style="font-family:var(--font-mono);">2026</span>
                         </div>
                         <p class="text-gray-500 text-sm mb-4 flex-grow leading-relaxed">A side hustle tracker that ranks your hustles by true hourly rate — after every expense, per hour actually worked.</p>
                         <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">SwiftUI</span>
-                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">SwiftData</span>
-                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">Swift Charts</span>
+                            <span class="tech-tag">SwiftUI</span>
+                            <span class="tech-tag">SwiftData</span>
+                            <span class="tech-tag">Swift Charts</span>
                         </div>
                         <div class="flex items-center gap-4 flex-wrap">
                             <a href="https://apps.apple.com/us/app/realrate-side-hustle-tracker/id6771057419?itscg=30200&itsct=apps_box_badge&mttnsubad=6771057419" target="_blank" class="app-store-link">
@@ -300,14 +304,14 @@
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-gray-900 text-lg" style="font-family:'Poppins',sans-serif;">Focura</h3>
-                            <span class="text-xs text-gray-500" style="font-family:'DM Mono',monospace;">2026</span>
+                            <h3 class="font-bold text-gray-900 text-lg" style="font-family:var(--font-display);">Focura</h3>
+                            <span class="text-xs text-gray-500" style="font-family:var(--font-mono);">2026</span>
                         </div>
                         <p class="text-gray-500 text-sm mb-4 flex-grow leading-relaxed">A time-blocking app for ADHD brains — offloads the cognitive overhead of planning so you can actually focus.</p>
                         <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">React Native</span>
-                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">Expo</span>
-                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">SQLite</span>
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Expo</span>
+                            <span class="tech-tag">SQLite</span>
                         </div>
                         <div class="flex items-center gap-4 flex-wrap">
                             <a href="https://apps.apple.com/us/app/focura-timeblocking/id6757893283?itscg=30200&itsct=apps_box_badge&mttnsubad=6757893283" target="_blank" class="app-store-link">
@@ -325,14 +329,14 @@
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex items-center justify-between mb-2">
-                            <h3 class="font-bold text-gray-900 text-lg" style="font-family:'Poppins',sans-serif;">Gratitude Bestie</h3>
-                            <span class="text-xs text-gray-500" style="font-family:'DM Mono',monospace;">2025</span>
+                            <h3 class="font-bold text-gray-900 text-lg" style="font-family:var(--font-display);">Gratitude Bestie</h3>
+                            <span class="text-xs text-gray-500" style="font-family:var(--font-mono);">2025</span>
                         </div>
                         <p class="text-gray-500 text-sm mb-4 flex-grow leading-relaxed">A journaling app that uses on-device Core ML to read your entry's emotional tone and suggest what to reflect on next.</p>
                         <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">SwiftUI</span>
-                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">CloudKit</span>
-                            <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full text-xs">Core ML</span>
+                            <span class="tech-tag">SwiftUI</span>
+                            <span class="tech-tag">CloudKit</span>
+                            <span class="tech-tag">Core ML</span>
                         </div>
                         <div class="flex items-center gap-4 flex-wrap">
                             <a href="https://apps.apple.com/us/app/gratitude-bestie/id6753034386?itscg=30200&itsct=apps_box_badge&mttnsubad=6753034386" target="_blank" class="app-store-link">
@@ -349,49 +353,49 @@
         <!-- Quick links -->
         <section class="mx-6 mb-6 grid md:grid-cols-3 gap-4 reveal">
             <a href="apps.html" class="explore-card flex items-center gap-4 bg-white rounded-2xl shadow-sm p-5 group no-underline">
-                <div class="w-10 h-10 bg-[#fff0ed] rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F05138" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <div class="w-10 h-10 bg-[#FCE9E0] rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B84307" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
                 </div>
                 <div class="min-w-0">
-                    <p class="font-semibold text-gray-800 text-sm group-hover:text-[#F05138] transition" style="font-family:'Poppins',sans-serif;">All 7 Apps</p>
+                    <p class="font-semibold text-gray-800 text-sm group-hover:text-[#B84307] transition" style="font-family:var(--font-display);">All 7 Apps</p>
                     <p class="text-gray-500 text-xs mt-0.5">Full catalogue with screenshots and tech stack</p>
                 </div>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D2D2D7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-auto flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D3D4D6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-auto flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
             <a href="youtube.html" class="explore-card flex items-center gap-4 bg-white rounded-2xl shadow-sm p-5 group no-underline">
                 <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
                 </div>
                 <div class="min-w-0">
-                    <p class="font-semibold text-gray-800 text-sm group-hover:text-red-600 transition" style="font-family:'Poppins',sans-serif;">YouTube</p>
+                    <p class="font-semibold text-gray-800 text-sm group-hover:text-red-600 transition" style="font-family:var(--font-display);">YouTube</p>
                     <p class="text-gray-500 text-xs mt-0.5">Swift &amp; iOS tutorials with forkable repos</p>
                 </div>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D2D2D7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-auto flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D3D4D6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-auto flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
             <a href="https://toolbit.dev" target="_blank" class="explore-card flex items-center gap-4 bg-white rounded-2xl shadow-sm p-5 group no-underline">
                 <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
                 </div>
                 <div class="min-w-0">
-                    <p class="font-semibold text-gray-800 text-sm group-hover:text-green-700 transition" style="font-family:'Poppins',sans-serif;">toolbit.dev</p>
+                    <p class="font-semibold text-gray-800 text-sm group-hover:text-green-700 transition" style="font-family:var(--font-display);">toolbit.dev</p>
                     <p class="text-gray-500 text-xs mt-0.5">Free dev tools — no installs, runs in browser</p>
                 </div>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D2D2D7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-auto flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D3D4D6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-auto flex-shrink-0"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
         </section>
 
         <!-- Contact -->
         <section id="contact" class="bg-white rounded-2xl shadow-sm mx-6 mb-6 p-8 reveal">
             <h2 class="section-heading mb-2">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F05138" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B84307" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 Get in Touch
             </h2>
             <p class="text-gray-500 mb-6 text-base">Open to iOS freelance projects, app collaborations, full-time roles, and interesting conversations.</p>
             <div class="flex flex-col items-start space-y-4">
                 <div id="email-contact" class="flex items-center flex-wrap gap-3">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F05138" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <button id="emailBtn" type="button" aria-label="Email me" class="text-[#F05138] hover:text-[#D93F25] underline text-sm font-medium">Email me</button>
-                    <select id="emailSubject" class="border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-600 focus:outline-none focus:border-[#F05138] transition" aria-label="Pick a subject">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B84307" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <button id="emailBtn" type="button" aria-label="Email me" class="text-[#B84307] hover:text-[#9E3906] underline text-sm font-medium">Email me</button>
+                    <select id="emailSubject" class="bg-white border border-gray-400 rounded-lg px-3 text-sm text-gray-700 focus:border-[#B84307] transition" aria-label="Pick a subject">
                         <option value="Freelance%20iOS%20Project">Freelance iOS Project</option>
                         <option value="App%20Collaboration">App Collaboration</option>
                         <option value="Full-Time%20Opportunity">Full-Time Opportunity</option>
@@ -402,7 +406,7 @@
                     <button id="copyEmailBtn" type="button" class="text-gray-500 hover:text-gray-800 text-sm underline transition">Copy email</button>
                     <noscript><span class="text-gray-600 text-sm">noahdoescoding [at] gmail [dot] com</span></noscript>
                 </div>
-                <a href="https://github.com/NDCSwift" target="_blank" class="flex items-center gap-2 text-gray-500 hover:text-[#F05138] transition text-sm">
+                <a href="https://github.com/NDCSwift" target="_blank" class="flex items-center gap-2 text-gray-500 hover:text-[#B84307] transition text-sm">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                     github.com/NDCSwift
                 </a>

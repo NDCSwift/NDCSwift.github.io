@@ -1,4 +1,58 @@
 /* ===========================
+   Design Tokens — NDC Product Standard
+   Orange · Restrained · Red Hat Display. Values and ratios: DESIGN.md.
+   =========================== */
+:root {
+  color-scheme: light;
+
+  /* Surfaces (Orange family, derived) */
+  --ground:        #FDF7F4;
+  --raised:        #FAEEEA;
+  --card:          #FEFAF7;
+  --wash:          #FCE9E0;   /* fill @10% over ground */
+
+  /* Ink (shared NDC ramp) */
+  --ink-1:         #07212F;
+  --ink-1-alt:     #26272B;
+  --ink-2:         #373C3B;
+  --ink-3:         #544F4C;
+  --hairline:      #D3D4D6;
+  --control-edge:  #857E79;
+
+  /* Accent */
+  --fill:          #F66C27;   /* surfaces only, never text */
+  --action:        #B84307;
+  --action-pressed:#9E3906;
+
+  /* Functional */
+  --live:          #15803D;
+
+  /* Type */
+  --font-display:  'Red Hat Display', 'Red Hat Text', sans-serif;
+  --font-body:     'Red Hat Text', system-ui, sans-serif;
+  --font-mono:     'Red Hat Mono', ui-monospace, monospace;
+
+  /* Radius scale */
+  --r-tag:   4px;
+  --r-field: 8px;
+  --r-btn:   12px;
+  --r-card:  16px;
+  --r-sheet: 28px;
+
+  /* Motion */
+  --ease:    cubic-bezier(0.22, 1, 0.36, 1);
+  --t-micro: 150ms;
+  --t-std:   250ms;
+  --t-large: 350ms;
+
+  /* Shadow tint (Orange ground, darkened) */
+  --shadow-rgb: 74 38 18;
+
+  --tap: 44px;
+  --sidebar-w: 260px;
+}
+
+/* ===========================
    Base
    =========================== */
 html, body { overflow-x: hidden; }
@@ -8,29 +62,25 @@ html { scroll-behavior: smooth; }
   html { scroll-behavior: auto; }
 }
 
-h1, h2, h3 { text-wrap: balance; }
+body {
+  background: var(--ground);
+  color: var(--ink-1);
+  font-family: var(--font-body);
+}
 
-/* ===========================
-   Design Tokens
-   =========================== */
-:root {
-  --accent:       #F05138;
-  --accent-hover: #D93F25;
-  --accent-light: #fff0ed;
-  --text:         #1D1D1F;
-  --text-sec:     #6E6E73;
-  --border:       #D2D2D7;
-  --surface:      #FFFFFF;
-  --sidebar-w:    260px;
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--ink-1);
+  text-wrap: balance;
 }
 
 /* ===========================
    Accessibility
    =========================== */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--action);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: var(--r-tag);
 }
 
 .skip-link {
@@ -39,20 +89,31 @@ h1, h2, h3 { text-wrap: balance; }
   left: 50%;
   transform: translate(-50%, calc(-100% - 1.5rem));
   z-index: 300;
-  background: var(--text);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
+  background: var(--ink-1);
+  color: var(--ground);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
   font-weight: 600;
-  padding: 0.6rem 1.1rem;
-  border-radius: 10px;
+  min-height: var(--tap);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 1rem;
+  border-radius: var(--r-btn);
   text-decoration: none;
-  transition: transform 0.2s ease;
+  transition: transform var(--t-std) var(--ease);
 }
 .skip-link:focus-visible {
   transform: translate(-50%, 0);
   outline-offset: 0;
 }
+
+/* Tap targets: 44×44 CSS px floor. Inline links inside prose are exempt. */
+.main-content :is(button, select, .btn-primary, .btn-secondary),
+.main-content a:is(.inline-flex, .flex, [class*="inline-flex"]),
+footer a {
+  min-height: var(--tap);
+}
+footer a { display: inline-flex; align-items: center; justify-content: center; min-width: var(--tap); padding: 0 4px; }
 
 /* ===========================
    Sidebar
@@ -61,11 +122,11 @@ h1, h2, h3 { text-wrap: balance; }
   position: fixed;
   inset: 0 auto 0 0;
   width: var(--sidebar-w);
-  background: var(--surface);
-  border-right: 1px solid var(--border);
+  background: var(--card);
+  border-right: 1px solid var(--hairline);
   z-index: 100;
   overflow-y: auto;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--t-large) var(--ease), visibility 0s linear 0s;
 }
 
 .sidebar-inner {
@@ -78,77 +139,86 @@ h1, h2, h3 { text-wrap: balance; }
 .sidebar-brand { margin-bottom: 2rem; }
 
 .sidebar-name {
-  display: block;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink-1);
   text-decoration: none;
   line-height: 1.25;
-  margin-bottom: 0.25rem;
-  transition: color 0.2s;
+  transition: color var(--t-micro) var(--ease);
 }
-.sidebar-name:hover { color: var(--accent); }
+.sidebar-name:hover { color: var(--action); }
 
 .sidebar-tagline {
   margin: 0;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-sec);
+  color: var(--ink-3);
 }
 
 .sidebar-divider {
   border: none;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--hairline);
   margin: 0 0 1.5rem;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   flex: 1;
 }
 
 .sidebar-nav-link {
-  display: block;
-  padding: 0.45rem 0.75rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 0.75rem;
+  border-radius: var(--r-field);
+  font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--text-sec);
+  color: var(--ink-3);
   text-decoration: none;
-  transition: color 0.15s, background 0.15s;
+  transition: color var(--t-micro) var(--ease), background var(--t-micro) var(--ease);
 }
 .sidebar-nav-link:hover {
-  color: var(--text);
-  background: #F5F5F7;
+  color: var(--ink-1);
+  background: var(--raised);
 }
 .sidebar-nav-link.active {
-  color: var(--accent);
-  background: var(--accent-light);
-  font-weight: 600;
+  color: var(--action-pressed);
+  background: var(--wash);
+  font-weight: 700;
 }
 
 .sidebar-footer {
-  padding-top: 1.5rem;
+  padding-top: 1rem;
   margin-top: auto;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--hairline);
   display: flex;
-  gap: 1.25rem;
+  gap: 4px;
   align-items: center;
 }
 
 .sidebar-social {
-  color: var(--text-sec);
+  color: var(--ink-3);
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: var(--tap);
+  height: var(--tap);
+  border-radius: var(--r-field);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color var(--t-micro) var(--ease), background var(--t-micro) var(--ease);
 }
-.sidebar-social:hover { color: var(--accent); }
+.sidebar-social:hover { color: var(--action); background: var(--raised); }
 
 /* ===========================
    Main content wrapper
@@ -167,115 +237,147 @@ h1, h2, h3 { text-wrap: balance; }
   top: 1rem;
   left: 1rem;
   z-index: 200;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 6px 8px;
+  width: var(--tap);
+  height: var(--tap);
+  background: var(--card);
+  color: var(--ink-1);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-btn);
   cursor: pointer;
   line-height: 0;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 4px rgb(var(--shadow-rgb) / 0.10);
 }
 
 .sidebar-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.25);
+  background: rgb(7 33 47 / 0.30);
   z-index: 90;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity var(--t-large) var(--ease);
 }
 
 /* ===========================
-   Animations
+   Motion
    =========================== */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-14px); }
-}
-.float-anim { animation: float 4.5s ease-in-out infinite; }
-
 /* Reveal-on-scroll: hidden state only when JS is running (html.js),
    so content stays visible if scripts fail to load. */
 .js .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(16px);
+  transition: opacity var(--t-large) var(--ease), transform var(--t-large) var(--ease);
 }
 .js .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) {
-  .float-anim { animation: none; }
-  .js .reveal { opacity: 1; transform: none; transition: none; }
+  /* Opacity only — no travel, no loops. */
+  .js .reveal { transform: none; transition: opacity var(--t-std) linear; }
+  .sidebar { transition: none; }
 }
 
 /* ===========================
    Shared components
    =========================== */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--accent);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.7rem 1.4rem;
-  border-radius: 10px;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
-}
-.btn-primary:hover  { background: var(--accent-hover); transform: translateY(-1px); }
-.btn-primary:active { transform: translateY(0); }
-
+.btn-primary,
 .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  background: transparent;
-  color: var(--text);
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.7rem 1.4rem;
-  border-radius: 10px;
-  border: 1.5px solid var(--border);
+  min-height: var(--tap);
+  padding: 0 1.25rem;
+  border-radius: var(--r-btn);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9375rem;
   text-decoration: none;
-  transition: border-color 0.2s, color 0.2s, transform 0.1s;
+  cursor: pointer;
+  transition: background var(--t-micro) var(--ease), color var(--t-micro) var(--ease), border-color var(--t-micro) var(--ease);
 }
-.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
-.app-store-badge-img { height: 40px; display: block; transition: opacity 0.2s; }
-.app-store-link:hover .app-store-badge-img { opacity: 0.75; }
+.btn-primary {
+  background: var(--action);
+  color: var(--ground);              /* 5.15:1 */
+  border: none;
+}
+.btn-primary:hover  { background: var(--action-pressed); }   /* 6.51:1 */
+.btn-primary:active { background: var(--ink-1); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink-1);
+  border: 1.5px solid var(--control-edge);
+}
+.btn-secondary:hover { border-color: var(--action); color: var(--action); background: var(--card); }
+
+.app-store-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+}
+.app-store-badge-img { height: 40px; display: block; transition: opacity var(--t-micro) var(--ease); }
+.app-store-link:hover .app-store-badge-img { opacity: 0.8; }
 
 .status-dot {
   display: inline-block;
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: #22c55e;
-  margin-right: 5px;
+  background: var(--live);
+  margin-right: 6px;
   vertical-align: middle;
-  animation: pulse-g 2s infinite;
+  animation: pulse-g 2s var(--ease) infinite;
 }
 @keyframes pulse-g {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,.4); }
-  50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgb(21 128 61 / 0.35); }
+  50%       { box-shadow: 0 0 0 6px rgb(21 128 61 / 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .status-dot { animation: none; }
+}
+
+/* Section heading — shared by all three pages */
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink-1);
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* Tech tag (stack chips on app cards) */
+.tech-tag {
+  display: inline-block;
+  background: var(--raised);
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: var(--r-tag);
 }
 
 /* ===========================
    Mobile breakpoint
    =========================== */
 @media (max-width: 768px) {
-  .sidebar { transform: translateX(calc(-1 * var(--sidebar-w))); }
-  .sidebar.open { transform: translateX(0); }
+  /* Closed sidebar leaves the tab order, not just the viewport. */
+  .sidebar {
+    transform: translateX(calc(-1 * var(--sidebar-w)));
+    visibility: hidden;
+    transition: transform var(--t-large) var(--ease), visibility 0s linear var(--t-large);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform var(--t-large) var(--ease), visibility 0s linear 0s;
+  }
   .sidebar-overlay { display: block; pointer-events: none; }
   .sidebar-overlay.open { opacity: 1; pointer-events: auto; }
   .main-content { margin-left: 0; }
   .burger-btn { display: flex; align-items: center; justify-content: center; }
-  .sidebar-brand { padding-left: 2.5rem; }
-  .sidebar-nav-link { padding: 0.7rem 0.75rem; font-size: 0.95rem; }
-  .btn-primary, .btn-secondary { min-height: 44px; justify-content: center; }
+  .sidebar-brand { padding-left: 3rem; }
 }

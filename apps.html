@@ -16,49 +16,45 @@
     <meta name="twitter:description" content="7 apps on the App Store. Productivity, finance, wellness, and games — built with Swift, SwiftUI, and React Native.">
     <link rel="canonical" href="https://ndcswift.github.io/apps.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <meta name="theme-color" content="#F5F5F7">
+    <meta name="theme-color" content="#FDF7F4">
     <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800&family=Red+Hat+Mono:wght@400;500&family=Red+Hat+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="portfolio.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="ndc-tailwind.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.2/dist/feather.min.js" integrity="sha384-qEqAs1VsN9WH2myXDbiP2wGGIttL9bMRZBKCl54ZnzpDlVqbYANP9vMaoT/wvQcf" crossorigin="anonymous"></script>
     <style>
-        body { font-family: 'DM Sans', sans-serif; }
-        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
 
-        /* ── Skill pills ── */
+        /* ── Skill pills (chips: tag radius) ── */
         .skill-pill {
             display: inline-block;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            color: #374151;
+            background: var(--card);
+            border: 1px solid var(--hairline);
+            color: var(--ink-2);
             font-size: 0.875rem;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
+            padding: 0.375rem 0.75rem;
+            border-radius: var(--r-tag);
             cursor: default;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
-        .skill-pill:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-color: #cbd5e1; }
         .skill-pill-core {
-            background: #F05138;
-            border-color: #F05138;
-            color: #fff;
-            font-weight: 600;
+            background: var(--action);
+            border-color: var(--action);
+            color: var(--ground);              /* 5.15:1 */
+            font-weight: 700;
         }
-        .skill-pill-core:hover { box-shadow: 0 10px 18px -4px rgba(240,81,56,0.35); border-color: #F05138; }
 
         /* ── Slide Carousel ── */
         .screens-viewport {
             overflow: hidden;
-            border-radius: 14px;
-            background: #f5f5f7;
+            border-radius: var(--r-card);
+            background: var(--raised);
         }
         .screens-track-slide {
             display: flex;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform var(--t-large) var(--ease);
             will-change: transform;
         }
         .screens-track-slide img {
@@ -67,99 +63,110 @@
             object-fit: contain;
             max-height: 400px;
             padding: 16px;
-            border-radius: 16px;
+            border-radius: var(--r-card);
         }
         .screens-bottom {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 0 0;
+            gap: 8px;
+            padding: 12px 0 0;
         }
         .carousel-btn-new {
-            width: 34px; height: 34px;
+            width: var(--tap); height: var(--tap);
             border-radius: 50%;
             border: none;
-            background: #F05138;
-            color: white;
-            font-size: 22px;
+            background: var(--action);
+            color: var(--ground);
+            font-size: 24px;
             line-height: 1;
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
-            transition: background 0.2s, transform 0.1s;
+            transition: background var(--t-micro) var(--ease);
             padding: 0;
         }
-        .carousel-btn-new:hover:not(:disabled) { background: #D93F25; transform: scale(1.08); }
-        .carousel-btn-new:disabled { background: #e2e8f0; color: #94a3b8; cursor: default; transform: none; }
+        .carousel-btn-new:hover:not(:disabled) { background: var(--action-pressed); }
+        .carousel-btn-new:disabled { background: var(--raised); color: var(--ink-3); box-shadow: inset 0 0 0 1px var(--control-edge); cursor: default; }
         .carousel-progress-bar {
-            flex: 1; height: 3px;
-            background: #e2e8f0; border-radius: 2px; overflow: hidden;
+            flex: 1; height: 4px;
+            background: var(--hairline); border-radius: 2px; overflow: hidden;
         }
         .carousel-progress-fill {
-            height: 100%; background: #F05138;
+            height: 100%; background: var(--action);
             border-radius: 2px;
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: width var(--t-large) var(--ease);
             width: 0%;
         }
         .carousel-counter-text {
-            font-family: 'DM Mono', monospace;
-            font-size: 11px; color: #4b5563;
-            min-width: 38px; text-align: right;
+            font-family: var(--font-mono);
+            font-variant-numeric: tabular-nums;
+            font-size: 0.75rem; color: var(--ink-2);
+            min-width: 40px; text-align: right;
         }
 
-        /* ── Filter ── */
-        .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+        /* ── Filter (small buttons) ── */
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
         .filter-btn {
-            padding: 8px 22px; border-radius: 99px;
-            border: 2px solid #e2e8f0; background: white;
-            font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
-            color: #64748b; cursor: pointer; transition: all 0.2s;
+            min-height: var(--tap);
+            padding: 0 1.125rem; border-radius: var(--r-field);
+            border: 1.5px solid var(--control-edge); background: var(--card);
+            font-family: var(--font-body); font-size: 0.875rem; font-weight: 700;
+            color: var(--ink-2); cursor: pointer;
+            transition: background var(--t-micro) var(--ease), color var(--t-micro) var(--ease), border-color var(--t-micro) var(--ease);
         }
         .filter-btn:hover {
-            border-color: #F05138; color: #D93F25; background: #fff5f2;
+            border-color: var(--action); color: var(--action-pressed); background: var(--wash);
         }
         .filter-btn.active {
-            border-color: #F05138; background: #F05138; color: white;
+            border-color: var(--action); background: var(--action); color: var(--ground);
         }
         .filtered-out { display: none !important; }
 
         /* ── Scroll Reveal (hidden state only when JS is running) ── */
         .js .reveal-card {
-            opacity: 0; transform: translateY(28px);
-            transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0; transform: translateY(16px);
+            transition: opacity var(--t-large) var(--ease), transform var(--t-large) var(--ease);
         }
         .js .reveal-card.visible { opacity: 1; transform: translateY(0); }
 
         /* ── Category Tag ── */
         .app-category-tag {
             display: inline-block;
-            font-family: 'DM Mono', monospace; font-size: 11px;
+            font-family: var(--font-mono); font-size: 0.75rem;
             font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-            color: #F05138; background: #fff0ed;
-            padding: 3px 10px; border-radius: 6px; margin-bottom: 10px;
+            color: var(--action-pressed); background: var(--wash);   /* 5.88:1 */
+            padding: 2px 8px; border-radius: var(--r-tag); margin-bottom: 12px;
+        }
+
+        /* ── In-development badge ── */
+        .dev-badge {
+            font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500;
+            color: var(--ink-2); background: var(--raised);
+            border: 1px dashed var(--control-edge);
+            padding: 2px 8px; border-radius: var(--r-tag);
         }
 
         /* ── App Card ── */
-        .app-card { transition: box-shadow 0.3s ease; }
+        .app-card { transition: box-shadow var(--t-std) var(--ease); }
 
         /* ── Mobile ── */
         @media (max-width: 768px) {
             main { padding-top: 5rem !important; }
             .screens-track-slide img { max-height: 260px; }
             .app-card .grid { grid-template-columns: 1fr !important; }
+            .app-card .grid > * { min-width: 0; }
+            .app-card .p-8 { padding: 1.5rem; }
         }
 
-        /* ── Reduced motion ── */
+        /* ── Reduced motion: opacity only ── */
         @media (prefers-reduced-motion: reduce) {
-            .js .reveal-card { opacity: 1; transform: none; transition: none; }
+            .js .reveal-card { transform: none; transition: opacity var(--t-std) linear; }
             .screens-track-slide,
-            .carousel-progress-fill,
-            .skill-pill,
-            .carousel-btn-new { transition: none; }
+            .carousel-progress-fill { transition: none; }
         }
     </style>
 </head>
-<body class="bg-[#F5F5F7] antialiased">
+<body class="antialiased">
 
     <a href="#main" class="skip-link">Skip to content</a>
 
@@ -228,23 +235,23 @@
                         <span class="app-category-tag">Finance</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">RealRate</h2>
-                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2026</span>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:var(--font-mono);">2026</span>
                         </div>
                         <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftUI</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftData + CloudKit</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Swift Charts</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">WidgetKit</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">RevenueCat</span>
+                            <span class="tech-tag">SwiftUI</span>
+                            <span class="tech-tag">SwiftData + CloudKit</span>
+                            <span class="tech-tag">Swift Charts</span>
+                            <span class="tech-tag">WidgetKit</span>
+                            <span class="tech-tag">RevenueCat</span>
                         </div>
                         <p class="text-gray-600 mb-5 leading-relaxed text-sm">
                             A side hustle tracker built around one question: which hustle actually pays? RealRate takes every expense out of what each hustle earns, divides by the hours you actually worked, and ranks your hustles side by side. Native SwiftUI, written in Swift 6 language mode throughout.
                         </p>
                         <ul class="space-y-2 mb-6 text-sm text-gray-600">
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>True hourly rate per hustle after gas, supplies and fees, ranked side by side</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Live shift timer with a Lock Screen and Dynamic Island Live Activity, plus home screen widgets</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Per-client rates, iCloud sync via CloudKit, and a yearly Hustle Health Report PDF</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>True hourly rate per hustle after gas, supplies and fees, ranked side by side</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Live shift timer with a Lock Screen and Dynamic Island Live Activity, plus home screen widgets</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Per-client rates, iCloud sync via CloudKit, and a yearly Hustle Health Report PDF</span></li>
                         </ul>
                         <div class="flex items-center gap-4 flex-wrap">
                             <a href="https://apps.apple.com/us/app/realrate-side-hustle-tracker/id6771057419?itscg=30200&itsct=apps_box_badge&mttnsubad=6771057419" target="_blank" class="app-store-link">
@@ -282,23 +289,23 @@
                         <span class="app-category-tag">Productivity</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">Focura</h2>
-                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2026</span>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:var(--font-mono);">2026</span>
                         </div>
                         <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">React Native</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Expo</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SQLite + Drizzle</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Zustand</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">RevenueCat</span>
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Expo</span>
+                            <span class="tech-tag">SQLite + Drizzle</span>
+                            <span class="tech-tag">Zustand</span>
+                            <span class="tech-tag">RevenueCat</span>
                         </div>
                         <p class="text-gray-600 mb-5 leading-relaxed text-sm">
                             A time-blocking app built for how ADHD brains actually work — not how productivity apps assume they do. The core idea: offload the mental overhead of planning to the app, so you can use that energy to actually focus. Built local-first in React Native — my first cross-platform app.
                         </p>
                         <ul class="space-y-2 mb-6 text-sm text-gray-600">
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Flow State mode reframes overtime as progress — green extension, not a red overrun</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Read-only Calendar and Reminders sync for zero-input scheduling</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Home screen and lock screen widgets, Live Activities, body doubling mode, and brown noise</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Flow State mode reframes overtime as progress — green extension, not a red overrun</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Read-only Calendar and Reminders sync for zero-input scheduling</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Home screen and lock screen widgets, Live Activities, body doubling mode, and brown noise</span></li>
                         </ul>
                         <div class="flex items-center gap-4 flex-wrap">
                             <a href="https://apps.apple.com/us/app/focura-timeblocking/id6757893283?itscg=30200&itsct=apps_box_badge&mttnsubad=6757893283" target="_blank" class="app-store-link">
@@ -337,22 +344,22 @@
                         <span class="app-category-tag">Wellness</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">Gratitude Bestie</h2>
-                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2025</span>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:var(--font-mono);">2025</span>
                         </div>
                         <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftUI</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftData</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">CloudKit</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Core ML</span>
+                            <span class="tech-tag">SwiftUI</span>
+                            <span class="tech-tag">SwiftData</span>
+                            <span class="tech-tag">CloudKit</span>
+                            <span class="tech-tag">Core ML</span>
                         </div>
                         <p class="text-gray-600 mb-5 leading-relaxed text-sm">
                             A daily journaling app that makes reflection feel less like a task. Write entries with photos and emoji, tag your emotions, and Core ML reads the tone of what you wrote to generate a personalised prompt for next time. Syncs across iPhone and iPad via CloudKit.
                         </p>
                         <ul class="space-y-2 mb-6 text-sm text-gray-600">
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Rich journal entries with photos, emoji, and custom tags</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>CloudKit sync — write on iPhone, pick up where you left off on iPad</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>On-device Core ML emotion detection generates smart writing prompts</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Rich journal entries with photos, emoji, and custom tags</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>CloudKit sync — write on iPhone, pick up where you left off on iPad</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>On-device Core ML emotion detection generates smart writing prompts</span></li>
                         </ul>
                         <div class="flex items-center gap-4 flex-wrap">
                             <a href="https://apps.apple.com/us/app/gratitude-bestie/id6753034386?itscg=30200&itsct=apps_box_badge&mttnsubad=6753034386" target="_blank" class="app-store-link">
@@ -395,23 +402,23 @@
                         <span class="app-category-tag">Game</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">Tap Duel</h2>
-                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2025</span>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:var(--font-mono);">2025</span>
                         </div>
                         <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftUI</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">GameKit</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftData</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">RevenueCat</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">CoreHaptics</span>
+                            <span class="tech-tag">SwiftUI</span>
+                            <span class="tech-tag">GameKit</span>
+                            <span class="tech-tag">SwiftData</span>
+                            <span class="tech-tag">RevenueCat</span>
+                            <span class="tech-tag">CoreHaptics</span>
                         </div>
                         <p class="text-gray-600 mb-5 leading-relaxed text-sm">
                             Two players, one phone, fastest tap wins. Tap Duel works three ways: head-to-head locally, online via real-time Game Center matchmaking, or solo to train your reaction time and track how you improve.
                         </p>
                         <ul class="space-y-2 mb-6 text-sm text-gray-600">
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Real-time online multiplayer via GKMatch with four Game Center leaderboards</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Local face-off mode — two players, one screen, no setup</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Solo trainer with win streaks and fastest-tap performance stats</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Real-time online multiplayer via GKMatch with four Game Center leaderboards</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Local face-off mode — two players, one screen, no setup</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Solo trainer with win streaks and fastest-tap performance stats</span></li>
                         </ul>
                         <div class="flex items-center gap-4 flex-wrap">
                             <a href="https://apps.apple.com/us/app/tap-duel-reaction-time-test/id6746076055?itscg=30200&itsct=apps_box_badge&mttnsubad=6746076055" target="_blank" class="app-store-link">
@@ -450,22 +457,22 @@
                         <span class="app-category-tag">Game</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">Sky Loops</h2>
-                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2026</span>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:var(--font-mono);">2026</span>
                         </div>
                         <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SpriteKit</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">GameKit</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">StoreKit</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">AdMob</span>
+                            <span class="tech-tag">SpriteKit</span>
+                            <span class="tech-tag">GameKit</span>
+                            <span class="tech-tag">StoreKit</span>
+                            <span class="tech-tag">AdMob</span>
                         </div>
                         <p class="text-gray-600 mb-5 leading-relaxed text-sm">
                             A SpriteKit flying game where you pilot a plane through sky rings to build combos. Four modes — 60, 120, and 180-second timed runs, plus a pressure-free Zen mode for when you just want to fly. Built with a full coin economy, categorised unlockables, and complete Game Center integration.
                         </p>
                         <ul class="space-y-2 mb-6 text-sm text-gray-600">
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Four game modes from 60-second sprints to endless Zen flight</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Coin economy with unlockable planes and contrail trails sorted by rarity</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Daily challenges, Game Center achievements and leaderboards, onboarding tutorial</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Four game modes from 60-second sprints to endless Zen flight</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Coin economy with unlockable planes and contrail trails sorted by rarity</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Daily challenges, Game Center achievements and leaderboards, onboarding tutorial</span></li>
                         </ul>
                         <div class="flex items-center gap-4 flex-wrap">
                             <a href="https://apps.apple.com/us/app/sky-loops/id6756944640?itscg=30200&itsct=apps_box_badge&mttnsubad=6756944640" target="_blank" class="app-store-link">
@@ -505,22 +512,22 @@
                         <span class="app-category-tag">Productivity</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">WordSage</h2>
-                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2024</span>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:var(--font-mono);">2024</span>
                         </div>
                         <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftUI</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftData</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">CloudKit</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">CoreHaptics</span>
+                            <span class="tech-tag">SwiftUI</span>
+                            <span class="tech-tag">SwiftData</span>
+                            <span class="tech-tag">CloudKit</span>
+                            <span class="tech-tag">CoreHaptics</span>
                         </div>
                         <p class="text-gray-600 mb-5 leading-relaxed text-sm">
                             A daily vocabulary app built around challenge and motion — not passive flashcard swiping. Four game modes pull from 1,000+ curated entries, with streak tracking, a coin-based lifeline economy, and haptics woven through every interaction.
                         </p>
                         <ul class="space-y-2 mb-6 text-sm text-gray-600">
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>1,000+ handpicked vocabulary entries — not randomly generated</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Four modes: matching, anagrams, flashcards, and daily challenges</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Motion-based controls, streak system, and Keychain-secured coin economy</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>1,000+ handpicked vocabulary entries — not randomly generated</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Four modes: matching, anagrams, flashcards, and daily challenges</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Motion-based controls, streak system, and Keychain-secured coin economy</span></li>
                         </ul>
                         <div class="flex items-center gap-4 flex-wrap">
                             <a href="https://apps.apple.com/us/app/wordsage-daily-word-game/id6683296823?itscg=30200&itsct=apps_box_badge&mttnsubad=6683296823" target="_blank" class="app-store-link">
@@ -560,21 +567,21 @@
                         <span class="app-category-tag">Wellness</span>
                         <div class="flex items-start justify-between mb-1">
                             <h2 class="text-2xl font-bold text-gray-900">Daily Devotion</h2>
-                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:'DM Mono',monospace;">2025</span>
+                            <span class="flex-shrink-0 text-sm text-gray-500 ml-3" style="font-family:var(--font-mono);">2025</span>
                         </div>
                         <div class="text-sm mb-4" style="color:#15803d;"><span class="status-dot"></span>Live on App Store</div>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftUI</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">SwiftData</span>
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">WidgetKit</span>
+                            <span class="tech-tag">SwiftUI</span>
+                            <span class="tech-tag">SwiftData</span>
+                            <span class="tech-tag">WidgetKit</span>
                         </div>
                         <p class="text-gray-600 mb-5 leading-relaxed text-sm">
                             A scripture and reflection app that works completely offline. All devotional content — handpicked verses, reflections, and four Bible translations — ships inside the app as a local library. No account required, no loading spinner, just something meaningful to start the day.
                         </p>
                         <ul class="space-y-2 mb-6 text-sm text-gray-600">
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Four translations (KJV, ASV, WEB, DRB) — all stored locally, no internet needed</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Full-text scripture search, favourites, and dark mode</span></li>
-                            <li class="flex items-start"><i data-feather="check-circle" class="text-green-500 mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Daily notifications and a home screen widget to build the habit</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Four translations (KJV, ASV, WEB, DRB) — all stored locally, no internet needed</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Full-text scripture search, favourites, and dark mode</span></li>
+                            <li class="flex items-start"><i data-feather="check-circle" class="text-accent mr-2 mt-0.5 flex-shrink-0 w-4 h-4"></i><span>Daily notifications and a home screen widget to build the habit</span></li>
                         </ul>
                         <div class="flex items-center gap-4 flex-wrap">
                             <a href="https://apps.apple.com/us/app/daily-devotions/id6744182819?itscg=30200&itsct=apps_box_badge&mttnsubad=6744182819" target="_blank" class="app-store-link">
@@ -610,18 +617,18 @@
         <!-- In the Lab -->
         <section class="mb-16">
             <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <i data-feather="terminal" class="mr-3" style="color:#F05138;"></i> In the Lab
+                <i data-feather="terminal" class="mr-3" style="color:#B84307;"></i> In the Lab
             </h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-white rounded-2xl shadow-sm p-6" style="border:1.5px dashed #F0513880;">
+                <div class="bg-white rounded-2xl shadow-sm p-6" style="border:1.5px dashed var(--control-edge);">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="text-lg font-bold text-gray-800">Kitty Game</h3>
-                        <span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-2 py-1 rounded-full">In Development</span>
+                        <span class="dev-badge">In development</span>
                     </div>
                     <p class="text-gray-600 text-sm mb-3">A SpriteKit survival game where you guide a cat through falling raindrop bullet patterns. Part passion project, part deep dive — an excuse to push SpriteKit further than my previous games, with escalating difficulty, challenge levels, unlockable skins, and Game Center integration.</p>
                     <div class="flex gap-2">
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">SpriteKit</span>
-                        <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">GameKit</span>
+                        <span class="tech-tag">SpriteKit</span>
+                        <span class="tech-tag">GameKit</span>
                     </div>
                 </div>
             </div>
@@ -630,7 +637,7 @@
         <!-- Tech & Tools -->
         <section id="skills" class="bg-white rounded-2xl shadow-sm p-8 mb-12">
             <h2 class="text-3xl font-bold text-gray-900 mb-2 flex items-center">
-                <i data-feather="code" class="mr-3" style="color:#F05138;"></i> Tech &amp; Tools
+                <i data-feather="code" class="mr-3" style="color:#B84307;"></i> Tech &amp; Tools
             </h2>
             <p class="text-gray-600 mb-8">Swift, SwiftUI, and Xcode are my primary environment — where I spend the vast majority of my time. React Native is a genuine secondary skill, used to ship Focura. Everything else in this list has been used in at least one real project.</p>
 
@@ -702,7 +709,7 @@
                 <h2 class="text-xl font-bold text-gray-800 mb-1">Want to see how some of this was built?</h2>
                 <p class="text-gray-500 text-sm">I cover iOS and Swift concepts on YouTube — the same patterns behind these apps, explained thoroughly with forkable repos.</p>
             </div>
-            <a href="youtube.html" class="flex-shrink-0 inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200" style="font-family:'Poppins',sans-serif;">
+            <a href="youtube.html" class="flex-shrink-0 inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-xl transition duration-150">
                 <i data-feather="youtube" class="mr-2"></i> Visit the YouTube Channel
             </a>
         </section>
@@ -801,7 +808,7 @@
                     const x = (e.clientX - r.left) / r.width  - 0.5;
                     const y = (e.clientY - r.top)  / r.height - 0.5;
                     card.style.transform  = `perspective(1200px) rotateY(${x * 2}deg) rotateX(${-y * 1.5}deg) translateY(-3px)`;
-                    card.style.boxShadow  = '0 24px 48px -12px rgba(240,81,56,0.15)';
+                    card.style.boxShadow  = '0 24px 48px -12px rgb(184 67 7 / 0.15)';
                 });
                 card.addEventListener('mouseleave', () => {
                     card.style.transition = 'transform 0.6s ease, box-shadow 0.4s ease';

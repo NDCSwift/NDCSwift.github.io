@@ -35,51 +35,38 @@
     </script>
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <meta name="theme-color" content="#F5F5F7">
+    <meta name="theme-color" content="#FDF7F4">
     <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800&family=Red+Hat+Mono:wght@400;500&family=Red+Hat+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="portfolio.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="ndc-tailwind.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.2/dist/feather.min.js" integrity="sha384-qEqAs1VsN9WH2myXDbiP2wGGIttL9bMRZBKCl54ZnzpDlVqbYANP9vMaoT/wvQcf" crossorigin="anonymous"></script>
     <style>
-        body { font-family: 'DM Sans', sans-serif; }
-        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
 
-        /* ── Section animations (hidden state only when JS is running) ── */
+        /* ── Section entrance (hidden state only when JS is running) ── */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(22px); }
+            from { opacity: 0; transform: translateY(12px); }
             to   { opacity: 1; transform: translateY(0); }
         }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .js .animate-section { opacity: 0; }
-        .js .animate-section.visible { animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @media (prefers-reduced-motion: reduce) {
-            .js .animate-section { opacity: 1; }
-            .js .animate-section.visible { animation: none; }
-            .video-card, .topic-tile { transition: none; }
-        }
+        .js .animate-section.visible { animation: fadeInUp var(--t-large) var(--ease) forwards; }
 
         /* ── Video card ── */
-        .video-card { transition: all 0.25s ease; }
-        .video-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -8px rgba(0,0,0,0.12); }
+        .video-card { transition: transform var(--t-std) var(--ease), box-shadow var(--t-std) var(--ease); }
+        .video-card:hover { transform: translateY(-2px); box-shadow: 0 16px 32px -12px rgb(74 38 18 / 0.16); }
 
         /* ── Topic tile ── */
-        .topic-tile { transition: all 0.2s ease; }
-        .topic-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 20px -4px rgba(240,81,56,0.12); background-color: #fff0ed; }
+        .topic-tile { transition: background-color var(--t-micro) var(--ease); }
+        .topic-tile:hover { background-color: var(--wash); }
 
-        /* ── Subscribe button ── */
-        .btn-subscribe:active { transform: scale(0.96); }
-
-        /* ── Section heading ── */
-        .section-heading {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #1D1D1F;
-            display: flex;
-            align-items: center;
-            gap: 0.625rem;
+        @media (prefers-reduced-motion: reduce) {
+            .js .animate-section.visible { animation-name: fadeIn; }
+            .video-card { transition: none; }
+            .video-card:hover { transform: none; }
         }
 
         /* ── Mobile ── */
@@ -88,7 +75,7 @@
         }
     </style>
 </head>
-<body class="bg-[#F5F5F7] antialiased">
+<body class="antialiased">
 
     <a href="#main" class="skip-link">Skip to content</a>
 
@@ -133,40 +120,40 @@
     <main id="main" class="container mx-auto px-4 py-12">
 
         <!-- Channel Hero -->
-        <section class="bg-white rounded-2xl shadow-sm p-8 mb-10 animate-section">
+        <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8 mb-10 animate-section">
             <div class="flex flex-col md:flex-row items-center gap-8">
                 <div class="flex-shrink-0">
-                    <div class="w-28 h-28 rounded-full overflow-hidden border-4 shadow-lg" style="border-color:#F0513840;">
+                    <div class="w-28 h-28 rounded-full overflow-hidden border-4 shadow-lg" style="border-color:#B8430740;">
                         <img src="https://avatars.githubusercontent.com/u/152039306?v=4" alt="Noah Carpenter" class="w-full h-full object-cover" />
                     </div>
                 </div>
                 <div class="text-center md:text-left flex-grow">
-                    <h1 class="text-4xl font-bold text-gray-900 mb-2">@noahdoescoding</h1>
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 break-words">@noahdoescoding</h1>
                     <p class="text-gray-600 text-lg mb-4">Swift and iOS tutorials from a developer who ships real apps. I cover the concepts I've had to figure out myself — explained thoroughly, with a forkable repo every time.</p>
 
                     <ul class="text-sm text-gray-600 space-y-1 mb-6 text-left">
-                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 flex-shrink-0" style="color:#F05138;"></i> Tutorials built around real patterns — the same ones behind my published apps</li>
-                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 flex-shrink-0" style="color:#F05138;"></i> Every video comes with a forkable GitHub repo</li>
-                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 flex-shrink-0" style="color:#F05138;"></i> Covers the frameworks Apple's docs skip — FoundationModels, StoreKit 2, visionOS</li>
+                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 flex-shrink-0" style="color:#B84307;"></i> Tutorials built around real patterns — the same ones behind my published apps</li>
+                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 flex-shrink-0" style="color:#B84307;"></i> Every video comes with a forkable GitHub repo</li>
+                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 flex-shrink-0" style="color:#B84307;"></i> Covers the frameworks Apple's docs skip — FoundationModels, StoreKit 2, visionOS</li>
                     </ul>
 
                     <div class="flex flex-wrap gap-6 justify-center md:justify-start text-gray-700 mb-6">
                         <div class="text-center">
-                            <p class="text-2xl font-bold" style="color:#F05138;">100+</p>
+                            <p class="text-2xl font-bold" style="color:#B84307;">100+</p>
                             <p class="text-sm text-gray-500">Companion Repos</p>
                         </div>
                         <div class="text-center">
-                            <p class="text-2xl font-bold" style="color:#F05138;">5+</p>
+                            <p class="text-2xl font-bold" style="color:#B84307;">5+</p>
                             <p class="text-sm text-gray-500">Years Building</p>
                         </div>
                         <div class="text-center">
-                            <p class="text-2xl font-bold" style="color:#F05138;">Weekly</p>
+                            <p class="text-2xl font-bold" style="color:#B84307;">Weekly</p>
                             <p class="text-sm text-gray-500">New Videos</p>
                         </div>
                     </div>
 
                     <a href="https://www.youtube.com/@noahdoescoding" target="_blank" rel="noopener noreferrer"
-                       class="btn-subscribe inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+                       class="btn-subscribe inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-xl transition duration-150">
                         <i data-feather="youtube" class="mr-2"></i> Subscribe on YouTube
                     </a>
                 </div>
@@ -176,7 +163,7 @@
         <!-- Recent Videos -->
         <section id="videos" class="mb-10 animate-section" style="animation-delay:0.1s">
             <h2 class="section-heading mb-8">
-                <i data-feather="play-circle" style="color:#F05138;"></i> Recent Videos
+                <i data-feather="play-circle" style="color:#B84307;"></i> Recent Videos
             </h2>
 
             <div class="grid md:grid-cols-3 gap-6" id="video-grid">
@@ -192,7 +179,7 @@
                                     <i data-feather="play" class="text-white w-7 h-7 ml-1"></i>
                                 </div>
                             </div>
-                            <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full">Latest</span>
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-mono font-medium px-2 py-0.5 rounded">Latest</span>
                         </div>
                         <p class="video-title text-gray-800 font-semibold text-base leading-snug animate-pulse bg-gray-100 rounded h-5 w-3/4 mx-6 mt-6"></p>
                     </a>
@@ -263,7 +250,7 @@
         <!-- What You'll Learn -->
         <section id="topics" class="bg-white rounded-2xl shadow-sm p-8 mb-10 animate-section" style="animation-delay:0.15s">
             <h2 class="section-heading mb-2">
-                <i data-feather="book-open" style="color:#F05138;"></i> What You'll Learn
+                <i data-feather="book-open" style="color:#B84307;"></i> What You'll Learn
             </h2>
             <p class="text-gray-600 mb-8">Concepts I've actually had to work through — explained in enough depth that you leave understanding why, not just what to type.</p>
 
@@ -271,42 +258,42 @@
 
                 <div class="topic-tile bg-gray-50 rounded-xl p-4">
                     <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                        <i data-feather="smartphone" class="w-4 h-4" style="color:#F05138;"></i> SwiftUI &amp; UIKit
+                        <i data-feather="smartphone" class="w-4 h-4" style="color:#B84307;"></i> SwiftUI &amp; UIKit
                     </h3>
                     <p class="text-gray-600 text-sm">Navigation, forms, pickers, gestures, animations, and interop between UIKit and SwiftUI.</p>
                 </div>
 
                 <div class="topic-tile bg-gray-50 rounded-xl p-4">
                     <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                        <i data-feather="cloud" class="w-4 h-4" style="color:#F05138;"></i> Cloud &amp; Data
+                        <i data-feather="cloud" class="w-4 h-4" style="color:#B84307;"></i> Cloud &amp; Data
                     </h3>
                     <p class="text-gray-600 text-sm">CloudKit, Firebase, Supabase Auth, and SwiftData — full stack data layers for iOS apps.</p>
                 </div>
 
                 <div class="topic-tile bg-gray-50 rounded-xl p-4">
                     <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                        <i data-feather="zap" class="w-4 h-4" style="color:#F05138;"></i> Games &amp; Graphics
+                        <i data-feather="zap" class="w-4 h-4" style="color:#B84307;"></i> Games &amp; Graphics
                     </h3>
                     <p class="text-gray-600 text-sm">SpriteKit game dev, RealityKit, and Game Center integration with GKMatch.</p>
                 </div>
 
                 <div class="topic-tile bg-gray-50 rounded-xl p-4">
                     <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                        <i data-feather="cpu" class="w-4 h-4" style="color:#F05138;"></i> On-Device AI
+                        <i data-feather="cpu" class="w-4 h-4" style="color:#B84307;"></i> On-Device AI
                     </h3>
                     <p class="text-gray-600 text-sm">FoundationModels, Core ML, and Gemini API — running AI features directly on device.</p>
                 </div>
 
                 <div class="topic-tile bg-gray-50 rounded-xl p-4">
                     <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                        <i data-feather="dollar-sign" class="w-4 h-4" style="color:#F05138;"></i> Monetization
+                        <i data-feather="dollar-sign" class="w-4 h-4" style="color:#B84307;"></i> Monetization
                     </h3>
                     <p class="text-gray-600 text-sm">StoreKit IAP, RevenueCat subscriptions, AdMob ads, and Keychain-secured entitlements.</p>
                 </div>
 
                 <div class="topic-tile bg-gray-50 rounded-xl p-4">
                     <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                        <i data-feather="activity" class="w-4 h-4" style="color:#F05138;"></i> Sensors &amp; Hardware
+                        <i data-feather="activity" class="w-4 h-4" style="color:#B84307;"></i> Sensors &amp; Hardware
                     </h3>
                     <p class="text-gray-600 text-sm">HealthKit, AVFoundation camera &amp; audio, CoreHaptics, and visionOS volumetric apps.</p>
                 </div>
@@ -320,17 +307,17 @@
                 <h2 class="text-xl font-bold text-gray-800 mb-1">Curious what I've actually shipped?</h2>
                 <p class="text-gray-500 text-sm">7 apps on the App Store — the same projects these tutorials are built around.</p>
             </div>
-            <a href="apps.html" class="flex-shrink-0 inline-flex items-center font-semibold py-3 px-6 rounded-lg transition duration-200" style="background:#F05138;color:white;font-family:'Poppins',sans-serif;">
+            <a href="apps.html" class="btn-primary flex-shrink-0">
                 <i data-feather="grid" class="mr-2"></i> Browse My Apps
             </a>
         </section>
 
         <!-- GitHub CTA -->
-        <section id="repos" class="rounded-2xl p-8 text-white text-center animate-section mb-4" style="background:#1D1D1F;animation-delay:0.2s">
-            <h2 class="text-2xl font-bold mb-3">100+ Companion Repos on GitHub</h2>
-            <p class="mb-6 max-w-xl mx-auto" style="color:#9ca3af;">Every tutorial ships with a minimal, working code example — the real pattern, not a simplified demo. Browse, fork, and build.</p>
+        <section id="repos" class="rounded-2xl p-6 sm:p-8 text-white text-center animate-section mb-4" style="background:#07212F;animation-delay:0.2s">
+            <h2 class="text-2xl font-bold mb-3" style="color:inherit;">100+ Companion Repos on GitHub</h2>
+            <p class="mb-6 max-w-xl mx-auto" style="color:#C9C3BF;">Every tutorial ships with a minimal, working code example — the real pattern, not a simplified demo. Browse, fork, and build.</p>
             <a href="https://github.com/NDCSwift" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center bg-white hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition duration-300" style="color:#1D1D1F;font-family:'Poppins',sans-serif;">
+               class="inline-flex items-center bg-white hover:bg-gray-100 font-bold py-3 px-6 rounded-xl transition duration-150" style="color:#07212F;">
                 <i data-feather="github" class="mr-2"></i> Browse Repos on GitHub
             </a>
         </section>
